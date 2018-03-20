@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour {
     public GameObject redMagnet, blueMagnet;
     public SpriteRenderer magnetSprite;
     public bool movingRelativeToPlayer = true;  // when toucing the screen, move relatively to the player or to the middle of the screen
+    [HideInInspector]
+    public float lastJump = -1f;
 
-    float lastJump = -1f;
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
