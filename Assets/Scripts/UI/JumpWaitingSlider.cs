@@ -4,9 +4,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class JumpWaitingSlider : MonoBehaviour {
 
-    public PlayerController pc;
-    public GameObject fillArea;
-
+    [SerializeField]
+    GameObject fillArea;
+    PlayerController pc;
     Slider slider;
 
 	void Awake () {
@@ -14,8 +14,9 @@ public class JumpWaitingSlider : MonoBehaviour {
 	}
 
     void Start() {
+        pc = GetComponentInParent<PlayerController>();
         InitSlider();
-    } 
+    }
 	
 	void Update () {
         UpdateSlider();

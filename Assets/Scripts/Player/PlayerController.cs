@@ -5,21 +5,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
-    public float timeBetweenJumps = .5f;        // time to wait between each jump
-    public float jumpForce = 2f;                // multiplier of the x vector
-    public float horizontalForce = 2f;          // multiplier of the y vector
-    public Canvas canvas;
-    public RectTransform magnetCtrlr;
-    public GameObject redMagnet, blueMagnet;
-    public SpriteRenderer magnetSprite;
-    public bool movingRelativeToPlayer = true;  // when toucing the screen, move relatively to the player or to the middle of the screen
     [HideInInspector]
     public float lastJump = -1f;
+    public float timeBetweenJumps = .5f;        // time to wait between each jump
+
+    [SerializeField]
+    float jumpForce = 2f;                       // multiplier of the x vector
+    [SerializeField]
+    float horizontalForce = 2f;                 // multiplier of the y vector
+    [SerializeField]
+    RectTransform magnetCtrlr;
+    [SerializeField]
+    GameObject redMagnet, blueMagnet;
+    [SerializeField]
+    SpriteRenderer magnetSprite;
+    [SerializeField]
+    bool movingRelativeToPlayer = true;         // when toucing the screen, move relatively to the player or to the middle of the screen    
 
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
-    int nbJumpForCurrentTouch = 0;             // We have to re-touch to screen to jump again
+    int nbJumpForCurrentTouch = 0;              // We have to re-touch to screen to jump again
 
 
     void Awake() {
