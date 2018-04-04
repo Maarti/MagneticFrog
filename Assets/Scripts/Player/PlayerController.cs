@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-#if (UNITY_ANDROID || UNITY_IOS) //&& !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         if (Input.touchCount > 0 && nbJumpForCurrentTouch==0) {
             Jump();
             float touchY = Input.GetTouch(0).position.y;

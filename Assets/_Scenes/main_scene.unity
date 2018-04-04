@@ -703,6 +703,75 @@ MonoBehaviour:
   blueMagnet: {fileID: 1070821068}
   magnetSprite: {fileID: 882230838}
   movingRelativeToPlayer: 1
+--- !u!1001 &498371383
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1188704995}
+    m_Modifications:
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013628585246, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64000013061176366, guid: 14049f85cb9f2e144aeee966e936fadf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013209316742, guid: 14049f85cb9f2e144aeee966e936fadf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013209316742, guid: 14049f85cb9f2e144aeee966e936fadf,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 14049f85cb9f2e144aeee966e936fadf, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &499328628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1942,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!4 &891913736 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000011232653222, guid: 14049f85cb9f2e144aeee966e936fadf,
+    type: 2}
+  m_PrefabInternal: {fileID: 498371383}
 --- !u!1 &904005085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1207702657}
+  - {fileID: 891913736}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3869,10 +3944,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -6}
+  m_Offset: {x: 0, y: -5.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3905,7 +3980,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 8}
@@ -3930,7 +4005,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -4.25, y: 1.05}
@@ -3955,7 +4030,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 4.25, y: 1.05}
