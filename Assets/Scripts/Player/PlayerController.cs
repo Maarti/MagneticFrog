@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -153,9 +154,15 @@ public class PlayerController : MonoBehaviour {
 
     void UpdateOxygen() {
         Oxygen -= Time.deltaTime;
+        if (Oxygen <= 0)
+            Die();
     }
 
     public void AddOxygen(float oxygenAmount) {
         Oxygen += oxygenAmount;
+    }
+
+    public void Die() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
