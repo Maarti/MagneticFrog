@@ -3,8 +3,8 @@
 public class CameraController : MonoBehaviour {
 
     GameObject player;
-    [SerializeField]
-    float smoothingInterpolateTime = 0.1f;
+    //[SerializeField]
+    //float smoothingInterpolateTime = 0.1f;
 
     void OnEnable() {
         Init(); 
