@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
+   
+    [Header("Moving")]
     [HideInInspector]
     public float lastJump = -1f;
     public float timeBetweenJumps = .5f;        // time to wait between each jump
@@ -14,13 +17,26 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     float horizontalForce = 2f;                 // multiplier of the y vector
     [SerializeField]
+    bool movingRelativeToPlayer = true;         // when toucing the screen, move relatively to the player or to the middle of the screen  
+
+    [Header("Magnet")]
+    [SerializeField]
     RectTransform magnetCtrlr;
     [SerializeField]
     GameObject redMagnet, blueMagnet;
     [SerializeField]
     SpriteRenderer magnetSprite;
-    [SerializeField]
-    bool movingRelativeToPlayer = true;         // when toucing the screen, move relatively to the player or to the middle of the screen    
+
+    [Header("Oxygen")]
+    public float oxygenMax = 20f;
+    private float oxygen;
+    public float Oxygen
+    {
+        get { return oxygen; }
+        set { oxygen = Mathf.Clamp(value, 0f, oxygenMax);
+            oxygenBar.value = oxygen;}
+    }
+    Slider oxygenBar;
 
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
@@ -30,11 +46,21 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        this.enabled = false;
     }
 
+    // This script is enabled when level start
     void Start () {
-        SwitchMagnetToRed();
+        InitPlayer();
 	}
+    
+    // Called on game start
+    public void InitPlayer() {
+        magnetCtrlr = GameObject.Find("MagnetController").GetComponent<RectTransform>();
+        SwitchMagnetToRed();
+        InitOxygenBar();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -64,7 +90,9 @@ public class PlayerController : MonoBehaviour {
             else
                 SwitchMagnetToRed();
         }*/
-#endif   
+#endif
+
+        UpdateOxygen();
     }
 
     void Jump() {
@@ -115,5 +143,19 @@ public class PlayerController : MonoBehaviour {
         blueMagnet.SetActive(true);
         magnetSprite.color = Color.blue;
         magnetIsRed = false;
+    }
+
+    void InitOxygenBar() {
+        oxygenBar = GameObject.Find("OxygenBar").GetComponent<Slider>();
+        oxygenBar.minValue = 0f;
+        oxygenBar.maxValue = oxygenBar.value = Oxygen = oxygenMax;
+    }
+
+    void UpdateOxygen() {
+        Oxygen -= Time.deltaTime;
+    }
+
+    public void AddOxygen(float oxygenAmount) {
+        Oxygen += oxygenAmount;
     }
 }

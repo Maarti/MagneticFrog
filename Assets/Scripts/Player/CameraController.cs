@@ -2,8 +2,18 @@
 
 public class CameraController : MonoBehaviour {
 
-    public GameObject player;
-    public float smoothingInterpolateTime = 0.1f;
+    GameObject player;
+    [SerializeField]
+    float smoothingInterpolateTime = 0.1f;
+
+    void OnEnable() {
+        Init(); 
+    }
+
+    void Init() {
+        Debug.Log("camera init");
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // LateUpdate is called after Update
     void LateUpdate() {

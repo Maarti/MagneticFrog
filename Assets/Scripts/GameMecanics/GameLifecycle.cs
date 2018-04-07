@@ -16,6 +16,7 @@ public class GameLifecycle : MonoBehaviour {
         cameraCtrlr.enabled = true;
         bubbleSpawner.enabled = true;
         mainMenuPanel.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = true;
     }
 
     public void StopGame() {
