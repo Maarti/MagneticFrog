@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour {
     }
 
     void Init() {
-        Debug.Log("camera init");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

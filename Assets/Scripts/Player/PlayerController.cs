@@ -9,24 +9,17 @@ public class PlayerController : MonoBehaviour {
 
    
     [Header("Moving")]
-    [HideInInspector]
-    public float lastJump = -1f;
+    [HideInInspector] public float lastJump = -1f;
     public float timeBetweenJumps = .5f;        // time to wait between each jump
 
-    [SerializeField]
-    float jumpForce = 2f;                       // multiplier of the x vector
-    [SerializeField]
-    float horizontalForce = 2f;                 // multiplier of the y vector
-    [SerializeField]
-    bool movingRelativeToPlayer = true;         // when toucing the screen, move relatively to the player or to the middle of the screen  
+    [SerializeField] float jumpForce = 2f;                       // multiplier of the x vector
+    [SerializeField] float horizontalForce = 2f;                 // multiplier of the y vector
+    [SerializeField] bool movingRelativeToPlayer = true;         // when touching the screen, move relatively to the player or to the middle of the screen  
 
     [Header("Magnet")]
-    [SerializeField]
-    RectTransform magnetCtrlr;
-    [SerializeField]
-    GameObject redMagnet, blueMagnet;
-    [SerializeField]
-    SpriteRenderer magnetSprite;
+    [SerializeField] RectTransform magnetCtrlr;
+    [SerializeField] GameObject redMagnet, blueMagnet;
+    [SerializeField] SpriteRenderer magnetSprite;
 
     [Header("Oxygen")]
     public float oxygenMax = 20f;
@@ -43,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     float screenMid;                            // Middle of the screen width in pixels correct
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     int nbJumpForCurrentTouch = 0;              // We have to re-touch to screen to jump again
+    bool isStuned = false;                      // Can't jump while stuned
 
 
     void Awake() {
@@ -60,7 +54,6 @@ public class PlayerController : MonoBehaviour {
         magnetCtrlr = GameObject.Find("MagnetController").GetComponent<RectTransform>();
         SwitchMagnetToRed();
         InitOxygenBar();
-
     }
 	
 	// Update is called once per frame
@@ -97,7 +90,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jump() {
-        if (Time.time - timeBetweenJumps < lastJump)
+        if (Time.time - timeBetweenJumps < lastJump || isStuned)
             return;
 
         Vector2 inputController;    // Position of the cursor or finger
@@ -164,5 +157,15 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Stun(float duration) {
+        StartCoroutine(StunForSeconds(duration));
+    }
+
+    private IEnumerator StunForSeconds(float duration) {
+        isStuned = true;
+        yield return new WaitForSeconds(duration);
+        isStuned = false;
     }
 }
