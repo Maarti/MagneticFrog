@@ -7,7 +7,7 @@ public class MineSpawner : MonoBehaviour {
     public GameObject blueMinePrefab, redMinePrefab;
     public float minPosX = -2f, maxPosX = 2f;
     public float minWait = 2f, maxWait = 4f;
-    public float minSize = .8f, maxSize = 1.5f;
+    public float minSize = .5f, maxSize = 2f;
 
 	void Start () {
         StartCoroutine(SpawningRoutine());

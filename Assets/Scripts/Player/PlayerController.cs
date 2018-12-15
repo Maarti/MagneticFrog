@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator StunForSeconds(float duration) {
         isStuned = true;
+        rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(duration);
         isStuned = false;
     }
