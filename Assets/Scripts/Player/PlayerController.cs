@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
-   
+
     [Header("Moving")]
     [HideInInspector] public float lastJump = -1f;
     public float timeBetweenJumps = .5f;        // time to wait between each jump
@@ -24,13 +24,17 @@ public class PlayerController : MonoBehaviour {
     [Header("Oxygen")]
     public float oxygenMax = 20f;
     private float oxygen;
-    public float Oxygen
-    {
+    public float Oxygen {
         get { return oxygen; }
-        set { oxygen = Mathf.Clamp(value, 0f, oxygenMax);
-            oxygenBar.value = oxygen;}
+        set {
+            oxygen = Mathf.Clamp(value, 0f, oxygenMax);
+            oxygenBar.value = oxygen;
+        }
     }
     Slider oxygenBar;
+
+    [Header("Meter")]
+    [SerializeField] MeterCounter meterCounter;
 
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
@@ -45,19 +49,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     // This script is enabled when level start
-    void Start () {
+    void Start() {
         InitPlayer();
-	}
-    
+    }
+
     // Called on game start
     public void InitPlayer() {
         magnetCtrlr = GameObject.Find("MagnetController").GetComponent<RectTransform>();
         SwitchMagnetToRed();
         InitOxygenBar();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         if (Input.touchCount > 0 && nbJumpForCurrentTouch==0) {
             Jump();
@@ -107,7 +111,7 @@ public class PlayerController : MonoBehaviour {
         inputController.x = Mathf.Clamp(inputController.x, 0f, Screen.width);
         inputController.y = Mathf.Clamp(inputController.y, 0f, Screen.height);
 #endif
-        if(!movingRelativeToPlayer)
+        if (!movingRelativeToPlayer)
             direction.x = (inputController.x - Screen.width / 2f) / (Screen.width / 2);   // Move relatively to the middle of the screen
         else
             direction.x = (inputController.x - Camera.main.WorldToScreenPoint(transform.position).x) / Screen.width; // Move relatively to the player
@@ -156,6 +160,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Die() {
+        ApplicationController.ac.recordNewScore(meterCounter.Value);
+        ApplicationController.ac.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
