@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MeterCounter : MonoBehaviour {
 
     [SerializeField] private Text meterText;
+    private bool isCounting = true;
     int _value = 0;
     public int Value {
         get { return _value; }
@@ -16,8 +17,18 @@ public class MeterCounter : MonoBehaviour {
         }
     }
 
-    private void Update() {
-        Value = Mathf.RoundToInt(transform.position.y);        
+    private void OnEnable() {
+        PlayerController.OnGameOver += OnGameOver;
     }
 
+    private void Update() {
+        if (isCounting) {
+            Value = Mathf.RoundToInt(transform.position.y);
+        }
+    }
+
+    void OnGameOver(int score) {
+        this.isCounting = false;
+        Value = score;
+    }
 }

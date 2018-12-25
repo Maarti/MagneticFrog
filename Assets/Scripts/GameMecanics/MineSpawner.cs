@@ -28,4 +28,8 @@ public class MineSpawner : MonoBehaviour {
             mine.transform.localScale = scale;
         }
     }
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
 }

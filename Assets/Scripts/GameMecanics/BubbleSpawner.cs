@@ -24,4 +24,8 @@ public class BubbleSpawner : MonoBehaviour {
                 Instantiate(redBubblePrefab, pos, Quaternion.identity);
         }
     }
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
 }

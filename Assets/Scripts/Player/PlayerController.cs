@@ -36,12 +36,15 @@ public class PlayerController : MonoBehaviour {
     [Header("Meter")]
     [SerializeField] MeterCounter meterCounter;
 
+    public delegate void GameOver(int score);
+    public static event GameOver OnGameOver;
+
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     int nbJumpForCurrentTouch = 0;              // We have to re-touch to screen to jump again
     bool isStuned = false;                      // Can't jump while stuned
-
+    bool isAlive = true;                        // Set to false after 1rst call to Die()
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -160,9 +163,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Die() {
-        ApplicationController.ac.recordNewScore(meterCounter.Value);
-        ApplicationController.ac.Save();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (isAlive) {
+            OnGameOver(meterCounter.Value);
+            isAlive = false;
+        }
     }
 
     public void Stun(float duration) {
