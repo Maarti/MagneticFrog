@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     [Header("Canvas")]
     [SerializeField] GameObject gameUICanvas;
     [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
     [SerializeField] PlayerController playerCtrlr;
     [SerializeField] CameraController cameraCtrlr;
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void StartGame() {
+        DestroyMainElements();
         gameUICanvas.SetActive(true);
         playerCtrlr.gameObject.SetActive(true);
         playerCtrlr.enabled = true;
@@ -60,11 +62,25 @@ public class GameController : MonoBehaviour {
     }
 
     public void PlayAgain() {
-        StartGame();
+        screenTransition.ScreenFadeThen(StartGame);
     }
 
     public void GoToHomeScreen() {
+        screenTransition.ScreenFadeThen(DisplayHomeMenu);
+    }
+
+    void DisplayHomeMenu() {
+        DestroyMainElements();
+        playerCtrlr.gameObject.SetActive(true);
+        playerCtrlr.InitPlayer();
         mainMenuCanvas.SetActive(true);
+        cameraCtrlr.InitPosition();
+    }
+
+    void DestroyMainElements() {
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("MainElement")) {
+            Destroy(obj);
+        }
     }
 
 }

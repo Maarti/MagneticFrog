@@ -2,7 +2,7 @@
 
 public class CameraController : MonoBehaviour {
 
-    GameObject player;
+    [SerializeField] GameObject player;
     // [SerializeField] float smoothingInterpolateTime = 0.1f;
     Vector3 initialPosition;
 
@@ -11,11 +11,10 @@ public class CameraController : MonoBehaviour {
     }
 
     void OnEnable() {
-        Init(); 
+        InitPosition(); 
     }
 
-    void Init() {
-        player = GameObject.FindGameObjectWithTag("Player");
+    public void InitPosition() {
         transform.position = initialPosition;
     }
 

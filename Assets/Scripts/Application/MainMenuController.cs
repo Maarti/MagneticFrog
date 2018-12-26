@@ -10,8 +10,8 @@ public class MainMenuController : MonoBehaviour {
     private void Start() {
         isStarted = true;
         OnEnable();
-
     }
+
     private void OnEnable() {
         if (!isStarted) return;
         bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString();
@@ -19,7 +19,8 @@ public class MainMenuController : MonoBehaviour {
     }
 
     private void OnDisable() {
-        gameTitleCanvas.SetActive(false);
+        if (gameTitleCanvas != null)
+            gameTitleCanvas.SetActive(false);
     }
 
 }
