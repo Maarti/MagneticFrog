@@ -10,7 +10,6 @@ public class MeterCounter : MonoBehaviour {
     int _value = 0;
     public int Value {
         get { return _value; }
-
         private set {
             _value = value;
             meterText.text = value + "m";
@@ -18,7 +17,12 @@ public class MeterCounter : MonoBehaviour {
     }
 
     private void OnEnable() {
-        PlayerController.OnGameOver += OnGameOver;
+        GameController.OnGameOver += OnGameOver;
+        isCounting = true;
+    }
+
+    private void OnDisable() {
+        GameController.OnGameOver -= OnGameOver;
     }
 
     private void Update() {

@@ -9,9 +9,13 @@ public class BubbleSpawner : MonoBehaviour {
     public float minWait = 1.5f, maxwait = 3f;
 
 
-    void Start () {
+    void OnEnable () {
         StartCoroutine(SpawningRoutine());
 	}
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
 
     IEnumerator SpawningRoutine() {
         while (true) {
@@ -25,7 +29,5 @@ public class BubbleSpawner : MonoBehaviour {
         }
     }
 
-    private void OnDisable() {
-        StopAllCoroutines();
-    }
+   
 }

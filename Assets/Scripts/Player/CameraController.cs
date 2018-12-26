@@ -3,8 +3,12 @@
 public class CameraController : MonoBehaviour {
 
     GameObject player;
-    //[SerializeField]
-    //float smoothingInterpolateTime = 0.1f;
+    // [SerializeField] float smoothingInterpolateTime = 0.1f;
+    Vector3 initialPosition;
+
+    private void Awake() {
+        initialPosition = transform.position;
+    }
 
     void OnEnable() {
         Init(); 
@@ -12,6 +16,7 @@ public class CameraController : MonoBehaviour {
 
     void Init() {
         player = GameObject.FindGameObjectWithTag("Player");
+        transform.position = initialPosition;
     }
 
     // LateUpdate is called after Update

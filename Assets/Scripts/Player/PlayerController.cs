@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Moving")]
     [HideInInspector] public float lastJump = -1f;
     public float timeBetweenJumps = .5f;        // time to wait between each jump
+    Vector3 initialPosition;
 
     [SerializeField] float jumpForce = 2f;                       // multiplier of the x vector
     [SerializeField] float horizontalForce = 2f;                 // multiplier of the y vector
@@ -31,34 +32,33 @@ public class PlayerController : MonoBehaviour {
             oxygenBar.value = oxygen;
         }
     }
-    Slider oxygenBar;
+    [SerializeField] Slider oxygenBar;
 
     [Header("Meter")]
     [SerializeField] MeterCounter meterCounter;
-
-    public delegate void GameOver(int score);
-    public static event GameOver OnGameOver;
 
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     int nbJumpForCurrentTouch = 0;              // We have to re-touch to screen to jump again
     bool isStuned = false;                      // Can't jump while stuned
-    bool isAlive = true;                        // Set to false after 1rst call to Die()
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        initialPosition = transform.position;
         this.enabled = false;
     }
 
     // This script is enabled when level start
-    void Start() {
+    void OnEnable() {
         InitPlayer();
     }
 
     // Called on game start
     public void InitPlayer() {
-        magnetCtrlr = GameObject.Find("MagnetController").GetComponent<RectTransform>();
+        transform.position = initialPosition;
+        isStuned = false;
+        nbJumpForCurrentTouch = 0;
         SwitchMagnetToRed();
         InitOxygenBar();
     }
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void InitOxygenBar() {
-        oxygenBar = GameObject.Find("OxygenBar").GetComponent<Slider>();
+        //  oxygenBar = GameObject.Find("OxygenBar").GetComponent<Slider>();
         oxygenBar.minValue = 0f;
         oxygenBar.maxValue = oxygenBar.value = Oxygen = oxygenMax;
     }
@@ -163,10 +163,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Die() {
-        if (isAlive) {
-            OnGameOver(meterCounter.Value);
-            isAlive = false;
-        }
+        GameController.gc.TriggerGameOver(meterCounter.Value);
+        gameObject.SetActive(false);
     }
 
     public void Stun(float duration) {

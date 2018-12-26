@@ -9,9 +9,13 @@ public class MineSpawner : MonoBehaviour {
     public float minWait = 2f, maxWait = 4f;
     public float minSize = .5f, maxSize = 2f;
 
-	void Start () {
+	void OnEnable () {
         StartCoroutine(SpawningRoutine());
 	}
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
 
     IEnumerator SpawningRoutine() {
         while (true) {
@@ -29,7 +33,4 @@ public class MineSpawner : MonoBehaviour {
         }
     }
 
-    private void OnDisable() {
-        StopAllCoroutines();
-    }
 }
