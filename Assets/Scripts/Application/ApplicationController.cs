@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class ApplicationController : MonoBehaviour {
     public static ApplicationController ac;
+    public float defaultMagnetControllerHeight = -1f;
     [SerializeField] public PlayerData PlayerData { get; private set; }
 
     void Awake() {
@@ -20,7 +21,7 @@ public class ApplicationController : MonoBehaviour {
         }
         Load();
     }
-    
+
     public void Save() {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/toad.dat");
@@ -45,10 +46,14 @@ public class ApplicationController : MonoBehaviour {
         // MergeSaveIntoInitialData();
     }
 
-    public void recordNewScore(int newScore) {
-        if(newScore > PlayerData.bestScore) {
+    public void RecordNewScore(int newScore) {
+        if (newScore > PlayerData.bestScore) {
             PlayerData.bestScore = newScore;
         }
     }
 
+    public void SetMagnetControllerLayoutPosition(float yPosition) {
+        PlayerData.magnetControllerHeight = yPosition;
+    }
+    
 }

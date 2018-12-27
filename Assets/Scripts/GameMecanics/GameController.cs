@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
         OnGameOver(score);
         StopGame();
         DisplayGameOverScreen(score);
-        ApplicationController.ac.recordNewScore(score);
+        ApplicationController.ac.RecordNewScore(score);
         ApplicationController.ac.Save();
     }
 
