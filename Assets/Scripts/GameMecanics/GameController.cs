@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     [Header("Canvas")]
     [SerializeField] GameObject gameUICanvas;
     [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] GameObject bestScoreMarker;
     [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
     [SerializeField] PlayerController playerCtrlr;
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
     public void StartGame() {
         DestroyMainElements();
         gameUICanvas.SetActive(true);
+        bestScoreMarker.SetActive(true);
         playerCtrlr.gameObject.SetActive(true);
         playerCtrlr.enabled = true;
         cameraCtrlr.enabled = true;
@@ -41,6 +43,7 @@ public class GameController : MonoBehaviour {
 
     public void StopGame() {
         gameUICanvas.SetActive(false);
+        bestScoreMarker.SetActive(false);
         playerCtrlr.enabled = false;
         cameraCtrlr.enabled = false;
         bubbleSpawner.enabled = false;
