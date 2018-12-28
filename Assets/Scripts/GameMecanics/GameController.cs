@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -13,6 +11,7 @@ public class GameController : MonoBehaviour {
     [Header("Controllers")]
     [SerializeField] PlayerController playerCtrlr;
     [SerializeField] CameraController cameraCtrlr;
+    [SerializeField] LevelSettingsController levelSettingsController;
     [SerializeField] BubbleSpawner bubbleSpawner;
     [SerializeField] MineSpawner mineSpawner;
     [Header("Game Over Screen")]
@@ -35,6 +34,7 @@ public class GameController : MonoBehaviour {
         bestScoreMarker.SetActive(true);
         playerCtrlr.gameObject.SetActive(true);
         playerCtrlr.enabled = true;
+        levelSettingsController.enabled = true;
         cameraCtrlr.enabled = true;
         bubbleSpawner.enabled = true;
         mineSpawner.enabled = true;
@@ -45,13 +45,15 @@ public class GameController : MonoBehaviour {
         gameUICanvas.SetActive(false);
         bestScoreMarker.SetActive(false);
         playerCtrlr.enabled = false;
+        levelSettingsController.enabled = false;
         cameraCtrlr.enabled = false;
         bubbleSpawner.enabled = false;
         mineSpawner.enabled = false;
     }
 
     public void TriggerGameOver(int score) {
-        OnGameOver(score);
+        if (OnGameOver != null)
+            OnGameOver(score);
         StopGame();
         DisplayGameOverScreen(score);
         ApplicationController.ac.RecordNewScore(score);

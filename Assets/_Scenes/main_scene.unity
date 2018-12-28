@@ -113,6 +113,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &415436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415437}
+  - component: {fileID: 415438}
+  m_Layer: 0
+  m_Name: LevelSettingsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1207702657}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2879403c1a7c76549b0d9a71349c2a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meterCounter: {fileID: 1289790556}
 --- !u!1 &5630758
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,6 +4643,7 @@ Transform:
   - {fileID: 1851604387}
   - {fileID: 2137396384}
   - {fileID: 1130394640}
+  - {fileID: 415437}
   m_Father: {fileID: 1188704995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5773,6 +5815,7 @@ MonoBehaviour:
   screenTransition: {fileID: 264798834}
   playerCtrlr: {fileID: 1289790559}
   cameraCtrlr: {fileID: 1188704996}
+  levelSettingsController: {fileID: 415438}
   bubbleSpawner: {fileID: 1851604388}
   mineSpawner: {fileID: 1130394639}
   goCanvas: {fileID: 60834981}
@@ -6104,8 +6147,6 @@ MonoBehaviour:
     type: 2}
   minPosX: -2.5
   maxPosX: 2.5
-  minWait: 1.5
-  maxwait: 3
 --- !u!1 &1858163393
 GameObject:
   m_ObjectHideFlags: 0

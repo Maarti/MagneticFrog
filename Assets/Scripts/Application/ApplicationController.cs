@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class ApplicationController : MonoBehaviour {
     public static ApplicationController ac;
-    public float defaultMagnetControllerHeight = -1f;
     [SerializeField] public PlayerData PlayerData { get; private set; }
+    public float defaultMagnetControllerHeight = -1f;
 
     void Awake() {
         if (ac == null) {
@@ -19,6 +19,7 @@ public class ApplicationController : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
+      //  InitLevelSettings();
         Load();
     }
 
@@ -45,6 +46,12 @@ public class ApplicationController : MonoBehaviour {
         }
         // MergeSaveIntoInitialData();
     }
+    /*
+    void InitLevelSettings() {
+        levelSettings = LevelSettings.InitLevelSettings();
+    }*/
+
+    // PLAYER DATA SETTERS
 
     public void RecordNewScore(int newScore) {
         if (newScore > PlayerData.bestScore) {
@@ -55,5 +62,5 @@ public class ApplicationController : MonoBehaviour {
     public void SetMagnetControllerLayoutPosition(float yPosition) {
         PlayerData.magnetControllerHeight = yPosition;
     }
-    
+
 }

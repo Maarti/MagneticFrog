@@ -1,25 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BubbleSpawner : MonoBehaviour {
 
     public GameObject blueBubblePrefab, redBubblePrefab;
     public float minPosX = -2f, maxPosX = 2f;
-    public float minWait = 1.5f, maxwait = 3f;
+    public LevelSettings levelSettings;
 
 
-    void OnEnable () {
+    void OnEnable() {
+        LevelSettingsController.OnLevelSettingsChange += UpdateLevelSettings;
+        UpdateLevelSettings(LevelSettingsController.currentLevelSettings);
         StartCoroutine(SpawningRoutine());
-	}
+    }
 
     private void OnDisable() {
+        LevelSettingsController.OnLevelSettingsChange -= UpdateLevelSettings;
         StopAllCoroutines();
     }
 
     IEnumerator SpawningRoutine() {
         while (true) {
-            yield return new WaitForSeconds(Random.Range(minWait, maxwait));
+            yield return new WaitForSeconds(Random.Range(levelSettings.bubbleMinWait, levelSettings.bubbleMaxWait));
             Vector3 pos = transform.position;
             pos.x = Random.Range(minPosX, maxPosX);
             if (Random.value > .5f)
@@ -29,5 +31,9 @@ public class BubbleSpawner : MonoBehaviour {
         }
     }
 
-   
+    void UpdateLevelSettings(LevelSettings newLevelSettings) {
+        levelSettings = newLevelSettings;
+    }
+
+
 }
