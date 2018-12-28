@@ -14,7 +14,13 @@ public class MainMenuController : MonoBehaviour {
 
     private void OnEnable() {
         if (!isStarted) return;
-        bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString();
+        if (ApplicationController.ac.PlayerData.bestScore >= 0) {
+            bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString();
+            bestScoreText.gameObject.SetActive(true);
+        }
+        else {
+            bestScoreText.gameObject.SetActive(false);
+        }
         gameTitleCanvas.SetActive(true);
     }
 

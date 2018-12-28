@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour {
 
     void DisplayGameOverScreen(int score) {
         goScoreText.text = score.ToString();
-        goBestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString();
+        goBestScoreText.text = Mathf.Max(0,ApplicationController.ac.PlayerData.bestScore).ToString();
         goCanvas.gameObject.SetActive(true);
     }
 
