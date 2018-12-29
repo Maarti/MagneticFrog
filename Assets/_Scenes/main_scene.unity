@@ -457,6 +457,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &158826084
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &161784599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3054,8 @@ MonoBehaviour:
     mineMaxWait: 0
     mineMinSize: 0
     mineMaxSize: 0
+    mineMinSpeed: 0
+    mineMaxSpeed: 0
   standardCoinPrefab: {fileID: 1336646749759280, guid: c8abff367d226154482f06d1e0fb3878,
     type: 2}
   blueCoinPrefab: {fileID: 1336646749759280, guid: c8abff367d226154482f06d1e0fb3878,
@@ -4481,6 +4525,8 @@ MonoBehaviour:
     mineMaxWait: 0
     mineMinSize: 0
     mineMaxSize: 0
+    mineMinSpeed: 0
+    mineMaxSpeed: 0
   blueMinePrefab: {fileID: 1935315421568898, guid: 37565fec339e14647ac38065986dca8d,
     type: 2}
   redMinePrefab: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9,
@@ -5152,10 +5198,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289790560}
+  - component: {fileID: 1289790561}
   - component: {fileID: 1289790559}
+  - component: {fileID: 1289790556}
   - component: {fileID: 1289790558}
   - component: {fileID: 1289790557}
-  - component: {fileID: 1289790556}
   m_Layer: 11
   m_Name: Frog1
   m_TagString: Player
@@ -5255,6 +5302,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289790561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289790555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7be1d38b8e276540aaa8d11fb421a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1363699399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,6 +5940,57 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1555392792}
   m_CullTransparentMesh: 0
+--- !u!1001 &1605882114
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_Name
+      value: RedMine (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 50254952743360226, guid: d50ddb31f9f00474599b2e84570ec4e9,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1682407301
 GameObject:
   m_ObjectHideFlags: 0
@@ -6362,6 +6471,8 @@ MonoBehaviour:
     mineMaxWait: 0
     mineMinSize: 0
     mineMaxSize: 0
+    mineMinSpeed: 0
+    mineMaxSpeed: 0
   blueBubblePrefab: {fileID: 1949044341875080, guid: 06a8c83fc0198e7459b0d92fc8c5c3bb,
     type: 2}
   redBubblePrefab: {fileID: 1250203305697634, guid: d7bddcfeecf92464687a596a099b5431,
@@ -6441,6 +6552,52 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858163393}
   m_CullTransparentMesh: 0
+--- !u!1001 &1874308585
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678265855022322, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+      propertyPath: m_Name
+      value: RedMine (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d50ddb31f9f00474599b2e84570ec4e9, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1881115186
 GameObject:
   m_ObjectHideFlags: 0
