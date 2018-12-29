@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] CoinSpawner coinSpawner;
     [SerializeField] MineSpawner mineSpawner;
     [SerializeField] RockSpawner rockSpawner;
+    [SerializeField] TutorialManager tutorialManager;
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
     [SerializeField] Text goScoreText;
@@ -32,17 +33,31 @@ public class GameController : MonoBehaviour {
 
     public void StartGame() {
         DestroyMainElements();
-        gameUICanvas.SetActive(true);
-        bestScoreMarker.SetActive(true);
-        playerCtrlr.gameObject.SetActive(true);
-        playerCtrlr.enabled = true;
-        levelSettingsController.enabled = true;
-        cameraCtrlr.enabled = true;
-        bubbleSpawner.enabled = true;
-        coinSpawner.enabled = true;
-        mineSpawner.enabled = true;
-        rockSpawner.enabled = true;
         mainMenuCanvas.SetActive(false);
+        if (ApplicationController.ac.PlayerData.isTutorialDone) {
+            gameUICanvas.SetActive(true);
+            bestScoreMarker.SetActive(true);
+            // playerCtrlr.gameObject.SetActive(true);
+            playerCtrlr.enabled = true;
+            levelSettingsController.enabled = true;
+            cameraCtrlr.enabled = true;
+            bubbleSpawner.enabled = true;
+            coinSpawner.enabled = true;
+            mineSpawner.enabled = true;
+            rockSpawner.enabled = true;
+            tutorialManager.enabled = false;
+        }
+        else {
+            StartTutorial();
+        }
+    }
+
+    void StartTutorial() {
+        tutorialManager.enabled = true;
+        gameUICanvas.SetActive(true);
+        bestScoreMarker.SetActive(false);
+        playerCtrlr.enabled = true;
+        cameraCtrlr.enabled = true;
     }
 
     public void StopGame() {
@@ -55,6 +70,7 @@ public class GameController : MonoBehaviour {
         coinSpawner.enabled = false;
         rockSpawner.enabled = false;
         mineSpawner.enabled = false;
+        tutorialManager.enabled = false;
     }
 
     public void TriggerGameOver(int score) {
@@ -68,7 +84,7 @@ public class GameController : MonoBehaviour {
 
     void DisplayGameOverScreen(int score) {
         goScoreText.text = score.ToString();
-        goBestScoreText.text = Mathf.Max(0,ApplicationController.ac.PlayerData.bestScore).ToString();
+        goBestScoreText.text = Mathf.Max(0, ApplicationController.ac.PlayerData.bestScore).ToString();
         goCanvas.gameObject.SetActive(true);
     }
 
@@ -83,13 +99,13 @@ public class GameController : MonoBehaviour {
     void DisplayHomeMenu() {
         DestroyMainElements();
         playerCtrlr.gameObject.SetActive(true);
-        playerCtrlr.InitPlayer();
+        playerCtrlr.Init();
         mainMenuCanvas.SetActive(true);
         cameraCtrlr.InitPosition();
     }
 
     void DestroyMainElements() {
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("MainElement")) {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MainElement")) {
             Destroy(obj);
         }
     }

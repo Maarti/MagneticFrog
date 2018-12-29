@@ -8,4 +8,5 @@ public class PlayerData {
     public int coins = 0;
     public float magnetControllerHeight = -1f;
     public SystemLanguage lang = SystemLanguage.English;
+    public bool isTutorialDone = false;
 }

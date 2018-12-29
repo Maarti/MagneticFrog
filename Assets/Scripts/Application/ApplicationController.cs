@@ -62,4 +62,12 @@ public class ApplicationController : MonoBehaviour {
         PlayerData.coins = Mathf.Clamp(PlayerData.coins + value, 0, 999999);
     }
 
+    public void FinishTutorial() {
+        PlayerData.isTutorialDone = true;
+    }
+
+    public void ResetTutorial() {
+        PlayerData.isTutorialDone = false;
+    }
+
 }

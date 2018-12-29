@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR 
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Cheater))]
@@ -28,3 +29,4 @@ public class Cheater : MonoBehaviour {
         GetComponent<Rigidbody2D>().gravityScale /= 2;
     }
 }
+#endif
