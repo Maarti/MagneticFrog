@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] CameraController cameraCtrlr;
     [SerializeField] LevelSettingsController levelSettingsController;
     [SerializeField] BubbleSpawner bubbleSpawner;
+    [SerializeField] CoinSpawner coinSpawner;
     [SerializeField] MineSpawner mineSpawner;
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
@@ -37,6 +38,7 @@ public class GameController : MonoBehaviour {
         levelSettingsController.enabled = true;
         cameraCtrlr.enabled = true;
         bubbleSpawner.enabled = true;
+        coinSpawner.enabled = true;
         mineSpawner.enabled = true;
         mainMenuCanvas.SetActive(false);
     }
@@ -48,6 +50,7 @@ public class GameController : MonoBehaviour {
         levelSettingsController.enabled = false;
         cameraCtrlr.enabled = false;
         bubbleSpawner.enabled = false;
+        coinSpawner.enabled = false;
         mineSpawner.enabled = false;
     }
 

@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-public class BubbleController : MonoBehaviour {
+public class CoinController : MonoBehaviour {
 
-    [SerializeField] float oxygenAmount = 8f;
+    public int value = 1;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Player") {
             OnHitPlayer(collision.gameObject);
         }
     }
 
     void OnHitPlayer(GameObject player) {
-        player.GetComponent<PlayerController>().AddOxygen(oxygenAmount);
+        ApplicationController.ac.UpateCoins(value);
         Destroy(this.gameObject);
     }
 }
