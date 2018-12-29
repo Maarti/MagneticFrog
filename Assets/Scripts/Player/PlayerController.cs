@@ -15,10 +15,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float horizontalForce = 2f;                 // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;         // when touching the screen, move relatively to the player or to the middle of the screen  
 
-    [Header("Magnet")]
-    [SerializeField] RectTransform magnetCtrlr;
-    [SerializeField] GameObject redMagnet, blueMagnet;
-    [SerializeField] SpriteRenderer magnetSprite;
+
+    [SerializeField] MagnetController magnetCtrlr;
 
     [Header("Oxygen")]
     public float oxygenMax = 20f;
@@ -37,7 +35,6 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rb;
     float screenMid;                            // Middle of the screen width in pixels correct
-    bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     int nbJumpForCurrentTouch = 0;              // We have to re-touch to screen to jump again
     bool isStuned = false;                      // Can't jump while stuned
 
@@ -49,16 +46,21 @@ public class PlayerController : MonoBehaviour {
 
     // This script is enabled when level start
     void OnEnable() {
-        InitPlayer();
+        magnetCtrlr.enabled = true;
+        Init();
+    }
+
+    void OnDisable() {
+        magnetCtrlr.enabled = false;
     }
 
     // Called on game start
-    public void InitPlayer() {
+    public void Init() {
         transform.position = initialPosition;
         isStuned = false;
         nbJumpForCurrentTouch = 0;
-        SwitchMagnetToRed();
-        InitOxygenBar();
+        InitOxygenBar();   
+        magnetCtrlr.Init();
     }
 
     // Update is called once per frame
@@ -66,31 +68,12 @@ public class PlayerController : MonoBehaviour {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         if (Input.touchCount > 0 && nbJumpForCurrentTouch==0) {
             Jump();
-            float touchY = Input.GetTouch(0).position.y;
-            if (touchY < magnetCtrlr.position.y && magnetIsRed)
-                SwitchMagnetToBlue();
-            else if (touchY > magnetCtrlr.position.y && !magnetIsRed)
-                SwitchMagnetToRed();
         } else if (Input.touchCount == 0 && nbJumpForCurrentTouch > 0)
             ResetNbJump();
 #else
         if (Input.GetButtonDown("Jump"))
             Jump();
-
-        float touchY = Input.mousePosition.y;
-        if (touchY < magnetCtrlr.position.y && magnetIsRed)
-            SwitchMagnetToBlue();
-        else if (touchY > magnetCtrlr.position.y && !magnetIsRed)
-            SwitchMagnetToRed();
-        /* 
-        if (Input.GetButtonDown("Switch")) {
-            if (magnetIsRed)
-                SwitchMagnetToBlue();
-            else
-                SwitchMagnetToRed();
-        }*/
 #endif
-
         UpdateOxygen();
     }
 
@@ -128,20 +111,6 @@ public class PlayerController : MonoBehaviour {
 
     void ResetNbJump() {
         nbJumpForCurrentTouch = 0;
-    }
-
-    void SwitchMagnetToRed() {
-        redMagnet.SetActive(true);
-        blueMagnet.SetActive(false);
-        magnetSprite.color = Color.red;
-        magnetIsRed = true;
-    }
-
-    void SwitchMagnetToBlue() {
-        redMagnet.SetActive(false);
-        blueMagnet.SetActive(true);
-        magnetSprite.color = Color.blue;
-        magnetIsRed = false;
     }
 
     void InitOxygenBar() {
