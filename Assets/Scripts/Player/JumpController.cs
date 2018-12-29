@@ -3,8 +3,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class JumpController : MonoBehaviour {
-    [HideInInspector] public float lastJump = -1f;
+
+    public delegate void JumpDelegate();
+    public static event JumpDelegate OnJump;
     public float timeBetweenJumps = 1f;                         // time to wait between each jump
+    [HideInInspector] public float lastJump = -1f;
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
     [SerializeField] float horizontalForce = 200f;              // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
@@ -69,6 +72,8 @@ public class JumpController : MonoBehaviour {
         rb.velocity = Vector2.zero;
         rb.AddForce(direction);
         lastJump = Time.time;
+        if (OnJump != null)
+            OnJump();
     }
 
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR

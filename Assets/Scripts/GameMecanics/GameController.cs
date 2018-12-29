@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour {
             coinSpawner.enabled = true;
             mineSpawner.enabled = true;
             rockSpawner.enabled = true;
-            tutorialManager.enabled = false;
+            tutorialManager.gameObject.SetActive(false);
         }
         else {
             StartTutorial();
@@ -53,9 +53,10 @@ public class GameController : MonoBehaviour {
     }
 
     void StartTutorial() {
-        tutorialManager.enabled = true;
+        tutorialManager.gameObject.SetActive(true);
         gameUICanvas.SetActive(true);
         bestScoreMarker.SetActive(false);
+        playerCtrlr.isPlayingTutorial = true;
         playerCtrlr.enabled = true;
         cameraCtrlr.enabled = true;
     }
@@ -70,7 +71,7 @@ public class GameController : MonoBehaviour {
         coinSpawner.enabled = false;
         rockSpawner.enabled = false;
         mineSpawner.enabled = false;
-        tutorialManager.enabled = false;
+        tutorialManager.gameObject.SetActive(false);
     }
 
     public void TriggerGameOver(int score) {

@@ -7,57 +7,110 @@ public class TutorialManager : MonoBehaviour {
     [Header("UI")]
     [SerializeField] GameObject meterCounter;
     [SerializeField] GameObject oxygenBar;
-    [SerializeField] GameObject magnetController;
+    [SerializeField] GameObject magnetControllerLayout;
+    [Header("Controllers")]
+    [SerializeField] OxygenController oxygenCtrlr;
+    [SerializeField] MagnetController magnetCtrlr;
+    [SerializeField] JumpController jumpCtrlr;
     [Header("Spawners")]
-    [SerializeField] GameObject blueMinePrefab, redMinePrefab;
+    [SerializeField] BubbleSpawner bubbleSpawner;
+    [SerializeField] MineSpawner mineSpawner;
     [Header("Misc")]
     [SerializeField] GameObject tutorialConfiner;
     [SerializeField] float minPosX = -2f, maxPosX = 2f;
 
+    int nbJump = 0;
+    int nbBubbles = 0;
+    int state = -1;
+    WaitForSeconds wait = new WaitForSeconds(2f);
+    Coroutine blueBubblesCoroutine;
+    Coroutine redBubblesCoroutine;
+    Coroutine minesCoroutine;
 
     void OnEnable() {
+        state = 0;
+        JumpController.OnJump += OnJump;
+        nbJump = 0;
+        OxygenController.OnBubbleCollect += OnBubbleCollect;
+        nbBubbles = 0;
         tutorialConfiner.SetActive(true);
         meterCounter.SetActive(false);
+        magnetControllerLayout.SetActive(false);
         oxygenBar.SetActive(false);
-        magnetController.SetActive(false);
+        oxygenCtrlr.enabled = false;
+        magnetCtrlr.enabled = false;
+        jumpCtrlr.enabled = true;
     }
 
     void OnDisable() {
         tutorialConfiner.SetActive(false);
         meterCounter.SetActive(true);
         oxygenBar.SetActive(true);
-        magnetController.SetActive(true);
+        magnetControllerLayout.SetActive(true);
         StopAllCoroutines();
+        JumpController.OnJump -= OnJump;
+        OxygenController.OnBubbleCollect -= OnBubbleCollect;
+    }
+
+    void Update() {
+        switch (state) {
+            // Jumping tutorial
+            case 0:
+                if (nbJump >= 5) StartBubblesTutorial();
+                break;
+
+            // Collecting bubbles
+            case 1:
+                if (nbBubbles >= 5) StartMagnetTutorial();
+                break;
+
+            // Switching magnet
+            case 2:
+                if (nbBubbles >= 10) state++;
+                break;
+
+
+        }
+    }
+
+    void OnJump() {
+        nbJump++;
+    }
+
+    void OnBubbleCollect() {
+        nbBubbles++;
+    }
+
+    void StartBubblesTutorial() {
+        oxygenBar.SetActive(true);
+        oxygenCtrlr.enabled = true;
+        oxygenCtrlr.Init();
+        blueBubblesCoroutine = StartCoroutine(SpawnBlueBubbles());
+        state++;
     }
 
 
-    /* IEnumerator SpawningRoutine() {
-         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
-         while (true) {
+    void StartMagnetTutorial() {
+        StopCoroutine(blueBubblesCoroutine);
+        magnetControllerLayout.SetActive(true);
+        magnetCtrlr.enabled = true;
+        magnetCtrlr.Init();
+        redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
+        state++;
+    }
+    
+    IEnumerator SpawnBlueBubbles() {
+        while (true) {
+            yield return wait;
+            bubbleSpawner.SpawnBlueBubble();
+        }
+    }
 
-             yield return new WaitForSeconds(Random.Range(levelSettings.mineMinWait, levelSettings.mineMaxWait));
-
-             // Position
-             Vector3 pos = transform.position;
-             pos.x = Random.Range(minPosX, maxPosX);
-
-             // Type
-             GameObject mine;
-             if (Random.value > .5f)
-                 mine = Instantiate(blueMinePrefab, pos, Quaternion.identity);
-             else
-                 mine = Instantiate(redMinePrefab, pos, Quaternion.identity);
-
-             // Size
-             Vector3 scale = mine.transform.localScale;
-             scale *= Random.Range(levelSettings.mineMinSize, levelSettings.mineMaxSize);
-             mine.transform.localScale = scale;
-
-             // Speed
-             Rigidbody2D rb = mine.GetComponent<Rigidbody2D>();
-             rb.gravityScale *= Random.Range(levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
-
-         }
-
-     }*/
+    IEnumerator SpawnRedBubbles() {
+        while (true) {
+            yield return wait;
+            bubbleSpawner.SpawnRedBubble();
+        }
+    }
 }
+

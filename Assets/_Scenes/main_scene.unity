@@ -4037,7 +4037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &956397811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,7 +5766,7 @@ GameObject:
   - component: {fileID: 1289790558}
   - component: {fileID: 1289790557}
   m_Layer: 11
-  m_Name: Frog1
+  m_Name: Frog
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5838,6 +5838,7 @@ MonoBehaviour:
   jumpCtrlr: {fileID: 1289790563}
   oxygenCtrlr: {fileID: 1289790564}
   meterCounter: {fileID: 1289790556}
+  isPlayingTutorial: 0
 --- !u!4 &1289790560
 Transform:
   m_ObjectHideFlags: 0
@@ -7570,7 +7571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1980719395
 Transform:
   m_ObjectHideFlags: 0
@@ -7597,7 +7598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meterCounter: {fileID: 841666323}
   oxygenBar: {fileID: 767347088}
-  magnetController: {fileID: 846504959}
+  magnetControllerLayout: {fileID: 846504959}
+  oxygenCtrlr: {fileID: 1289790564}
+  magnetCtrlr: {fileID: 1289790562}
+  jumpingCtrlr: {fileID: 1289790563}
   blueMinePrefab: {fileID: 0}
   redMinePrefab: {fileID: 0}
   tutorialConfiner: {fileID: 2067521457}
@@ -7976,7 +7980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &2067521458
 BoxCollider2D:
   m_ObjectHideFlags: 0

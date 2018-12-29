@@ -4,6 +4,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerController))]
 public class OxygenController : MonoBehaviour {
 
+    public delegate void BubbleCollectDelegate();
+    public static event BubbleCollectDelegate OnBubbleCollect;
     [SerializeField] PlayerController playerCtrlr;
     public float oxygenMax = 20f;
     float oxygen;
@@ -29,5 +31,7 @@ public class OxygenController : MonoBehaviour {
 
     public void AddOxygen(float oxygenAmount) {
         Oxygen += oxygenAmount;
+        if (OnBubbleCollect != null)
+            OnBubbleCollect();
     }
 }

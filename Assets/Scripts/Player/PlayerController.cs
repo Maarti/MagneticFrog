@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] JumpController jumpCtrlr;
     [SerializeField] OxygenController oxygenCtrlr;
     [SerializeField] MeterCounter meterCounter;
-
+    public bool isPlayingTutorial = false;          // Let the TutorialManager manage the controllers scripts
     Vector3 initialPosition;
 
     void Awake() {
@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour {
 
     // This script is enabled when level start
     void OnEnable() {
-        magnetCtrlr.enabled = true;
-        jumpCtrlr.enabled = true;
-        oxygenCtrlr.enabled = true;
+        if (!isPlayingTutorial) {
+            magnetCtrlr.enabled = true;
+            jumpCtrlr.enabled = true;
+            oxygenCtrlr.enabled = true;
+        }
         Init();
     }
 
@@ -35,14 +37,16 @@ public class PlayerController : MonoBehaviour {
     // Called on game start
     public void Init() {
         transform.position = initialPosition;
-        magnetCtrlr.Init();
-        jumpCtrlr.Init();
-        oxygenCtrlr.Init();
+        if (!isPlayingTutorial) {
+            magnetCtrlr.Init();
+            jumpCtrlr.Init();
+            oxygenCtrlr.Init();
+        }
     }
 
     public void Die() {
+        if (isPlayingTutorial) return;
         GameController.gc.TriggerGameOver(meterCounter.Value);
-      //  gameObject.SetActive(false);
     }
 
 }
