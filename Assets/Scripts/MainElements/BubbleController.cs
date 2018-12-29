@@ -11,7 +11,7 @@ public class BubbleController : MonoBehaviour {
     }
 
     void OnHitPlayer(GameObject player) {
-        player.GetComponent<PlayerController>().AddOxygen(oxygenAmount);
+        player.GetComponent<OxygenController>().AddOxygen(oxygenAmount);
         Destroy(this.gameObject);
     }
 }
