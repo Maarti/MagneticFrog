@@ -1,25 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BubbleSpawner : MonoBehaviour {
+public class BubbleSpawner : AbstractSpawner {
 
     [SerializeField] GameObject blueBubblePrefab, redBubblePrefab;
-    [SerializeField] float minPosX = -2f, maxPosX = 2f;
-    [SerializeField] LevelSettings levelSettings;
-    bool isSpwaningDuringThisLevel = true;
 
-    void OnEnable() {
-        LevelSettingsController.OnLevelSettingsChange += UpdateLevelSettings;
-        UpdateLevelSettings(LevelSettingsController.currentLevelSettings);
-        StartCoroutine(SpawningRoutine());
+
+    protected override void UpdateIsSpwaningDuringThisLevel() {
+        isSpwaningDuringThisLevel = (levelSettings.bubbleMinWait >= 0 && levelSettings.bubbleMaxWait > 0);
     }
 
-    private void OnDisable() {
-        LevelSettingsController.OnLevelSettingsChange -= UpdateLevelSettings;
-        StopAllCoroutines();
-    }
-
-    IEnumerator SpawningRoutine() {
+    protected override IEnumerator SpawningRoutine() {
         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
         while (true) {
             if (isSpwaningDuringThisLevel) {
@@ -36,11 +27,5 @@ public class BubbleSpawner : MonoBehaviour {
             }
         }
     }
-
-    void UpdateLevelSettings(LevelSettings newLevelSettings) {
-        levelSettings = newLevelSettings;
-        isSpwaningDuringThisLevel = (levelSettings.bubbleMinWait >= 0 && levelSettings.bubbleMaxWait > 0);
-    }
-
 
 }

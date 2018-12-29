@@ -1,25 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MineSpawner : MonoBehaviour {
+public class MineSpawner : AbstractSpawner {
 
     [SerializeField] GameObject blueMinePrefab, redMinePrefab;
-    [SerializeField] float minPosX = -2f, maxPosX = 2f;
-    [SerializeField] LevelSettings levelSettings;
-    bool isSpwaningDuringThisLevel = true;
 
-    void OnEnable() {
-        LevelSettingsController.OnLevelSettingsChange += UpdateLevelSettings;
-        UpdateLevelSettings(LevelSettingsController.currentLevelSettings);
-        StartCoroutine(SpawningRoutine());
+    protected override void UpdateIsSpwaningDuringThisLevel() {
+        isSpwaningDuringThisLevel = (levelSettings.mineMinWait >= 0 && levelSettings.mineMaxWait > 0);
     }
 
-    private void OnDisable() {
-        LevelSettingsController.OnLevelSettingsChange -= UpdateLevelSettings;
-        StopAllCoroutines();
-    }
-
-    IEnumerator SpawningRoutine() {
+    protected override IEnumerator SpawningRoutine() {
         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
         while (true) {
             if (isSpwaningDuringThisLevel) {
@@ -41,9 +31,5 @@ public class MineSpawner : MonoBehaviour {
         }
     }
 
-    void UpdateLevelSettings(LevelSettings newLevelSettings) {
-        levelSettings = newLevelSettings;
-        isSpwaningDuringThisLevel = (levelSettings.mineMinWait >= 0 && levelSettings.mineMaxWait > 0);
-    }
 
 }

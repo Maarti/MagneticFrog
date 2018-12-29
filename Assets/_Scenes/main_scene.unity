@@ -1532,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &520886982
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3004,6 +3004,8 @@ MonoBehaviour:
   levelSettings:
     scoreMin: 0
     scoreMax: 0
+    coinMinWait: 0
+    coinMaxWait: 0
     bubbleMinWait: 0
     bubbleMaxWait: 0
     mineMinWait: 0
@@ -4466,21 +4468,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c602792d06779f145b777508a66634d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueMinePrefab: {fileID: 1935315421568898, guid: 37565fec339e14647ac38065986dca8d,
-    type: 2}
-  redMinePrefab: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9,
-    type: 2}
   minPosX: -2
   maxPosX: 2
   levelSettings:
     scoreMin: 0
     scoreMax: 0
+    coinMinWait: 0
+    coinMaxWait: 0
     bubbleMinWait: 0
     bubbleMaxWait: 0
     mineMinWait: 0
     mineMaxWait: 0
     mineMinSize: 0
     mineMaxSize: 0
+  blueMinePrefab: {fileID: 1935315421568898, guid: 37565fec339e14647ac38065986dca8d,
+    type: 2}
+  redMinePrefab: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9,
+    type: 2}
 --- !u!4 &1130394640
 Transform:
   m_ObjectHideFlags: 0
@@ -5981,6 +5985,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02b9a1f2ababb2418b9873fc1f2aedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerData:
+    dataVersion: 1
+    bestScore: -1
+    coins: 0
+    magnetControllerHeight: -1
+    lang: 10
   defaultMagnetControllerHeight: -1
 --- !u!4 &1759637273
 Transform:
@@ -6339,21 +6349,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e535e4c63db8e5347857ab9253d14f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueBubblePrefab: {fileID: 1949044341875080, guid: 06a8c83fc0198e7459b0d92fc8c5c3bb,
-    type: 2}
-  redBubblePrefab: {fileID: 1250203305697634, guid: d7bddcfeecf92464687a596a099b5431,
-    type: 2}
   minPosX: -2.5
   maxPosX: 2.5
   levelSettings:
     scoreMin: 0
     scoreMax: 0
+    coinMinWait: 0
+    coinMaxWait: 0
     bubbleMinWait: 0
     bubbleMaxWait: 0
     mineMinWait: 0
     mineMaxWait: 0
     mineMinSize: 0
     mineMaxSize: 0
+  blueBubblePrefab: {fileID: 1949044341875080, guid: 06a8c83fc0198e7459b0d92fc8c5c3bb,
+    type: 2}
+  redBubblePrefab: {fileID: 1250203305697634, guid: d7bddcfeecf92464687a596a099b5431,
+    type: 2}
 --- !u!1 &1858163393
 GameObject:
   m_ObjectHideFlags: 0
