@@ -11,7 +11,7 @@ public class MineController : MonoBehaviour {
     }
 
     void OnHitPlayer(GameObject player) {
-        player.GetComponent<PlayerController>().Stun(stunDuration);
+        player.GetComponent<JumpController>().Stun(stunDuration);
         Destroy(this.gameObject);
     }
 }
