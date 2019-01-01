@@ -8,10 +8,16 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField] GameObject meterCounter;
     [SerializeField] GameObject oxygenBar;
     [SerializeField] GameObject magnetControllerLayout;
+    [SerializeField] GameObject tutorialCanvas;
+    [SerializeField] GameObject uiJumpTuto, uiBubbleTuto, uiMagnetTuto;
+    [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
+    [SerializeField] GameController gameCtrlr;
+    [SerializeField] PlayerController playerCtrlr;
     [SerializeField] OxygenController oxygenCtrlr;
     [SerializeField] MagnetController magnetCtrlr;
     [SerializeField] JumpController jumpCtrlr;
+    [SerializeField] LevelSettingsController levelSettingsCtrlr;
     [Header("Spawners")]
     [SerializeField] BubbleSpawner bubbleSpawner;
     [SerializeField] MineSpawner mineSpawner;
@@ -35,18 +41,29 @@ public class TutorialManager : MonoBehaviour {
         nbBubbles = 0;
         tutorialConfiner.SetActive(true);
         meterCounter.SetActive(false);
-        magnetControllerLayout.SetActive(false);
+        jumpCtrlr.enabled = true;
+        // Tuto canvas
+        tutorialCanvas.SetActive(true);
+        uiJumpTuto.SetActive(false);
+        uiBubbleTuto.SetActive(false);
+        uiMagnetTuto.SetActive(false);
+        // Oxygen
         oxygenBar.SetActive(false);
         oxygenCtrlr.enabled = false;
+        // Magnet
+        magnetControllerLayout.SetActive(false);
         magnetCtrlr.enabled = false;
-        jumpCtrlr.enabled = true;
+        levelSettingsCtrlr.enabled = false;
+        StartJumpTutorial();
     }
 
     void OnDisable() {
-        tutorialConfiner.SetActive(false);
-        meterCounter.SetActive(true);
-        oxygenBar.SetActive(true);
-        magnetControllerLayout.SetActive(true);
+        if (tutorialConfiner != null) tutorialConfiner.SetActive(false);
+        if (meterCounter != null) meterCounter.SetActive(true);
+        if (oxygenBar != null) oxygenBar.SetActive(true);
+        if (magnetControllerLayout != null) magnetControllerLayout.SetActive(true);
+        if (tutorialCanvas != null) tutorialCanvas.SetActive(false);
+        levelSettingsCtrlr.enabled = true;
         StopAllCoroutines();
         JumpController.OnJump -= OnJump;
         OxygenController.OnBubbleCollect -= OnBubbleCollect;
@@ -56,20 +73,24 @@ public class TutorialManager : MonoBehaviour {
         switch (state) {
             // Jumping tutorial
             case 0:
-                if (nbJump >= 5) StartBubblesTutorial();
+                if (nbJump >= 1) StartBubblesTutorial();
                 break;
 
             // Collecting bubbles
             case 1:
-                if (nbBubbles >= 5) StartMagnetTutorial();
+                if (nbBubbles >= 1) StartMagnetTutorial();
                 break;
 
             // Switching magnet
             case 2:
-                if (nbBubbles >= 10) state++;
+                if (nbBubbles >= 1) state++;
                 break;
 
-
+            // End
+            case 3:
+                EndTutorial();
+                state++;
+                break;
         }
     }
 
@@ -81,7 +102,13 @@ public class TutorialManager : MonoBehaviour {
         nbBubbles++;
     }
 
+    void StartJumpTutorial() {
+        uiJumpTuto.SetActive(true);
+    }
+
     void StartBubblesTutorial() {
+        uiJumpTuto.SetActive(false);
+        uiBubbleTuto.SetActive(true);
         oxygenBar.SetActive(true);
         oxygenCtrlr.enabled = true;
         oxygenCtrlr.Init();
@@ -89,8 +116,9 @@ public class TutorialManager : MonoBehaviour {
         state++;
     }
 
-
     void StartMagnetTutorial() {
+        uiBubbleTuto.SetActive(false);
+        uiMagnetTuto.SetActive(true);
         StopCoroutine(blueBubblesCoroutine);
         magnetControllerLayout.SetActive(true);
         magnetCtrlr.enabled = true;
@@ -98,7 +126,7 @@ public class TutorialManager : MonoBehaviour {
         redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
         state++;
     }
-    
+
     IEnumerator SpawnBlueBubbles() {
         while (true) {
             yield return wait;
@@ -111,6 +139,16 @@ public class TutorialManager : MonoBehaviour {
             yield return wait;
             bubbleSpawner.SpawnRedBubble();
         }
+    }
+
+    void EndTutorial() {
+        screenTransition.ScreenFadeThen(AfterTutorialEnd);        
+    }
+
+    void AfterTutorialEnd() {
+        ApplicationController.ac.FinishTutorial();
+        gameCtrlr.StopGame();
+        gameCtrlr.StartGame();
     }
 }
 

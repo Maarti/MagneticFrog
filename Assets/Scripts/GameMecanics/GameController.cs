@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour {
         DestroyMainElements();
         mainMenuCanvas.SetActive(false);
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
+            playerCtrlr.isPlayingTutorial = false;
             gameUICanvas.SetActive(true);
             bestScoreMarker.SetActive(true);
             // playerCtrlr.gameObject.SetActive(true);

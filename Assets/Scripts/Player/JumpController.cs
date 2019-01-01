@@ -49,7 +49,7 @@ public class JumpController : MonoBehaviour {
         Vector2 pointer;            // Position of the cursor or finger
         Vector2 direction;          // Direction of the jump
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-        inputController = Input.GetTouch(0).position;
+        pointer = Input.GetTouch(0).position;
         nbJumpForCurrentTouch++;
 #else
         // Keyboard controller

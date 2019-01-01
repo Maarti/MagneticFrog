@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
             magnetCtrlr.enabled = true;
             jumpCtrlr.enabled = true;
             oxygenCtrlr.enabled = true;
+            meterCounter.enabled = true;
         }
         Init();
     }
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         magnetCtrlr.enabled = false;
         jumpCtrlr.enabled = false;
         oxygenCtrlr.enabled = false;
+        meterCounter.enabled = false;
     }
 
     // Called on game start
