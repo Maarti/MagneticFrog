@@ -4,6 +4,8 @@ using UnityEngine;
 public class MineSpawner : AbstractSpawner {
 
     [SerializeField] GameObject blueMinePrefab, redMinePrefab;
+    [SerializeField] Color redColor;
+    [SerializeField] Color blueColor;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.mineMinWait >= 0 && levelSettings.mineMaxWait > 0);
@@ -14,17 +16,27 @@ public class MineSpawner : AbstractSpawner {
         while (true) {
             if (isSpwaningDuringThisLevel) {
                 yield return new WaitForSeconds(Random.Range(levelSettings.mineMinWait, levelSettings.mineMaxWait));
-                
+
                 // Position
                 Vector3 pos = transform.position;
                 pos.x = Random.Range(minPosX, maxPosX);
-                
-                // Type
+
+                // Color
                 GameObject mine;
-                if (Random.value > .5f)
+                MineController mineCtrlr;
+                if (Random.value > .5f) {
                     mine = Instantiate(blueMinePrefab, pos, Quaternion.identity);
-                else
+                    mineCtrlr = mine.GetComponent<MineController>();
+                    mineCtrlr.SetColor(blueColor);
+                }
+                else {
                     mine = Instantiate(redMinePrefab, pos, Quaternion.identity);
+                    mineCtrlr = mine.GetComponent<MineController>();
+                    mineCtrlr.SetColor(redColor);
+                }
+
+                // Rotation
+                mine.transform.localRotation = Random.rotation;
                 
                 // Size
                 Vector3 scale = mine.transform.localScale;

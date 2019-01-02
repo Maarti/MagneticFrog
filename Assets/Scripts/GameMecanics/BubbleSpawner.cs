@@ -4,6 +4,8 @@ using UnityEngine;
 public class BubbleSpawner : AbstractSpawner {
 
     [SerializeField] GameObject blueBubblePrefab, redBubblePrefab;
+    [SerializeField] Color redColor;
+    [SerializeField] Color blueColor;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.bubbleMinWait >= 0 && levelSettings.bubbleMaxWait > 0);
@@ -29,13 +31,17 @@ public class BubbleSpawner : AbstractSpawner {
     public GameObject SpawnBlueBubble() {
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
-        return Instantiate(blueBubblePrefab, pos, Quaternion.identity);
+        GameObject bubble = Instantiate(blueBubblePrefab, pos, Quaternion.identity);
+        bubble.GetComponent<BubbleController>().SetColor(blueColor);
+        return bubble;
     }
 
     public GameObject SpawnRedBubble() {
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
-        return Instantiate(redBubblePrefab, pos, Quaternion.identity);
+        GameObject bubble = Instantiate(redBubblePrefab, pos, Quaternion.identity);
+        bubble.GetComponent<BubbleController>().SetColor(redColor);
+        return bubble;
     }
 
 }
