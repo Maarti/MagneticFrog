@@ -13,6 +13,7 @@ public class JumpController : MonoBehaviour {
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
     Rigidbody2D rb;
     bool isStuned = false;                                      // Can't jump while stuned
+
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     int nbJumpForCurrentTouch = 0;                              // We have to re-touch the screen to jump again
 #endif
@@ -71,6 +72,8 @@ public class JumpController : MonoBehaviour {
 
         rb.velocity = Vector2.zero;
         rb.AddForce(direction);
+        SetRotation(direction);
+
         lastJump = Time.time;
         if (OnJump != null)
             OnJump();
@@ -91,5 +94,12 @@ public class JumpController : MonoBehaviour {
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(duration);
         isStuned = false;
+    }
+
+    // Rotate the frog on the z axis with an angle between -40 and +40 depending of the direction
+    void SetRotation(Vector2 direction) {
+        float xDirection = Mathf.Clamp(direction.x, -130f, 130f);
+        float rotation = Mathf.Lerp(40f, -40f, (xDirection + 130f) / 260f);
+        rb.rotation = rotation;
     }
 }
