@@ -8,6 +8,7 @@ public class OxygenController : MonoBehaviour {
     public static event BubbleCollectDelegate OnBubbleCollect;
     [SerializeField] PlayerController playerCtrlr;
     public float oxygenMax = 20f;
+    public float oxygenConsumption = 1f;    // oxygen consumption per second
     float oxygen;
     public float Oxygen {
         get { return oxygen; }
@@ -24,7 +25,7 @@ public class OxygenController : MonoBehaviour {
     }
 
     void Update() {
-        Oxygen -= Time.deltaTime;
+        Oxygen -= oxygenConsumption * Time.deltaTime;
         if (Oxygen <= 0)
             playerCtrlr.Die();
     }

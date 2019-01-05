@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class CameraController : MonoBehaviour {
 
     [SerializeField] GameObject player;
     // [SerializeField] float smoothingInterpolateTime = 0.1f;
     Vector3 initialPosition;
+    Animator anim;
 
-    private void Awake() {
+    void Awake() {
+        anim = GetComponent<Animator>();
         initialPosition = transform.position;
     }
 
     void OnEnable() {
-        InitPosition(); 
+        InitPosition();
     }
 
     public void InitPosition() {
@@ -27,4 +30,13 @@ public class CameraController : MonoBehaviour {
             transform.position = target;
         }
     }
+
+    public void GoToMenu() {
+        anim.SetTrigger("goToMenu");
+    }
+
+    public void GoToPlayer() {
+        anim.SetTrigger("goToPlayer");
+    }
+
 }
