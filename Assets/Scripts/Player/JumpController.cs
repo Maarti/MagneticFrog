@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class JumpController : MonoBehaviour {
@@ -7,12 +8,17 @@ public class JumpController : MonoBehaviour {
     public delegate void JumpDelegate();
     public static event JumpDelegate OnJump;
     public float timeBetweenJumps = 1f;                         // time to wait between each jump
-    [HideInInspector] public float lastJump = -1f;
+    public float stunIncrementer = .75f;                        // increment the stunMultiplier by this value at each stun
+    [HideInInspector] public float lastJump = -1f;              // time the last jump happened
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
     [SerializeField] float horizontalForce = 200f;              // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
+    [SerializeField] Slider stunSlider;
     Rigidbody2D rb;
     bool isStuned = false;                                      // Can't jump while stuned
+    float stunMultiplier = .75f;                                // multiply the stun duration, increase at each stun
+    float lastStun = -10f;                                      // time the last stun happened
+    float totalStunDuration;                                    // total duration of the last stun
 
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     int nbJumpForCurrentTouch = 0;                              // We have to re-touch the screen to jump again
@@ -24,6 +30,8 @@ public class JumpController : MonoBehaviour {
 
     public void Init() {
         isStuned = false;
+        stunSlider.gameObject.SetActive(false);
+        stunMultiplier = stunIncrementer;
         SetRotation(Vector2.zero);
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         nbJumpForCurrentTouch = 0;
@@ -41,6 +49,7 @@ public class JumpController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
             Jump();
 #endif
+        UpdateStunSlider();
     }
 
 
@@ -86,21 +95,47 @@ public class JumpController : MonoBehaviour {
     }
 #endif
 
-    public void Stun(float duration) {
-        StartCoroutine(StunForSeconds(duration));
-    }
-
-    IEnumerator StunForSeconds(float duration) {
-        isStuned = true;
-        rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(duration);
-        isStuned = false;
-    }
-
     // Rotate the frog on the z axis with an angle between -40 and +40 depending of the direction
     void SetRotation(Vector2 direction) {
         float xDirection = Mathf.Clamp(direction.x, -130f, 130f);
         float rotation = Mathf.Lerp(40f, -40f, (xDirection + 130f) / 260f);
         rb.rotation = rotation;
     }
+
+    public void Stun(float mineStunDuration) {
+        totalStunDuration = mineStunDuration * stunMultiplier;
+        stunSlider.maxValue = totalStunDuration;
+        stunSlider.value = totalStunDuration;
+        StartCoroutine(StunForSeconds(totalStunDuration));
+        // We increment the stun multiplier at each stun, so next time, it will be longer
+        IncrementStunMultiplier();
+    }
+
+    void IncrementStunMultiplier() {
+        stunMultiplier += stunIncrementer;
+    }
+
+    void UpdateStunSlider() {
+        if (!isStuned) {
+            if (stunSlider.gameObject.activeSelf)
+                stunSlider.gameObject.SetActive(false);
+            return;
+        }
+        if (!stunSlider.gameObject.activeSelf)
+            stunSlider.gameObject.SetActive(true);
+        float currentStunDuration = Mathf.Clamp(totalStunDuration - (Time.time - lastStun), stunSlider.minValue, stunSlider.maxValue);
+        stunSlider.value = currentStunDuration;
+    }
+
+    IEnumerator StunForSeconds(float duration) {
+        isStuned = true;
+        lastStun = Time.time;
+        lastJump = -10f; // when stuned, we reset the jump cooldown
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(duration);
+        isStuned = false;
+    }
+
+
+
 }
