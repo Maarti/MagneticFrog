@@ -73,17 +73,17 @@ public class TutorialManager : MonoBehaviour {
         switch (state) {
             // Jumping tutorial
             case 0:
-                if (nbJump >= 1) StartBubblesTutorial();
+                if (nbJump >= 5) StartBubblesTutorial();
                 break;
 
             // Collecting bubbles
             case 1:
-                if (nbBubbles >= 1) StartMagnetTutorial();
+                if (nbBubbles >= 5) StartMagnetTutorial();
                 break;
 
             // Switching magnet
             case 2:
-                if (nbBubbles >= 1) state++;
+                if (nbBubbles >= 10) state++;
                 break;
 
             // End

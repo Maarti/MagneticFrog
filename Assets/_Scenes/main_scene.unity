@@ -2296,7 +2296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Red bubble x5
+  m_Text: '[Tutorial Red bubble x5]'
 --- !u!222 &567245214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3713,7 +3713,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Blue bubble x5
+  m_Text: '[Tutorial Blue bubble x5]'
 --- !u!222 &812347849
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6296,7 +6296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jump x5
+  m_Text: '[Tutorial Jump x5]'
 --- !u!222 &1336485328
 CanvasRenderer:
   m_ObjectHideFlags: 0
