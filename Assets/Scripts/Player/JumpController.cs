@@ -24,6 +24,7 @@ public class JumpController : MonoBehaviour {
 
     public void Init() {
         isStuned = false;
+        SetRotation(Vector2.zero);
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         nbJumpForCurrentTouch = 0;
 #endif
