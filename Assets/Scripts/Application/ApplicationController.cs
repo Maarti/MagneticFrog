@@ -9,6 +9,7 @@ public class ApplicationController : MonoBehaviour {
     public static ApplicationController ac;
     [SerializeField] public PlayerData PlayerData; // { get; private set; }
     public float defaultMagnetControllerHeight = -1f;
+    public CharacterSettings[] characters;
 
     void Awake() {
         if (ac == null) {
@@ -43,11 +44,39 @@ public class ApplicationController : MonoBehaviour {
             PlayerData.lang = Application.systemLanguage;
             Save();
         }
-        // MergeSaveIntoInitialData();
+        MergeSaveIntoInitialData();
     }
 
-    // PLAYER DATA SETTERS
+    void MergeSaveIntoInitialData() {
+        LoadCharacters();
+    }
 
+    void LoadCharacters() {
+        if (PlayerData.characters == null) return;
+        foreach (CharacterSettings character in characters) {
+            if (PlayerData.characters.ContainsKey(character.id)) {
+                CharacterSavedData savedCharacter = PlayerData.characters[character.id];
+                character.isUnlocked = true;
+                character.agility = (savedCharacter.agility > character.agility) ? savedCharacter.agility : character.agility;
+                character.stamina = (savedCharacter.stamina > character.stamina) ? savedCharacter.stamina : character.stamina;
+                character.breath = (savedCharacter.breath > character.breath) ? savedCharacter.breath : character.breath;
+            }
+        }
+    }
+
+    public void SaveCharacters() {
+        Dictionary<CharacterId, CharacterSavedData> newData = new Dictionary<CharacterId, CharacterSavedData>();
+        foreach (CharacterSettings character in characters) {
+            if (character.isUnlocked) {
+                CharacterSavedData savedCharacter = new CharacterSavedData(character.agility, character.stamina, character.breath);
+                newData.Add(character.id, savedCharacter);
+            }
+        }
+        PlayerData.characters = newData;
+    }
+
+
+    // PLAYER DATA SETTERS
     public void RecordNewScore(int newScore) {
         if (newScore > PlayerData.bestScore) {
             PlayerData.bestScore = newScore;

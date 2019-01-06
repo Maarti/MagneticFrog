@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -9,4 +10,5 @@ public class PlayerData {
     public float magnetControllerHeight = -1f;
     public SystemLanguage lang = SystemLanguage.English;
     public bool isTutorialDone = false;
+    public Dictionary<CharacterId, CharacterSavedData> characters;
 }
