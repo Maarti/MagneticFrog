@@ -23,16 +23,10 @@ public class CharacterSettings {
 }
 
 [Serializable]
-public class CharacterSavedData {
+public struct CharacterSavedData {
     public int agility;
     public int stamina;
     public int breath;
-
-    public CharacterSavedData(int agility, int stamina, int breath) {
-        this.agility = agility;
-        this.stamina = stamina;
-        this.breath = breath;
-    }
 }
 
-public enum CharacterId { GREEN, SKINNY }
+public enum CharacterId { GREEN, SKINNY, FAT }

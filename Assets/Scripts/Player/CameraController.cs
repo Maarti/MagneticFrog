@@ -14,7 +14,12 @@ public class CameraController : MonoBehaviour {
     }
 
     void OnEnable() {
+        Init();
+    }
+
+    void Init() {
         InitPosition();
+        anim.enabled = false;
     }
 
     public void InitPosition() {
@@ -32,10 +37,12 @@ public class CameraController : MonoBehaviour {
     }
 
     public void GoToMenu() {
+        anim.enabled = true;
         anim.SetTrigger("goToMenu");
     }
 
     public void GoToPlayer() {
+        anim.enabled = true;
         anim.SetTrigger("goToPlayer");
     }
 

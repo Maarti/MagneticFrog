@@ -68,7 +68,11 @@ public class ApplicationController : MonoBehaviour {
         Dictionary<CharacterId, CharacterSavedData> newData = new Dictionary<CharacterId, CharacterSavedData>();
         foreach (CharacterSettings character in characters) {
             if (character.isUnlocked) {
-                CharacterSavedData savedCharacter = new CharacterSavedData(character.agility, character.stamina, character.breath);
+                CharacterSavedData savedCharacter = new CharacterSavedData() {
+                    agility = character.agility,
+                    stamina = character.stamina,
+                    breath = character.breath
+                };
                 newData.Add(character.id, savedCharacter);
             }
         }
