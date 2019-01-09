@@ -7,10 +7,12 @@ public class BoundaryController : MonoBehaviour {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
             obj.GetComponent<PlayerController>().Die();
-        } else if (obj.tag == "MainElement")
+        }
+        else if (obj.CompareTag("MainElement"))
             Destroy(obj);
-        //else if (obj.tag == "SecondaryElement")
-            //reset
+        else if (obj.tag == "MainElement/Bubble") {
+
+        }
         else
             Destroy(obj);
     }

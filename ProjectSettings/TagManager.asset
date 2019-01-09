@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainElement
   - Fire
+  - MainElement/Bubble
   layers:
   - Default
   - TransparentFX

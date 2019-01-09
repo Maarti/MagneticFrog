@@ -110,6 +110,9 @@ public class GameController : MonoBehaviour {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MainElement")) {
             Destroy(obj);
         }
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MainElement/Bubble")) {
+            Destroy(obj);
+        }
     }
 
 }
