@@ -6,11 +6,15 @@ public class CameraController : MonoBehaviour {
     [SerializeField] GameObject player;
     // [SerializeField] float smoothingInterpolateTime = 0.1f;
     Vector3 initialPosition;
+    float initialSize;
     Animator anim;
+    Camera cameraComp;
 
     void Awake() {
         anim = GetComponent<Animator>();
         initialPosition = transform.position;
+        cameraComp = GetComponent<Camera>();
+        initialSize = cameraComp.orthographicSize;
     }
 
     void OnEnable() {
@@ -24,6 +28,7 @@ public class CameraController : MonoBehaviour {
 
     public void InitPosition() {
         transform.position = initialPosition;
+        cameraComp.orthographicSize = initialSize;
     }
 
     // LateUpdate is called after Update
