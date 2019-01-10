@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -45,10 +46,13 @@ public class ApplicationController : MonoBehaviour {
             Save();
         }
         MergeSaveIntoInitialData();
+        CharacterSelector.DisableAllCharacters();
+        CharacterSelector.EnableCurrentCharacter();
     }
 
     void MergeSaveIntoInitialData() {
         LoadCharacters();
+        LoadCurrentCharacter();
     }
 
     void LoadCharacters() {
@@ -77,6 +81,18 @@ public class ApplicationController : MonoBehaviour {
             }
         }
         PlayerData.characters = newData;
+    }
+
+    void LoadCurrentCharacter() {
+        CharacterSelector.currentCharacter = Array.FindIndex(characters, c => c.id == PlayerData.currentCharacater);
+        if (CharacterSelector.currentCharacter < 0) {
+            Debug.LogWarning("Current character " + PlayerData.currentCharacater.ToString() + " not found!");
+            CharacterSelector.currentCharacter = 0;
+        }
+    }
+
+    public void SaveCurrentCharacter() {        
+        PlayerData.currentCharacater = characters[CharacterSelector.currentCharacter].id;
     }
 
 

@@ -11,4 +11,5 @@ public class PlayerData {
     public SystemLanguage lang = SystemLanguage.English;
     public bool isTutorialDone = false;
     public Dictionary<CharacterId, CharacterSavedData> characters;
+    public CharacterId currentCharacater = CharacterSelector.DEFAULT_CHARACTER;
 }
