@@ -46,8 +46,7 @@ public class ApplicationController : MonoBehaviour {
             Save();
         }
         MergeSaveIntoInitialData();
-        CharacterSelector.DisableAllCharacters();
-        CharacterSelector.EnableCurrentCharacter();
+        CharacterSelector.RefreshCurrentCharacterDisplay();
     }
 
     void MergeSaveIntoInitialData() {
@@ -89,6 +88,7 @@ public class ApplicationController : MonoBehaviour {
             Debug.LogWarning("Current character " + PlayerData.currentCharacater.ToString() + " not found!");
             CharacterSelector.currentCharacter = 0;
         }
+        CharacterSelector.currentlyDisplayedCharacter = CharacterSelector.currentCharacter;
     }
 
     public void SaveCurrentCharacter() {        

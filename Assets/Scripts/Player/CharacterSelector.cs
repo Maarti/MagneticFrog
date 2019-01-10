@@ -61,7 +61,18 @@ public class CharacterSelector : MonoBehaviour {
         ApplicationController.ac.characters[currentCharacter].skin.SetActive(true);
     }
 
-    public void SelectCharacter() {
+    public static void RefreshCurrentCharacterDisplay() {
+        DisableAllCharacters();
+        EnableCurrentCharacter();
+        currentlyDisplayedCharacter = currentCharacter;
+    }
+
+    // Wrapper non-static to be called from button OnClick()
+    public void RefreshCharacterDisplay() {
+        RefreshCurrentCharacterDisplay();
+    }
+
+        public void SelectCharacter() {
         currentCharacter = currentlyDisplayedCharacter;
         ApplicationController.ac.SaveCurrentCharacter();
         ApplicationController.ac.Save();
