@@ -38,6 +38,10 @@ public class JumpController : MonoBehaviour {
 #endif
     }
 
+    void OnDisable() {
+        rb.velocity = Vector2.zero;
+    }
+
 
     void Update() {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
