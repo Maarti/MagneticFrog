@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -9,7 +8,7 @@ using UnityEngine;
 public class ApplicationController : MonoBehaviour {
     public static ApplicationController ac;
     [SerializeField] public PlayerData PlayerData; // { get; private set; }
-    public float defaultMagnetControllerHeight = -1f;
+    public float? defaultMagnetControllerHeight = null;
     public CharacterSettings[] characters;
 
     void Awake() {
