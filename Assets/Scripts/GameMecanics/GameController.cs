@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour {
     [Header("Canvas")]
     [SerializeField] GameObject gameUICanvas;
     [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject pauseUICanvas;
     [SerializeField] GameObject bestScoreMarker;
     [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
@@ -34,6 +36,8 @@ public class GameController : MonoBehaviour {
     public void StartGame() {
         DestroyMainElements();
         mainMenuCanvas.SetActive(false);
+        gameOverCanvas.SetActive(false);
+        pauseUICanvas.SetActive(false);
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
             playerCtrlr.isPlayingTutorial = false;
             gameUICanvas.SetActive(true);
@@ -100,6 +104,8 @@ public class GameController : MonoBehaviour {
 
     void DisplayHomeMenu() {
         DestroyMainElements();
+        gameOverCanvas.SetActive(false);
+        pauseUICanvas.SetActive(false);
         playerCtrlr.gameObject.SetActive(true);
         playerCtrlr.Init();
         mainMenuCanvas.SetActive(true);
