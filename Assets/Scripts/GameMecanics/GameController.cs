@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject pauseUICanvas;
     [SerializeField] GameObject bestScoreMarker;
     [SerializeField] ScreenTransition screenTransition;
+    [SerializeField] GraphicRaycaster gameOverRaycaster;
     [Header("Controllers")]
     [SerializeField] PlayerController playerCtrlr;
     [SerializeField] CameraController cameraCtrlr;
@@ -38,6 +39,7 @@ public class GameController : MonoBehaviour {
         mainMenuCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
         pauseUICanvas.SetActive(false);
+        gameOverRaycaster.enabled = true;
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
             playerCtrlr.isPlayingTutorial = false;
             gameUICanvas.SetActive(true);
@@ -95,16 +97,19 @@ public class GameController : MonoBehaviour {
     }
 
     public void PlayAgain() {
+        gameOverRaycaster.enabled = false;
         screenTransition.ScreenFadeThen(StartGame);
     }
 
     public void GoToHomeScreen() {
+        gameOverRaycaster.enabled = false;
         screenTransition.ScreenFadeThen(DisplayHomeMenu);
     }
 
     void DisplayHomeMenu() {
         DestroyMainElements();
         gameOverCanvas.SetActive(false);
+        gameOverRaycaster.enabled = true;
         pauseUICanvas.SetActive(false);
         playerCtrlr.gameObject.SetActive(true);
         playerCtrlr.Init();

@@ -11926,6 +11926,7 @@ MonoBehaviour:
   pauseUICanvas: {fileID: 676179922}
   bestScoreMarker: {fileID: 1761060767}
   screenTransition: {fileID: 264798834}
+  gameOverRaycaster: {fileID: 60834979}
   playerCtrlr: {fileID: 1289790559}
   cameraCtrlr: {fileID: 1188704996}
   levelSettingsController: {fileID: 415438}
