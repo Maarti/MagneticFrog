@@ -10920,13 +10920,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da9d0a2a2e7e934a81d20c34651846b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenJumps: 1
+  timeBetweenJumps: 1.2
   stunIncrementer: 0.75
   lastJump: -1
   jumpForce: 250
   horizontalForce: 200
   movingRelativeToPlayer: 1
   stunSlider: {fileID: 1053710382}
+  jumpSlider: {fileID: 1920557462}
 --- !u!114 &1289790564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13537,9 +13538,9 @@ MonoBehaviour:
   - skin: {fileID: 118054904}
     id: 1
     name: Skinny Frog
-    agility: 2
+    agility: 3
     stamina: 1
-    breath: 1
+    breath: 3
     isUnlocked: 1
   - skin: {fileID: 963943230}
     id: 2

@@ -20,6 +20,7 @@ public class OxygenController : MonoBehaviour {
     [SerializeField] Slider oxygenBar;
 
     public void Init() {
+        InitBreath();
         oxygenBar.minValue = 0f;
         oxygenBar.maxValue = oxygenBar.value = Oxygen = oxygenMax;
     }
@@ -34,5 +35,22 @@ public class OxygenController : MonoBehaviour {
         Oxygen += oxygenAmount;
         if (OnBubbleCollect != null)
             OnBubbleCollect();
+    }
+
+    void InitBreath() {
+        switch (ApplicationController.ac.characters[CharacterSelector.currentCharacter].breath) {
+            case 0:
+                oxygenMax = 20f;
+                break;
+            case 1:
+                oxygenMax = 25f;
+                break;
+            case 2:
+                oxygenMax = 30f;
+                break;
+            case 3:
+                oxygenMax = 35f;
+                break;
+        }
     }
 }

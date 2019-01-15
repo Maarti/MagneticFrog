@@ -7,13 +7,14 @@ public class JumpController : MonoBehaviour {
 
     public delegate void JumpDelegate();
     public static event JumpDelegate OnJump;
-    public float timeBetweenJumps = 1f;                         // time to wait between each jump
+    public float timeBetweenJumps = 1.2f;                         // time to wait between each jump
     public float stunIncrementer = .75f;                        // increment the stunMultiplier by this value at each stun
     [HideInInspector] public float lastJump = -1f;              // time the last jump happened
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
     [SerializeField] float horizontalForce = 200f;              // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
     [SerializeField] Slider stunSlider;
+    [SerializeField] JumpWaitingSlider jumpSlider;
     Rigidbody2D rb;
     bool isStuned = false;                                      // Can't jump while stuned
     float stunMultiplier = .75f;                                // multiply the stun duration, increase at each stun
@@ -31,6 +32,9 @@ public class JumpController : MonoBehaviour {
     public void Init() {
         isStuned = false;
         stunSlider.gameObject.SetActive(false);
+        InitAgility();
+        InitStamina();
+        jumpSlider.Init();
         stunMultiplier = stunIncrementer;
         SetRotation(Vector2.zero);
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
@@ -140,6 +144,39 @@ public class JumpController : MonoBehaviour {
         isStuned = false;
     }
 
+    void InitAgility() {
+        switch (ApplicationController.ac.characters[CharacterSelector.currentCharacter].agility) {
+            case 0:
+                timeBetweenJumps = 1.2f;
+                break;
+            case 1:
+                timeBetweenJumps = 1f;
+                break;
+            case 2:
+                timeBetweenJumps = .8f;
+                break;
+            case 3:
+                timeBetweenJumps = .6f;
+                break;
+        }
+    }
+
+    void InitStamina() {
+        switch (ApplicationController.ac.characters[CharacterSelector.currentCharacter].stamina) {
+            case 0:
+                stunIncrementer = 1f;
+                break;
+            case 1:
+                stunIncrementer = .75f;
+                break;
+            case 2:
+                stunIncrementer = .5f;
+                break;
+            case 3:
+                stunIncrementer = .375f;
+                break;
+        }
+    }
 
 
 }

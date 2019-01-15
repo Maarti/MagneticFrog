@@ -12,7 +12,7 @@ public class JumpWaitingSlider : MonoBehaviour {
         slider = GetComponent<Slider>();
     }
 
-    void Start() {
+    void OnEnable() {
         Init();
     }
 
@@ -20,7 +20,7 @@ public class JumpWaitingSlider : MonoBehaviour {
         UpdateSlider();
     }
 
-    void Init() {
+    public void Init() {
         slider.minValue = 0f;
         slider.maxValue = slider.value = jumpCtrlr.timeBetweenJumps;
     }
