@@ -6,9 +6,9 @@ public class CharacterSettings {
     public GameObject skin;
     public CharacterId id;
     public string name;
-    public int agility;
-    public int stamina;
-    public int breath;
+    [Range(0, 3)] public int agility;
+    [Range(0, 3)] public int stamina;
+    [Range(0, 3)] public int breath;
     public bool isUnlocked;
 
     public CharacterSettings(GameObject skin, CharacterId id, string name, int agility, int stamina, int breath, bool isUnlocked) {

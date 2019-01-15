@@ -1,11 +1,22 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterSelector : MonoBehaviour {
 
     public static int currentCharacter = 0;
     public static int currentlyDisplayedCharacter = 0;
     public static CharacterId DEFAULT_CHARACTER = CharacterId.GREEN;
+    [SerializeField] Slider agilitySlider, staminaSlider, breathSlider;
+    [SerializeField] Button agilityButton, staminaButton, breathButton;
+    [SerializeField] Button selectButton;
+    [SerializeField] TextMeshProUGUI characterName;
+
+    void OnEnable() {
+        RefreshCurrentCharacterDisplay();
+        RefreshUI();
+    }
 
     public void NextCharacter() {
         int totalCharacters = ApplicationController.ac.characters.Length;
@@ -14,6 +25,7 @@ public class CharacterSelector : MonoBehaviour {
         StartCoroutine(SwipeCharacterOverTime(oldCharacter, .25f, 0f, -3f, false));
         StartCoroutine(SwipeCharacterOverTime(newCharacter, .25f, 3f, -3f));
         currentlyDisplayedCharacter = newCharacter;
+        RefreshUI();
     }
 
     public void PreviousCharacter() {
@@ -23,6 +35,7 @@ public class CharacterSelector : MonoBehaviour {
         StartCoroutine(SwipeCharacterOverTime(oldCharacter, .25f, 0f, +3f, false));
         StartCoroutine(SwipeCharacterOverTime(newCharacter, .25f, -3f, 3f));
         currentlyDisplayedCharacter = newCharacter;
+        RefreshUI();
     }
 
     IEnumerator SwipeCharacterOverTime(int characterIndex, float duration, float xOffsetStart, float xOffsetEnd, bool activeAtTheEnd = true) {
@@ -72,10 +85,31 @@ public class CharacterSelector : MonoBehaviour {
         RefreshCurrentCharacterDisplay();
     }
 
-        public void SelectCharacter() {
+    public void SelectCharacter() {
         currentCharacter = currentlyDisplayedCharacter;
         ApplicationController.ac.SaveCurrentCharacter();
         ApplicationController.ac.Save();
+        RefreshUI();
+    }
+
+    public void RefreshUI() {
+        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
+        characterName.text = displayedChar.name;
+        agilitySlider.value = displayedChar.agility;
+        staminaSlider.value = displayedChar.stamina;
+        breathSlider.value = displayedChar.breath;
+        agilityButton.gameObject.SetActive(displayedChar.agility < 3);
+        staminaButton.gameObject.SetActive(displayedChar.stamina < 3);
+        breathButton.gameObject.SetActive(displayedChar.breath < 3);
+
+        if (currentCharacter == currentlyDisplayedCharacter) {
+            selectButton.GetComponentInChildren<Text>().text = "SELECTED";
+            selectButton.interactable = false;
+        }
+        else {
+            selectButton.GetComponentInChildren<Text>().text = "SELECT";
+            selectButton.interactable = true;
+        }
     }
 
 }
