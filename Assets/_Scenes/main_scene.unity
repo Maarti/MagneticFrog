@@ -9112,8 +9112,6 @@ MonoBehaviour:
     type: 3}
   redMinePrefab: {fileID: 1250203305697634, guid: d50ddb31f9f00474599b2e84570ec4e9,
     type: 3}
-  redColor: {r: 1, g: 0.07075471, b: 0.07075471, a: 0}
-  blueColor: {r: 0, g: 0.44939613, b: 1, a: 0}
 --- !u!4 &1130394640
 Transform:
   m_ObjectHideFlags: 0

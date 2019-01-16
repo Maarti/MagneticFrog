@@ -3,11 +3,15 @@
 public class MineController : MonoBehaviour {
 
     [SerializeField] float stunDuration = 1f;
-    Renderer render;
+    /*   Renderer render;
 
-    void Awake() {
-        render = GetComponentInChildren<Renderer>();
+       void Awake() {
+           render = GetComponentInChildren<Renderer>();
+       }*/
+    void Start() {
+        Destroy(gameObject, 10f);
     }
+
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Player") {
@@ -20,8 +24,8 @@ public class MineController : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    public void SetColor(Color color) {
+   /* public void SetColor(Color color) {
         if (render != null)
             render.material.SetColor("_Color", color);
-    }
+    }*/
 }

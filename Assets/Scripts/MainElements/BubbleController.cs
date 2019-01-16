@@ -5,6 +5,10 @@ public class BubbleController : MonoBehaviour {
     [SerializeField] float oxygenAmount = 8f;
     Renderer render;
 
+    void Start() {
+        Destroy(gameObject, 15f);
+    }
+
     void Awake() {
         render = GetComponentInChildren<Renderer>();
     }

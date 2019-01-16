@@ -22,7 +22,8 @@ public class OxygenController : MonoBehaviour {
     public void Init() {
         InitBreath();
         oxygenBar.minValue = 0f;
-        oxygenBar.maxValue = oxygenBar.value = Oxygen = oxygenMax;
+        oxygenBar.maxValue = 35f;
+        oxygenBar.value = Oxygen = oxygenMax;
     }
 
     void Update() {
