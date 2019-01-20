@@ -4,13 +4,27 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: MagnetMesh
+    100004: MagnetMesh_001
+    100006: MagnetMeshTemplate
     400000: //RootNode
+    400002: MagnetMesh
+    400004: MagnetMesh_001
+    400006: MagnetMeshTemplate
     2100000: Material_001
     2100002: magnet_material
     2300000: //RootNode
+    2300002: MagnetMesh
+    2300004: MagnetMesh_001
+    2300006: MagnetMeshTemplate
     3300000: //RootNode
+    3300002: MagnetMesh
+    3300004: MagnetMesh_001
+    3300006: MagnetMeshTemplate
     4300000: Cube
     4300002: MagnetMesh
+    4300004: MagnetMesh_001
+    4300006: MagnetMeshTemplate
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
