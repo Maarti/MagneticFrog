@@ -7,7 +7,7 @@ public class JumpController : MonoBehaviour {
 
     public delegate void JumpDelegate();
     public static event JumpDelegate OnJump;
-    public float timeBetweenJumps = 1.2f;                         // time to wait between each jump
+    public float timeBetweenJumps = 1.2f;                       // time to wait between each jump
     public float stunIncrementer = .75f;                        // increment the stunMultiplier by this value at each stun
     [HideInInspector] public float lastJump = -1f;              // time the last jump happened
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
@@ -15,7 +15,13 @@ public class JumpController : MonoBehaviour {
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
     [SerializeField] Slider stunSlider;
     [SerializeField] JumpWaitingSlider jumpSlider;
+    [Header("Sounds")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] audioClips;
+    [SerializeField] float pitchMin = 1f;
+    [SerializeField] float pitchMax = 2f;
     Rigidbody2D rb;
+    Animator animator;
     bool isStuned = false;                                      // Can't jump while stuned
     float stunMultiplier = .75f;                                // multiply the stun duration, increase at each stun
     float lastStun = -10f;                                      // time the last stun happened
@@ -26,10 +32,11 @@ public class JumpController : MonoBehaviour {
 #endif
 
     void Awake() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();         
     }
 
     public void Init() {
+        animator = GetCurrentAnimator();
         isStuned = false;
         stunSlider.gameObject.SetActive(false);
         InitAgility();
@@ -60,6 +67,9 @@ public class JumpController : MonoBehaviour {
         UpdateStunSlider();
     }
 
+    Animator GetCurrentAnimator() {
+        return ApplicationController.ac.characters[CharacterSelector.currentCharacter].skin.GetComponent<Animator>();
+    }
 
     void Jump() {
         if (Time.time - timeBetweenJumps < lastJump || isStuned)
@@ -88,9 +98,14 @@ public class JumpController : MonoBehaviour {
         direction.Normalize();
         direction = new Vector2(direction.x * horizontalForce, direction.y * jumpForce);
 
+        // Velocity and rotation
         rb.velocity = Vector2.zero;
         rb.AddForce(direction);
         SetRotation(direction);
+
+        // Animation and sound
+        animator.SetTrigger("swim");
+        PlaySwimmingSound();
 
         lastJump = Time.time;
         if (OnJump != null)
@@ -176,6 +191,12 @@ public class JumpController : MonoBehaviour {
                 stunIncrementer = .375f;
                 break;
         }
+    }
+
+    void PlaySwimmingSound() {
+        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+        audioSource.pitch = Random.Range(pitchMin, pitchMax);
+        audioSource.Play();
     }
 
 
