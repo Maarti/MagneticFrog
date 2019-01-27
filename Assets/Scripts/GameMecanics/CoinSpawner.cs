@@ -4,6 +4,7 @@ using UnityEngine;
 public class CoinSpawner : AbstractSpawner {
 
     [SerializeField] GameObject standardCoinPrefab, blueCoinPrefab, redCoinPrefab;
+    public SoundController coinSoundCtrlr;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.coinMinWait >= 0 && levelSettings.coinMaxWait > 0);
@@ -16,14 +17,16 @@ public class CoinSpawner : AbstractSpawner {
                 yield return new WaitForSeconds(Random.Range(levelSettings.coinMinWait, levelSettings.coinMaxWait));
                 Vector3 pos = transform.position;
                 pos.x = Random.Range(minPosX, maxPosX);
+                GameObject coin;
                 if (Random.value > 1f) {
                     if (Random.value > .5f)
-                        Instantiate(blueCoinPrefab, pos, Quaternion.identity);
+                        coin = Instantiate(blueCoinPrefab, pos, Quaternion.identity);
                     else
-                        Instantiate(redCoinPrefab, pos, Quaternion.identity);
+                        coin = Instantiate(redCoinPrefab, pos, Quaternion.identity);
                 }
                 else
-                    Instantiate(standardCoinPrefab, pos, Quaternion.identity);
+                    coin = Instantiate(standardCoinPrefab, pos, Quaternion.identity);
+                coin.GetComponent<CoinController>().coinSoundCtrlr = coinSoundCtrlr;
             }
             else {
                 yield return waitOneSec;

@@ -2,6 +2,7 @@
 
 public class CoinController : MonoBehaviour {
 
+    public SoundController coinSoundCtrlr;
     public int value = 1;
 
     void Start() {
@@ -16,6 +17,7 @@ public class CoinController : MonoBehaviour {
 
     void OnHitPlayer(GameObject player) {
         ApplicationController.ac.UpateCoins(value);
+        coinSoundCtrlr.Play();
         Destroy(this.gameObject);
     }
 }
