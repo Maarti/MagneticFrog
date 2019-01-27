@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class PauseMenuController : MonoBehaviour {
 
     [SerializeField] GameController gameCtrlr;
+    [SerializeField] AudioSource mainMusic;
+    [SerializeField] float pausePitch = .9f;
     public static bool GameIsPaused = false;
     GraphicRaycaster graphicRay;
 
@@ -15,10 +17,12 @@ public class PauseMenuController : MonoBehaviour {
     void OnEnable() {
         graphicRay.enabled = true;
         Time.timeScale = 0f;
+        mainMusic.pitch = pausePitch;
     }
 
     void OnDisable() {
         Time.timeScale = 1f;
+        mainMusic.pitch = 1f;
     }
 
     public void Pause() {
@@ -33,6 +37,7 @@ public class PauseMenuController : MonoBehaviour {
     public void Restart() {
         graphicRay.enabled = false;
         Time.timeScale = 1f;
+        mainMusic.pitch = 1f;
         gameCtrlr.StopGame();
         gameCtrlr.PlayAgain();
     }
@@ -40,6 +45,7 @@ public class PauseMenuController : MonoBehaviour {
     public void GoToHomeScreen() {
         graphicRay.enabled = false;
         Time.timeScale = 1f;
+        mainMusic.pitch = 1f;
         gameCtrlr.StopGame();
         gameCtrlr.GoToHomeScreen();
     }

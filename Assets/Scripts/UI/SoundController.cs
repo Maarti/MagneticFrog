@@ -14,6 +14,11 @@ public class SoundController : MonoBehaviour {
 
     void Start() {
         audioClip = audioSource.clip;
+        GameController.OnGameStart += Init;
+    }
+
+    void Init() {
+        pitch = 1f;
     }
 
     public void Play() {

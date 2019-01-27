@@ -57,6 +57,8 @@ public class GameController : MonoBehaviour {
         else {
             StartTutorial();
         }
+        if (OnGameStart != null)
+            OnGameStart();
     }
 
     void StartTutorial() {
