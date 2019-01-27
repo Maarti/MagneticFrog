@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MineSpawner : AbstractSpawner {
 
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] SoundController explosionSoundCtrlr;
     [SerializeField] GameObject blueMinePrefab, redMinePrefab;
  /*   [SerializeField] Color redColor;
     [SerializeField] Color blueColor;*/
@@ -34,6 +36,9 @@ public class MineSpawner : AbstractSpawner {
                     mineCtrlr = mine.GetComponent<MineController>();
                  //   mineCtrlr.SetColor(redColor);
                 }
+                // Init
+                mineCtrlr.explosionVFX = explosionVFX;
+                mineCtrlr.explosionSoundCtrlr = explosionSoundCtrlr;
 
                 // Rotation
                 mine.transform.localRotation = Random.rotation;

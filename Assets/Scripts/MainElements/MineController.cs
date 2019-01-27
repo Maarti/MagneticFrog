@@ -2,6 +2,8 @@
 
 public class MineController : MonoBehaviour {
 
+    [HideInInspector] public GameObject explosionVFX;
+    [HideInInspector] public SoundController explosionSoundCtrlr;
     [SerializeField] float stunDuration = 1f;
     /*   Renderer render;
 
@@ -21,7 +23,14 @@ public class MineController : MonoBehaviour {
 
     void OnHitPlayer(GameObject player) {
         player.GetComponent<JumpController>().Stun(stunDuration);
+        TriggerExplosion();
         Destroy(this.gameObject);
+    }
+
+    void TriggerExplosion() {
+        explosionVFX.transform.position = transform.position;
+        explosionVFX.SetActive(true);
+        explosionSoundCtrlr.Play();
     }
 
    /* public void SetColor(Color color) {
