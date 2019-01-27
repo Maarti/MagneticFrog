@@ -2,6 +2,7 @@
 
 public class BubbleController : MonoBehaviour {
 
+    public SoundController bubbleSoundCtrlr;
     [SerializeField] float oxygenAmount = 8f;
     Renderer render;
 
@@ -21,6 +22,7 @@ public class BubbleController : MonoBehaviour {
 
     void OnHitPlayer(GameObject player) {
         player.GetComponent<OxygenController>().AddOxygen(oxygenAmount);
+        bubbleSoundCtrlr.Play();
         Destroy(this.gameObject);
     }
 

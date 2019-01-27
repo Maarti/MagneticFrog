@@ -6,6 +6,7 @@ public class BubbleSpawner : AbstractSpawner {
     [SerializeField] GameObject blueBubblePrefab, redBubblePrefab;
     [SerializeField] Color redColor;
     [SerializeField] Color blueColor;
+    [SerializeField] SoundController bubbleSoundCtrlr;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.bubbleMinWait >= 0 && levelSettings.bubbleMaxWait > 0);
@@ -32,7 +33,8 @@ public class BubbleSpawner : AbstractSpawner {
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
         GameObject bubble = Instantiate(blueBubblePrefab, pos, Quaternion.identity);
-       // bubble.GetComponent<BubbleController>().SetColor(blueColor);
+        // bubble.GetComponent<BubbleController>().SetColor(blueColor);
+        bubble.GetComponent<BubbleController>().bubbleSoundCtrlr = bubbleSoundCtrlr;
         return bubble;
     }
 
@@ -41,6 +43,7 @@ public class BubbleSpawner : AbstractSpawner {
         pos.x = Random.Range(minPosX, maxPosX);
         GameObject bubble = Instantiate(redBubblePrefab, pos, Quaternion.identity);
        // bubble.GetComponent<BubbleController>().SetColor(redColor);
+        bubble.GetComponent<BubbleController>().bubbleSoundCtrlr = bubbleSoundCtrlr;
         return bubble;
     }
 
