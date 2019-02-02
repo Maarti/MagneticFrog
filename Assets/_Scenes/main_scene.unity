@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 63894881}
   - component: {fileID: 63894880}
   - component: {fileID: 63894879}
+  - component: {fileID: 63894882}
   m_Layer: 5
   m_Name: NullrateButton
   m_TagString: Untagged
@@ -683,7 +684,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 63894880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 63894882}
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: http://nullrate.com
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &63894880
@@ -723,6 +735,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63894877}
   m_CullTransparentMesh: 0
+--- !u!114 &63894882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63894877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018ec3354a29a9b46a624846ebfe8c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &65370879
 GameObject:
   m_ObjectHideFlags: 0
@@ -23776,6 +23800,7 @@ GameObject:
   - component: {fileID: 2135199360}
   - component: {fileID: 2135199359}
   - component: {fileID: 2135199358}
+  - component: {fileID: 2135199361}
   m_Layer: 5
   m_Name: MaartiButton
   m_TagString: Untagged
@@ -23841,7 +23866,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2135199359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2135199361}
+        m_MethodName: OpenLink
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://maarti.net
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2135199359
@@ -23881,6 +23917,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135199356}
   m_CullTransparentMesh: 0
+--- !u!114 &2135199361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135199356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018ec3354a29a9b46a624846ebfe8c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2135711836
 GameObject:
   m_ObjectHideFlags: 0
