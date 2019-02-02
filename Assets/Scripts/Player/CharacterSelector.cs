@@ -12,7 +12,7 @@ public class CharacterSelector : MonoBehaviour {
     [SerializeField] Button agilityButton, staminaButton, breathButton;
     [SerializeField] Button selectButton;
     [SerializeField] TextMeshProUGUI characterName;
-    [SerializeField] GameObject selectedImg;
+   // [SerializeField] GameObject selectedImg;
 
     void OnEnable() {
         RefreshCurrentCharacterDisplay();
@@ -104,11 +104,11 @@ public class CharacterSelector : MonoBehaviour {
         breathButton.gameObject.SetActive(displayedChar.breath < 3);
 
         if (currentCharacter == currentlyDisplayedCharacter) {
-            selectedImg.SetActive(true);
+            // selectedImg.SetActive(true);
             selectButton.interactable = false;
         }
         else {
-            selectedImg.SetActive(false);
+            // selectedImg.SetActive(false);
             selectButton.interactable = true;
         }
     }

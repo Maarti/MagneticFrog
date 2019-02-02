@@ -2,7 +2,7 @@
 
 ## Graphics
 ### Draw icon
-1. Draw the outline (Free Select Tool with antialisaing and Feather edges radius to 10) and save it as path
+1. Draw the outline (Free Select Tool with antialisaing and Feather edges radius to 20) and save it as path
 2. Select > Border > 4px (Border style **Hard**)
 3. Select > Feather > 5px
 4. Fill with outline color
