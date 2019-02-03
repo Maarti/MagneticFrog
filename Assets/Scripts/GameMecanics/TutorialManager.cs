@@ -41,6 +41,7 @@ public class TutorialManager : MonoBehaviour {
         tutorialConfiner.SetActive(true);
         meterCounter.SetActive(false);
         jumpCtrlr.enabled = true;
+        jumpCtrlr.Init();
         // Tuto canvas
         tutorialCanvas.SetActive(true);
         uiJumpTuto.SetActive(false);

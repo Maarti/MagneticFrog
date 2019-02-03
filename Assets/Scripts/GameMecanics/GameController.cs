@@ -40,14 +40,14 @@ public class GameController : MonoBehaviour {
         gameOverCanvas.SetActive(false);
         pauseUICanvas.SetActive(false);
         gameOverRaycaster.enabled = true;
+        gameUICanvas.SetActive(true);
+        cameraCtrlr.enabled = true;
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
             playerCtrlr.isPlayingTutorial = false;
-            gameUICanvas.SetActive(true);
+            playerCtrlr.enabled = true;
             bestScoreMarker.SetActive(true);
             // playerCtrlr.gameObject.SetActive(true);
-            playerCtrlr.enabled = true;
             levelSettingsController.enabled = true;
-            cameraCtrlr.enabled = true;
             bubbleSpawner.enabled = true;
             coinSpawner.enabled = true;
             mineSpawner.enabled = true;
@@ -63,11 +63,11 @@ public class GameController : MonoBehaviour {
 
     void StartTutorial() {
         tutorialManager.gameObject.SetActive(true);
-        gameUICanvas.SetActive(true);
         bestScoreMarker.SetActive(false);
         playerCtrlr.isPlayingTutorial = true;
         playerCtrlr.enabled = true;
-        cameraCtrlr.enabled = true;
+        // gameUICanvas.SetActive(true);
+        //     cameraCtrlr.enabled = true;
     }
 
     public void StopGame() {
