@@ -2163,7 +2163,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2192,7 +2192,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0.2985
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -8404,7 +8404,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 20
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 5.97
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12458,7 +12458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1118489281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13274,6 +13274,7 @@ GameObject:
   - component: {fileID: 1179482798}
   - component: {fileID: 1179482800}
   - component: {fileID: 1179482799}
+  - component: {fileID: 1179482801}
   m_Layer: 5
   m_Name: OxygenOverlay
   m_TagString: Untagged
@@ -13337,6 +13338,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179482797}
   m_CullTransparentMesh: 0
+--- !u!95 &1179482801
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179482797}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edf5b9d8f24e6c2439b9db46cd588c70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1188704991
 GameObject:
   m_ObjectHideFlags: 0
@@ -15626,9 +15646,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCtrlr: {fileID: 1289790559}
+  oxygenBar: {fileID: 767347090}
+  oxygenBarAnimator: {fileID: 1179482801}
   oxygenMax: 20
   oxygenConsumption: 1
-  oxygenBar: {fileID: 767347090}
 --- !u!82 &1289790565
 AudioSource:
   m_ObjectHideFlags: 0
