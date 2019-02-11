@@ -102,8 +102,9 @@ public class ApplicationController : MonoBehaviour {
         }
     }
 
-    public void SetMagnetControllerLayoutPosition(float yPosition) {
+    public void SetMagnetControllerLayoutPositionAndAlpha(float yPosition, float alpha) {
         PlayerData.magnetControllerHeight = yPosition;
+        PlayerData.magnetControllerAlpha = alpha;
     }
 
     public void UpateCoins(int value) {

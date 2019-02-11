@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
@@ -7,13 +8,15 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
 
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject defaultButton;
+    [SerializeField] GameObject alphaSliderBackground;
+    [SerializeField] GameObject alphaSliderHandle;
     [SerializeField] bool isMoving = false;
     [SerializeField] RectTransform parentRect;
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] Slider alphaSlider;
 
     RectTransform rectTransform;
- /*   float yMin = Screen.height * .1f;
-    float yMax = Screen.height * .8f;*/
-     float yMin = -550f;
+    float yMin = -550f;
     float yMax = 300f;
 
     private void Awake() {
@@ -24,6 +27,10 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
         KeepTrackOfDefaultMagnetControllerLayoutPosition();
         if (ApplicationController.ac.PlayerData.magnetControllerHeight != null)
             MoveLayout(ApplicationController.ac.PlayerData.magnetControllerHeight ?? -400);
+        if (ApplicationController.ac.PlayerData.magnetControllerAlpha != null) {
+            SetLayoutAlpha(ApplicationController.ac.PlayerData.magnetControllerAlpha ?? .5f);
+            InitAlphaSliderValue();
+        }
     }
 
     void Update() {
@@ -37,8 +44,9 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             inputController = Input.mousePosition;
 #endif
-            // Don't move layout if we are touching the button
-            if (!IsPointerOverUIObject(confirmButton, inputController) && !IsPointerOverUIObject(defaultButton, inputController)) {
+            // Don't move layout if we are touching the buttons
+            if (!IsPointerOverUIObject(confirmButton, inputController) && !IsPointerOverUIObject(defaultButton, inputController)
+                && !IsPointerOverUIObject(alphaSliderBackground, inputController) && !IsPointerOverUIObject(alphaSliderHandle, inputController)) {
                 Vector2 anchorPos = ScreenPointToAnchorPos(inputController);
                 MoveLayout(anchorPos.y);
             }
@@ -71,8 +79,8 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
         return false;
     }
 
-    public void SaveLayoutPosition() {
-        ApplicationController.ac.SetMagnetControllerLayoutPosition(rectTransform.anchoredPosition.y);
+    public void SaveLayoutPositionAndAlpha() {
+        ApplicationController.ac.SetMagnetControllerLayoutPositionAndAlpha(rectTransform.anchoredPosition.y, canvasGroup.alpha);
         ApplicationController.ac.Save();
     }
 
@@ -82,6 +90,11 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
         }
     }
 
+    public void SetAlphaToDefault() {
+        SetLayoutAlpha(0.5f);
+        InitAlphaSliderValue();
+    }
+
     /** Keep the default value if not already saved */
     public void KeepTrackOfDefaultMagnetControllerLayoutPosition() {
         if (ApplicationController.ac.defaultMagnetControllerHeight == null) {
@@ -89,4 +102,19 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
             Debug.Log("KeepTrackOfDefaultMagnetControllerLayoutPosition to " + ApplicationController.ac.defaultMagnetControllerHeight);
         }
     }
+
+    public void OnSliderValueChange() {
+        SetLayoutAlpha(alphaSlider.value);
+    }
+
+    private void SetLayoutAlpha(float alpha) {
+        if (canvasGroup != null)
+            canvasGroup.alpha = Mathf.Clamp(alpha, 0f, 1f);
+    }
+
+    private void InitAlphaSliderValue() {
+        if (alphaSlider != null)
+            alphaSlider.value = canvasGroup.alpha;
+    }
+
 }
