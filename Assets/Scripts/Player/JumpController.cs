@@ -13,8 +13,11 @@ public class JumpController : MonoBehaviour {
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
     [SerializeField] float horizontalForce = 200f;              // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
+    [Header("Player Canvas")]
+    [SerializeField] GameObject playerCanvas;
+    [SerializeField] Transform playerCanvasAnchor;
     [SerializeField] Slider stunSlider;
-    [SerializeField] JumpWaitingSlider jumpSlider;
+    [SerializeField] Image jumpLoader;
     [Header("Sounds")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
@@ -32,16 +35,16 @@ public class JumpController : MonoBehaviour {
 #endif
 
     void Awake() {
-        rb = GetComponent<Rigidbody2D>();         
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Init() {
         animator = GetCurrentAnimator();
         isStuned = false;
         stunSlider.gameObject.SetActive(false);
+        jumpLoader.gameObject.SetActive(false);
         InitAgility();
         InitStamina();
-        jumpSlider.Init();
         stunMultiplier = stunIncrementer;
         SetRotation(Vector2.zero);
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
@@ -64,7 +67,12 @@ public class JumpController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
             Jump();
 #endif
+        UpdateJumpLoader();
         UpdateStunSlider();
+    }
+
+    void LateUpdate() {
+        UpdatePlayerCanvasPosition();
     }
 
     Animator GetCurrentAnimator() {
@@ -123,6 +131,19 @@ public class JumpController : MonoBehaviour {
         float xDirection = Mathf.Clamp(direction.x, -130f, 130f);
         float rotation = Mathf.Lerp(40f, -40f, (xDirection + 130f) / 260f);
         rb.rotation = rotation;
+    }
+
+    void UpdatePlayerCanvasPosition() {
+        playerCanvas.gameObject.transform.position = playerCanvasAnchor.position;
+    }
+
+    void UpdateJumpLoader() {
+        float fillValue = (timeBetweenJumps - (Time.time - lastJump)) / timeBetweenJumps;
+        if (jumpLoader.gameObject.activeSelf && fillValue <= 0)
+            jumpLoader.gameObject.SetActive(false);
+        else if (!jumpLoader.gameObject.activeSelf && fillValue != 0)
+            jumpLoader.gameObject.SetActive(true);
+        jumpLoader.fillAmount = fillValue;
     }
 
     public void Stun(float mineStunDuration) {
