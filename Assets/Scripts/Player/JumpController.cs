@@ -16,8 +16,8 @@ public class JumpController : MonoBehaviour {
     [Header("Player Canvas")]
     [SerializeField] GameObject playerCanvas;
     [SerializeField] Transform playerCanvasAnchor;
-    [SerializeField] Slider stunSlider;
-    [SerializeField] Image jumpLoader;
+    [SerializeField] Image jumpCooldownImg;
+    [SerializeField] Image stunCooldownImg;
     [Header("Sounds")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClips;
@@ -41,8 +41,8 @@ public class JumpController : MonoBehaviour {
     public void Init() {
         animator = GetCurrentAnimator();
         isStuned = false;
-        stunSlider.gameObject.SetActive(false);
-        jumpLoader.gameObject.SetActive(false);
+        jumpCooldownImg.gameObject.SetActive(false);
+        stunCooldownImg.gameObject.SetActive(false);
         InitAgility();
         InitStamina();
         stunMultiplier = stunIncrementer;
@@ -67,8 +67,8 @@ public class JumpController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
             Jump();
 #endif
-        UpdateJumpLoader();
-        UpdateStunSlider();
+        UpdateJumpCooldownImg();
+        UpdateStunCooldownImg();
     }
 
     void LateUpdate() {
@@ -137,19 +137,29 @@ public class JumpController : MonoBehaviour {
         playerCanvas.gameObject.transform.position = playerCanvasAnchor.position;
     }
 
-    void UpdateJumpLoader() {
+    void UpdateJumpCooldownImg() {
         float fillValue = (timeBetweenJumps - (Time.time - lastJump)) / timeBetweenJumps;
-        if (jumpLoader.gameObject.activeSelf && fillValue <= 0)
-            jumpLoader.gameObject.SetActive(false);
-        else if (!jumpLoader.gameObject.activeSelf && fillValue != 0)
-            jumpLoader.gameObject.SetActive(true);
-        jumpLoader.fillAmount = fillValue;
+        if (jumpCooldownImg.gameObject.activeSelf && fillValue <= 0)
+            jumpCooldownImg.gameObject.SetActive(false);
+        else if (!jumpCooldownImg.gameObject.activeSelf && fillValue >= 0.01f)
+            jumpCooldownImg.gameObject.SetActive(true);
+        jumpCooldownImg.fillAmount = fillValue;
+    }
+
+    void UpdateStunCooldownImg() {
+        if (!isStuned) {
+            if (stunCooldownImg.gameObject.activeSelf)
+                stunCooldownImg.gameObject.SetActive(false);
+            return;
+        }
+        float fillValue = (totalStunDuration - (Time.time - lastStun)) / totalStunDuration;
+        if (!stunCooldownImg.gameObject.activeSelf && fillValue != 0)
+            stunCooldownImg.gameObject.SetActive(true);
+        stunCooldownImg.fillAmount = fillValue;
     }
 
     public void Stun(float mineStunDuration) {
         totalStunDuration = mineStunDuration * stunMultiplier;
-        stunSlider.maxValue = totalStunDuration;
-        stunSlider.value = totalStunDuration;
         StartCoroutine(StunForSeconds(totalStunDuration));
         // We increment the stun multiplier at each stun, so next time, it will be longer
         IncrementStunMultiplier();
@@ -157,18 +167,6 @@ public class JumpController : MonoBehaviour {
 
     void IncrementStunMultiplier() {
         stunMultiplier += stunIncrementer;
-    }
-
-    void UpdateStunSlider() {
-        if (!isStuned) {
-            if (stunSlider.gameObject.activeSelf)
-                stunSlider.gameObject.SetActive(false);
-            return;
-        }
-        if (!stunSlider.gameObject.activeSelf)
-            stunSlider.gameObject.SetActive(true);
-        float currentStunDuration = Mathf.Clamp(totalStunDuration - (Time.time - lastStun), stunSlider.minValue, stunSlider.maxValue);
-        stunSlider.value = currentStunDuration;
     }
 
     IEnumerator StunForSeconds(float duration) {
