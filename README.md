@@ -1,5 +1,7 @@
 # Magnetic Frog
 
+![Magnetic Frog](docs/img/frog_3d_model.gif)
+
 ## Graphics
 ### Draw icon
 1. Draw the outline (Free Select Tool with antialisaing and Feather edges radius to 20) and save it as path
