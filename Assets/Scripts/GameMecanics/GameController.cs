@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-    public static GameController gc;
     [Header("Canvas")]
     [SerializeField] GameObject gameUICanvas;
     [SerializeField] GameObject mainMenuCanvas;
@@ -23,12 +22,15 @@ public class GameController : MonoBehaviour {
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
     [SerializeField] Text goScoreText;
-    [SerializeField] Text goBestScoreText;
+    [SerializeField] Text goBestScoreText;    
 
+    public static GameController gc;
     public delegate void GameOver(int score);
     public static event GameOver OnGameOver;
     public delegate void GameStart();
     public static event GameStart OnGameStart;
+    [Header("Particle systm")]
+    public ParticleSystem bubbleParticleSystm;
 
     void Awake() {
         if (gc != this) gc = this;
@@ -70,6 +72,11 @@ public class GameController : MonoBehaviour {
         //     cameraCtrlr.enabled = true;
     }
 
+    public void StartGameAndParticleSystm() {
+        StartGame();
+        RestartBubblesParticlySystm();
+    }
+
     public void StopGame() {
         gameUICanvas.SetActive(false);
         bestScoreMarker.SetActive(false);
@@ -100,7 +107,7 @@ public class GameController : MonoBehaviour {
 
     public void PlayAgain() {
         gameOverRaycaster.enabled = false;
-        screenTransition.ScreenFadeThen(StartGame);
+        screenTransition.ScreenFadeThen(StartGameAndParticleSystm);
     }
 
     public void GoToHomeScreen() {
@@ -117,6 +124,7 @@ public class GameController : MonoBehaviour {
         playerCtrlr.Init();
         mainMenuCanvas.SetActive(true);
         cameraCtrlr.InitPosition();
+        RestartBubblesParticlySystm();
     }
 
     void DestroyMainElements() {
@@ -126,6 +134,11 @@ public class GameController : MonoBehaviour {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("MainElement/Bubble")) {
             Destroy(obj);
         }
+    }
+
+    void RestartBubblesParticlySystm() {
+        bubbleParticleSystm.Stop();
+        bubbleParticleSystm.Play();
     }
 
 }
