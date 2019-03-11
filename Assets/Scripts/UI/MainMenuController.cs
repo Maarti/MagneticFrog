@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Animator))]
 public class MainMenuController : MonoBehaviour {
 
     [SerializeField] Text bestScoreText;
     [SerializeField] GameObject gameTitleCanvas;
+    [SerializeField] AudioSource playClickSound;
+    Animator mainMenuAnim;
     bool isStarted = false;
 
     private void Start() {
+        mainMenuAnim = GetComponent<Animator>();
         isStarted = true;
         OnEnable();
     }
@@ -28,5 +32,16 @@ public class MainMenuController : MonoBehaviour {
         if (gameTitleCanvas != null)
             gameTitleCanvas.SetActive(false);
     }
+
+    public void IntroAnimation() {
+        mainMenuAnim.SetTrigger("play");
+        // StartGame() is called at the end of the animation
+    }
+
+    public void StartGame() {
+        playClickSound.Play();
+        GameController.gc.StartGame();
+    }
+
 
 }

@@ -22,7 +22,9 @@ public class GameController : MonoBehaviour {
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
     [SerializeField] Text goScoreText;
-    [SerializeField] Text goBestScoreText;    
+    [SerializeField] Text goBestScoreText;
+    [Header("Animators")]
+    [SerializeField] Animator magnetAnim;
 
     public static GameController gc;
     public delegate void GameOver(int score);
@@ -44,6 +46,7 @@ public class GameController : MonoBehaviour {
         gameOverRaycaster.enabled = true;
         gameUICanvas.SetActive(true);
         cameraCtrlr.enabled = true;
+        magnetAnim.SetBool("isPlaying", true);        
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
             playerCtrlr.isPlayingTutorial = false;
             playerCtrlr.enabled = true;
@@ -76,7 +79,7 @@ public class GameController : MonoBehaviour {
         StartGame();
         RestartBubblesParticlySystm();
     }
-
+       
     public void StopGame() {
         gameUICanvas.SetActive(false);
         bestScoreMarker.SetActive(false);
@@ -88,6 +91,7 @@ public class GameController : MonoBehaviour {
         rockSpawner.enabled = false;
         mineSpawner.enabled = false;
         tutorialManager.gameObject.SetActive(false);
+        magnetAnim.SetBool("isPlaying", false);
     }
 
     public void TriggerGameOver(int score) {
