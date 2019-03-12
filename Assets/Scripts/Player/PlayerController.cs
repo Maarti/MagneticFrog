@@ -6,10 +6,10 @@
 [RequireComponent(typeof(MeterCounter))]
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField] MagnetController magnetCtrlr;
-    [SerializeField] JumpController jumpCtrlr;
-    [SerializeField] OxygenController oxygenCtrlr;
-    [SerializeField] MeterCounter meterCounter;
+    public MagnetController magnetCtrlr;
+    public JumpController jumpCtrlr;
+    public OxygenController oxygenCtrlr;
+    public MeterCounter meterCounter;
     public bool isPlayingTutorial = false;          // Let the TutorialManager manage the controllers scripts
     Vector3 initialPosition;
 
