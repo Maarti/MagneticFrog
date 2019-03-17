@@ -14,6 +14,7 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] GameObject lineRendering;
     [SerializeField] Rigidbody2D magnetRb;
     [SerializeField] DistanceJoint2D magnetJoint;
+    [SerializeField] Animator modelAnim;
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     Vector3 initialModelLocalPosition;
 
@@ -64,6 +65,8 @@ public class MagnetController : MonoBehaviour {
 
     public void SetMagnetToMenuState() {
         StopCoroutine(MoveMagnetToFrog());
+        modelAnim.enabled = true;
+        modelAnim.SetBool("isMenuState", true);
         magnetModel.transform.parent = null;
         magnetModel.transform.position = magnetTitlePlaceholder.transform.position;
         magnetRb.bodyType = RigidbodyType2D.Kinematic;
@@ -76,6 +79,7 @@ public class MagnetController : MonoBehaviour {
 
     public void SetMagnetToGameState() {
         StopCoroutine(MoveMagnetToFrog());
+        modelAnim.enabled = false;
         magnetModel.transform.parent = magnetModelContainer.transform;
         magnetModel.transform.localPosition = initialModelLocalPosition;
         magnetRb.bodyType = RigidbodyType2D.Dynamic;
@@ -91,6 +95,7 @@ public class MagnetController : MonoBehaviour {
 
     IEnumerator MoveMagnetToFrog() {
         magnetModel.SetActive(true);
+        modelAnim.SetBool("isMenuState", false);
         float speed = 8;
         float step;
         while (Vector3.Distance(magnetModel.transform.position, magnetModelContainer.transform.position) > .01f) {

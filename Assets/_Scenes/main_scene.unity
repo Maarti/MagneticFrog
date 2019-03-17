@@ -31258,6 +31258,7 @@ MonoBehaviour:
   lineRendering: {fileID: 1694481238}
   magnetRb: {fileID: 2120105535}
   magnetJoint: {fileID: 2120105534}
+  modelAnim: {fileID: 2120105538}
 --- !u!114 &1289790563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31787,7 +31788,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333919948}
-  - component: {fileID: 1333919949}
   m_Layer: 11
   m_Name: MagnetRenderer
   m_TagString: Untagged
@@ -31813,25 +31813,6 @@ Transform:
   m_Father: {fileID: 609251093}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1333919949
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333919947}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 048d3c35b066b4044a98d9bd79313564, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1336045533
 GameObject:
   m_ObjectHideFlags: 0
@@ -48965,6 +48946,7 @@ GameObject:
   - component: {fileID: 2120105534}
   - component: {fileID: 2120105536}
   - component: {fileID: 2120105537}
+  - component: {fileID: 2120105538}
   m_Layer: 12
   m_Name: MagnetModel
   m_TagString: Untagged
@@ -48979,7 +48961,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120105532}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -49069,6 +49051,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!95 &2120105538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120105532}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71e26a2d2eff75b4a9d4f9b7ba8a12f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2135199356
 GameObject:
   m_ObjectHideFlags: 0
