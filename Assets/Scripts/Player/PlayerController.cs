@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Die() {
         if (isPlayingTutorial) return;
+        oxygenCtrlr.ResetMusic();
         GameController.gc.TriggerGameOver(meterCounter.Value);
     }
 

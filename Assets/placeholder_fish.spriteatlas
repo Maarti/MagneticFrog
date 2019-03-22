@@ -30,7 +30,7 @@ SpriteAtlas:
       enableTightPacking: 1
     variantMultiplier: 1
     packables: []
-    totalSpriteSurfaceArea: 3380000
+    totalSpriteSurfaceArea: 0
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites: []

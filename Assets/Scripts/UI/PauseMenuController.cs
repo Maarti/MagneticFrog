@@ -9,6 +9,7 @@ public class PauseMenuController : MonoBehaviour {
     [SerializeField] float pausePitch = .9f;
     public static bool GameIsPaused = false;
     GraphicRaycaster graphicRay;
+    [SerializeField] Animator audioAnim;
 
     void Awake() {
         graphicRay = GetComponent<GraphicRaycaster>();
@@ -18,6 +19,7 @@ public class PauseMenuController : MonoBehaviour {
         graphicRay.enabled = true;
         Time.timeScale = 0f;
         mainMusic.pitch = pausePitch;
+        audioAnim.SetBool("isStressful", false);        
     }
 
     void OnDisable() {
