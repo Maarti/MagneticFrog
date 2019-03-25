@@ -6,7 +6,8 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] Camera mainCamera;
     [SerializeField] RectTransform magnetCtrlrLayout;
     [SerializeField] GameObject redMagnet, blueMagnet;
-    [SerializeField] SpriteRenderer magnetSprite;
+    [SerializeField] GameObject redMagnetParticle;
+    [SerializeField] GameObject blueMagnetParticle;
     [SerializeField] GameObject magnetModel;
     [SerializeField] GameObject magnetTitlePlaceholder;
     [SerializeField] GameObject magnetModelContainer;
@@ -51,15 +52,17 @@ public class MagnetController : MonoBehaviour {
 
     void SwitchMagnetToRed() {
         redMagnet.SetActive(true);
+        redMagnetParticle.SetActive(true);
         blueMagnet.SetActive(false);
-        magnetSprite.color = Color.red;
+        blueMagnetParticle.SetActive(false);
         magnetIsRed = true;
     }
 
     void SwitchMagnetToBlue() {
         redMagnet.SetActive(false);
+        redMagnetParticle.SetActive(false);
         blueMagnet.SetActive(true);
-        magnetSprite.color = Color.blue;
+        blueMagnetParticle.SetActive(true);
         magnetIsRed = false;
     }
 
