@@ -82,6 +82,6 @@ Material:
     - _VertexColor: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.5768683, b: 1, a: 1}
+    - _Color: {r: 0.14117648, g: 0.48235294, b: 0.627451, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 0.1273585, g: 0.9498116, b: 1, a: 1}
+    - _OutlineColor: {r: 0.5019608, g: 0.9411765, b: 1, a: 1}
