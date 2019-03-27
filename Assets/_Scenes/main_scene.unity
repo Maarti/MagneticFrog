@@ -46668,6 +46668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenFrog
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: bdc560de48b510940b7a79ce5164768f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: bdc560de48b510940b7a79ce5164768f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -47565,7 +47569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 2f622133eb4a1774fb14e05a5af22f38, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 2f622133eb4a1774fb14e05a5af22f38, type: 3}
       propertyPath: m_LocalPosition.x
