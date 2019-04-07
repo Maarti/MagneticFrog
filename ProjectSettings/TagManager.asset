@@ -41,8 +41,29 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: WaterShader
+    uniqueID: 1067819969
+    locked: 0
+  - name: Background_silhouette
+    uniqueID: 1658318515
+    locked: 0
+  - name: Background_fish
+    uniqueID: 1398913761
+    locked: 0
+  - name: Background_bubble
+    uniqueID: 3395916993
+    locked: 0
+  - name: Ground
+    uniqueID: 3887252569
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Frog
+    uniqueID: 4111469935
+    locked: 0
+  - name: MainElements
+    uniqueID: 3506497983
     locked: 0
   - name: Front
     uniqueID: 977433263

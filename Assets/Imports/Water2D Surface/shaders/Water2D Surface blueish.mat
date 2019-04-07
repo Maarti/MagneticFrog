@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water2D Surface
+  m_Name: Water2D Surface blueish
   m_Shader: {fileID: 4800000, guid: 50485b34cb7b96d40adfcfcdcc872d48, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -80,6 +80,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.68235296, g: 0.84313726, b: 1, a: 1}
     - _Colour: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
