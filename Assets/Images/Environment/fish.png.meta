@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 321af11ef390059469598111b7d78406
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fish_1_green
+    21300002: fish_1_red
+    21300004: fish_1_purple
+    21300006: fishA_1
+    21300008: fishA_2
+    21300010: fishA_3
+    21300012: fishB_1
+    21300014: fishB_2
+    21300016: fishB_3
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fishA_1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 4128
+        width: 481
+        height: 454
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.5, y: 225}
+        - {x: -20.5, y: 156}
+        - {x: -88.5, y: 164}
+        - {x: -157.5, y: 126}
+        - {x: -184.5, y: 61}
+        - {x: -222.5, y: 6}
+        - {x: -202.5, y: -50}
+        - {x: -240.5, y: -133}
+        - {x: -219.5, y: -169}
+        - {x: -155.5, y: -207}
+        - {x: -124.5, y: -224}
+        - {x: 55.5, y: -225}
+        - {x: 114.5, y: -193}
+        - {x: 148.5, y: -155}
+        - {x: 197.5, y: -187}
+        - {x: 230.5, y: -185}
+        - {x: 237.5, y: -70}
+        - {x: 149.5, y: -69}
+        - {x: 159.5, y: 42}
+        - {x: 118.5, y: 141}
+        - {x: 71.5, y: 219}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf6d313cdcbd5a498bdabdf41500fd4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishA_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 3618
+        width: 481
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -164.01755, y: 226.5}
+        - {x: -240.36842, y: 99}
+        - {x: -240.36842, y: -226.5}
+        - {x: 235.70175, y: -226.5}
+        - {x: 240.5, y: -220.5}
+        - {x: 240.5, y: 101.25}
+        - {x: 96.47369, y: 226.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d037bc5db9e102144b952f029d269f38
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishA_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 3099
+        width: 481
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100.96491, y: 226.5}
+        - {x: -128.08772, y: 226.5}
+        - {x: -195.45615, y: 126.75009}
+        - {x: -240.36842, y: 5.2500916}
+        - {x: -240.36842, y: -179.24991}
+        - {x: -215.66667, y: -206.24991}
+        - {x: -114.61404, y: -226.49991}
+        - {x: 100.96491, y: -226.49991}
+        - {x: 237.94737, y: -188.24991}
+        - {x: 240.5, y: -183.74991}
+        - {x: 240.5, y: 90.75009}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af70a5995b9c0054eb89a1971a3849cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishB_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2643
+        width: 512
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -121.26316, y: 157.5}
+        - {x: -253.75438, y: 0.37490845}
+        - {x: -253.75438, y: -107.62509}
+        - {x: -179.64912, y: -157.12509}
+        - {x: 157.19298, y: -157.12509}
+        - {x: 256, y: -125.62509}
+        - {x: 256, y: 90.37491}
+        - {x: 112.2807, y: 157.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b43f28945d01f114f95ee45d6debaa24
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishB_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2143
+        width: 512
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -136.98245, y: 157.5}
+        - {x: -177.4035, y: 139.37503}
+        - {x: -256, y: 29.12503}
+        - {x: -256, y: -103.62497}
+        - {x: -235.78947, y: -157.5}
+        - {x: 256, y: -157.5}
+        - {x: 256, y: 78.62503}
+        - {x: 159.4386, y: 157.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5680f6d762d7a1842a36f238a8454cbd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishB_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1637
+        width: 508
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -211.21053, y: 157.5}
+        - {x: -253.8772, y: 65.37497}
+        - {x: -253.8772, y: -80.87503}
+        - {x: -188.75438, y: -157.37503}
+        - {x: 254, y: -157.37503}
+        - {x: 254, y: 69.87497}
+        - {x: 170.54385, y: 157.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f253ccabb7a8f02419c2526edefe86b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e3456968807e6dd44a347ea2cf098f02
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
