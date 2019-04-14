@@ -1,68 +1,28 @@
 fileFormatVersion: 2
-guid: 1fb072e009af384458c504aaea9fc0fe
+guid: baed20ad4b8fee143ad80f0b619dfefb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature
-    100002: Finger1_L
-    100004: Finger1_R
-    100006: Finger2_L
-    100008: Finger2_R
-    100010: Finger3_L
-    100012: Finger3_R
-    100014: Finger4_L
-    100016: Finger4_R
-    100018: Foot_L
-    100020: Foot_R
-    100022: //RootNode
-    100024: FrogMesh
-    100026: Hand_L
-    100028: Hand_R
-    100030: Head
-    100032: Hip
-    100034: LowerArm_L
-    100036: LowerArm_R
-    100038: LowerLeg_L
-    100040: LowerLeg_R
-    100042: Spine
-    100044: UpperArm_L
-    100046: UpperArm_R
-    100048: UpperLeg_L
-    100050: UpperLeg_R
-    400000: Armature
-    400002: Finger1_L
-    400004: Finger1_R
-    400006: Finger2_L
-    400008: Finger2_R
-    400010: Finger3_L
-    400012: Finger3_R
-    400014: Finger4_L
-    400016: Finger4_R
-    400018: Foot_L
-    400020: Foot_R
-    400022: //RootNode
-    400024: FrogMesh
-    400026: Hand_L
-    400028: Hand_R
-    400030: Head
-    400032: Hip
-    400034: LowerArm_L
-    400036: LowerArm_R
-    400038: LowerLeg_L
-    400040: LowerLeg_R
-    400042: Spine
-    400044: UpperArm_L
-    400046: UpperArm_R
-    400048: UpperLeg_L
-    400050: UpperLeg_R
-    2100000: frogMaterial
-    4300000: FrogMesh
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Material_001
+    2100002: RockMaterial
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
     7400000: Default Take
-    7400002: idle
-    7400004: swim
     9500000: //RootNode
-    13700000: FrogMesh
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: f4ef31f05b5ab524e9e75481fcd5cf41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RockMaterial
+    second: {fileID: 2100000, guid: d2b2acf33be407f4e9a1cf3cbf111507, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -99,8 +59,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -124,7 +84,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -142,7 +102,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
