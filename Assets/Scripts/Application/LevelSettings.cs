@@ -5,14 +5,26 @@ using System.Collections.Generic;
 public class LevelSettings {
     public readonly static float LEVEL_10_SCORE = 0f;
     public readonly static float LEVEL_20_SCORE = 20f;
-    public readonly static float LEVEL_30_SCORE = 150f;
-    public readonly static float LEVEL_40_SCORE = 250f;
-    public readonly static float[] DESCENDING_LEVEL_SCORES = { LEVEL_30_SCORE, LEVEL_20_SCORE, LEVEL_10_SCORE };
+    public readonly static float LEVEL_30_SCORE = 100f;
+    public readonly static float LEVEL_40_SCORE = 200f;
+    public readonly static float LEVEL_50_SCORE = 300f;
+    public readonly static float LEVEL_60_SCORE = 320f;
+    public readonly static float LEVEL_70_SCORE = 400f;
+    public readonly static float LEVEL_80_SCORE = 450f;
+    public readonly static float LEVEL_90_SCORE = 500f;
+    public readonly static float LEVEL_100_SCORE = 560f;
+    public readonly static float[] DESCENDING_LEVEL_SCORES = { LEVEL_90_SCORE, LEVEL_80_SCORE, LEVEL_70_SCORE, LEVEL_60_SCORE, LEVEL_50_SCORE, LEVEL_40_SCORE, LEVEL_30_SCORE, LEVEL_20_SCORE, LEVEL_10_SCORE };
     public readonly static Dictionary<float, LevelSettings> levelSettings = new Dictionary<float, LevelSettings> {
 //                                                                              coin        bubble      mineWait    mineSize    mineSpeed   rockWait    rockSize    rockSpeed
             { LEVEL_10_SCORE, new LevelSettings(LEVEL_10_SCORE, LEVEL_20_SCORE, 15f,16f,    .5f,2f,     -1f,-1f,    -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
-            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1.5f,3f,    2f,4f,      .5f,1f,     1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
-            { LEVEL_30_SCORE, new LevelSettings(LEVEL_30_SCORE, LEVEL_40_SCORE, 6f, 10f,    2f, 4f,     1f,3f,      .75f,2f,    1.5f,3f,    2f,4f,      .5f,1f,     1f,2f ) },
+            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1f,2.5f,    2f,4f,      .5f,.8f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
+            { LEVEL_30_SCORE, new LevelSettings(LEVEL_30_SCORE, LEVEL_40_SCORE, 6f, 10f,    1.5f, 3f,   2f,3f,      .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
+            { LEVEL_40_SCORE, new LevelSettings(LEVEL_40_SCORE, LEVEL_50_SCORE, 6f, 9f,     2f, 3f,     2f,3f,      1.2f,2f,    1f,1.5f,    -1f,-1f,    -1f,-1f,    1f,1f  ) }, // slow big mines
+            { LEVEL_50_SCORE, new LevelSettings(LEVEL_50_SCORE, LEVEL_60_SCORE, 15f, 16f,   0.25f,.5f, -1f,-1f,     -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) }, // bubbles burst
+            { LEVEL_60_SCORE, new LevelSettings(LEVEL_60_SCORE, LEVEL_70_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f ) },  // rocks
+            { LEVEL_70_SCORE, new LevelSettings(LEVEL_70_SCORE, LEVEL_80_SCORE, 5f, 8f,     1f, 2f,     1f,1.5f,    .25f,.5f,   1f,1f,      4f,6f,      .8f,1f,     1f,1f ) },  // lot of small mines
+            { LEVEL_80_SCORE, new LevelSettings(LEVEL_80_SCORE, LEVEL_90_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f ) },  // rocks
+            { LEVEL_90_SCORE, new LevelSettings(LEVEL_90_SCORE, LEVEL_100_SCORE,4f, 7f,     2f, 3f,     2.5f,4f,    .75f,1f,    1f,2f,      .5f,1.5f,   .5f,2f,     1f,2f ) },  // lot of rocks
         };
 
     public float scoreMin;
@@ -34,7 +46,9 @@ public class LevelSettings {
     public float rockMinSpeed;
     public float rockMaxSpeed;
 
-    public LevelSettings(float scoreMin, float scoreMax, float coinMinWait, float coinMaxWait, float bubbleMinWait, float bubbleMaxWait, float mineMinWait, float mineMaxWait, float mineMinSize, float mineMaxSize, float mineMinSpeed, float mineMaxSpeed, float rockMinWait, float rockMaxWait, float rockMinSize, float rockMaxSize, float rockMinSpeed, float rockMaxSpeed) {
+    public LevelSettings(float scoreMin, float scoreMax, float coinMinWait, float coinMaxWait, float bubbleMinWait, float bubbleMaxWait,
+        float mineMinWait, float mineMaxWait, float mineMinSize, float mineMaxSize, float mineMinSpeed, float mineMaxSpeed, float rockMinWait,
+        float rockMaxWait, float rockMinSize, float rockMaxSize, float rockMinSpeed, float rockMaxSpeed) {
         this.scoreMin = scoreMin;
         this.scoreMax = scoreMax;
         this.coinMinWait = coinMinWait;
