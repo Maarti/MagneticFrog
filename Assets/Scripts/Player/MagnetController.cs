@@ -16,6 +16,7 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] Rigidbody2D magnetRb;
     [SerializeField] DistanceJoint2D magnetJoint;
     [SerializeField] Animator modelAnim;
+    [SerializeField] Animator magnetCtrlrAnim;
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     Vector3 initialModelLocalPosition;
 
@@ -56,6 +57,7 @@ public class MagnetController : MonoBehaviour {
         blueMagnet.SetActive(false);
         blueMagnetParticle.SetActive(false);
         magnetIsRed = true;
+        magnetCtrlrAnim.SetBool("isNorth",true);
     }
 
     void SwitchMagnetToBlue() {
@@ -64,6 +66,7 @@ public class MagnetController : MonoBehaviour {
         blueMagnet.SetActive(true);
         blueMagnetParticle.SetActive(true);
         magnetIsRed = false;
+        magnetCtrlrAnim.SetBool("isNorth",false);
     }
 
     public void SetMagnetToMenuState() {

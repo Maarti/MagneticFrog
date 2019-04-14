@@ -15356,6 +15356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846504960}
   - component: {fileID: 846504961}
+  - component: {fileID: 846504962}
   m_Layer: 5
   m_Name: MagnetControllerLayout
   m_TagString: Untagged
@@ -15405,6 +15406,25 @@ MonoBehaviour:
   parentRect: {fileID: 0}
   canvasGroup: {fileID: 305897437}
   alphaSlider: {fileID: 0}
+--- !u!95 &846504962
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846504959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6914e56c4ca8f774ab671092cd1bb480, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &863606597
 GameObject:
   m_ObjectHideFlags: 0
@@ -45773,6 +45793,7 @@ MonoBehaviour:
   magnetRb: {fileID: 2120105535}
   magnetJoint: {fileID: 2120105534}
   modelAnim: {fileID: 2120105538}
+  magnetCtrlrAnim: {fileID: 846504962}
 --- !u!114 &1289790563
 MonoBehaviour:
   m_ObjectHideFlags: 0

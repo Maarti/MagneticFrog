@@ -32,6 +32,8 @@ public class JumpController : MonoBehaviour {
 
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     int nbJumpForCurrentTouch = 0;                              // We have to re-touch the screen to jump again
+  //  bool isPreparedToJump = false;
+  //  Vector2 lastTouchPosition;
 #endif
 
     void Awake() {
@@ -63,6 +65,14 @@ public class JumpController : MonoBehaviour {
             Jump();
         } else if (Input.touchCount == 0 && nbJumpForCurrentTouch > 0)
             ResetNbJump();
+      /*  if (Input.touchCount > 0 && !isPreparedToJump) {
+            isPreparedToJump = true;
+            lastTouchPosition = Input.GetTouch(0).position;
+        }
+        else if (Input.touchCount == 0 && isPreparedToJump) {
+            Jump();
+            isPreparedToJump = false;
+        }*/
 #else
         if (Input.GetButtonDown("Jump"))
             Jump();
@@ -86,7 +96,8 @@ public class JumpController : MonoBehaviour {
         Vector2 pointer;            // Position of the cursor or finger
         Vector2 direction;          // Direction of the jump
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-        pointer = Input.GetTouch(0).position;
+         pointer = Input.GetTouch(0).position;
+       // pointer = lastTouchPosition;
         nbJumpForCurrentTouch++;
 #else
         // Keyboard controller
