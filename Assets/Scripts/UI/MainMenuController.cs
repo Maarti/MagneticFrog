@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class MainMenuController : MonoBehaviour {
 
-    [SerializeField] Text bestScoreText;
+    [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] GameObject gameTitleCanvas;
     [SerializeField] AudioSource playClickSound;
     Animator mainMenuAnim;
@@ -19,7 +20,7 @@ public class MainMenuController : MonoBehaviour {
     private void OnEnable() {
         if (!isStarted) return;
         if (ApplicationController.ac.PlayerData.bestScore >= 0) {
-            bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString();
+            bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString() + "m";
             bestScoreText.gameObject.SetActive(true);
         }
         else {
