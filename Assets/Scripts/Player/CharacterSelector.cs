@@ -7,7 +7,7 @@ public class CharacterSelector : MonoBehaviour {
 
     public static int currentCharacter = 0;
     public static int currentlyDisplayedCharacter = 0;
-    public static CharacterId DEFAULT_CHARACTER = CharacterId.GREEN;
+    public static CharacterId DEFAULT_CHARACTER = CharacterId.HYLA;
     [SerializeField] Slider agilitySlider, staminaSlider, breathSlider;
     [SerializeField] Button agilityButton, staminaButton, breathButton;
     [SerializeField] Button selectButton;

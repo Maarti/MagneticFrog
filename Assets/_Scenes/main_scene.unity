@@ -8583,7 +8583,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 05e74d3a280a55047b08359293ad82d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0b6c1bffefd0094ba194067d421f237, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -50680,21 +50680,21 @@ MonoBehaviour:
   characters:
   - skin: {fileID: 832426682}
     id: 0
-    name: Green Frog
+    name: Hyla
     agility: 0
     stamina: 1
     breath: 0
     isUnlocked: 1
   - skin: {fileID: 828745383}
     id: 1
-    name: Skinny Frog
+    name: Goliath
     agility: 3
     stamina: 1
     breath: 3
     isUnlocked: 1
   - skin: {fileID: 963943230}
     id: 2
-    name: Fat Frog
+    name: Pacman
     agility: 1
     stamina: 3
     breath: 2

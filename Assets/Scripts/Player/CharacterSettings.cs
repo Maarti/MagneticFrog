@@ -29,4 +29,4 @@ public struct CharacterSavedData {
     public int breath;
 }
 
-public enum CharacterId { GREEN, SKINNY, FAT }
+public enum CharacterId { HYLA, GOLIATH, PACMAN, POISON, GOTTLEBEI, GOLDEN, DARWIN, DOUGLASS, FROBOT, MEGOPHRYS}
