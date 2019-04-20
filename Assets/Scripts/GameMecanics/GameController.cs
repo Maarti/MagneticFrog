@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour {
         gameUICanvas.SetActive(true);
         cameraCtrlr.enabled = true;
         playerCtrlr.magnetCtrlr.StartMovingMagnetToFrog();
+        AdsController.instance.LoadInterstitial();
         if (ApplicationController.ac.PlayerData.isTutorialDone) {
             playerCtrlr.isPlayingTutorial = false;
             playerCtrlr.enabled = true;
@@ -108,11 +109,13 @@ public class GameController : MonoBehaviour {
     }
 
     public void PlayAgain() {
+        AdsController.instance.ShowInterstitial();
         gameOverRaycaster.enabled = false;
         screenTransition.ScreenFadeThen(StartGameAndParticleSystm);
     }
 
     public void GoToHomeScreen() {
+        AdsController.instance.ShowInterstitial();
         gameOverRaycaster.enabled = false;
         screenTransition.ScreenFadeThen(DisplayHomeMenu);
     }

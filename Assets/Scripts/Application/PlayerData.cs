@@ -13,4 +13,5 @@ public class PlayerData {
     public bool isTutorialDone = false;
     public Dictionary<CharacterId, CharacterSavedData> characters;
     public CharacterId currentCharacater = CharacterSelector.DEFAULT_CHARACTER;
+    public bool isPremium = false;  // no Ads
 }

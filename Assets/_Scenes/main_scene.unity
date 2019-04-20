@@ -51811,6 +51811,7 @@ GameObject:
   - component: {fileID: 1759637273}
   - component: {fileID: 1759637272}
   - component: {fileID: 1759637274}
+  - component: {fileID: 1759637275}
   m_Layer: 0
   m_Name: _ApplicationController
   m_TagString: Untagged
@@ -51907,6 +51908,18 @@ MonoBehaviour:
   goScoreText: {fileID: 909881822}
   goBestScoreText: {fileID: 1363699401}
   bubbleParticleSystm: {fileID: 1809412453}
+--- !u!114 &1759637275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759637271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749e52749e7682749b6e8f209e8f4bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760625746
 GameObject:
   m_ObjectHideFlags: 0
