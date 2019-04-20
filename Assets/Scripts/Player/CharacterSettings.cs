@@ -9,15 +9,17 @@ public class CharacterSettings {
     [Range(0, 3)] public int agility;
     [Range(0, 3)] public int stamina;
     [Range(0, 3)] public int breath;
+    public int cost;
     public bool isUnlocked;
 
-    public CharacterSettings(GameObject skin, CharacterId id, string name, int agility, int stamina, int breath, bool isUnlocked) {
+    public CharacterSettings(GameObject skin, CharacterId id, string name, int agility, int stamina, int breath, int cost, bool isUnlocked) {
         this.skin = skin;
         this.id = id;
         this.name = name;
         this.agility = agility;
         this.stamina = stamina;
         this.breath = breath;
+        this.cost = cost;
         this.isUnlocked = isUnlocked;
     }
 }

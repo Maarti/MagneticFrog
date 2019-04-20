@@ -12,6 +12,10 @@ public class CoinDisplayer : MonoBehaviour {
 
     private void OnEnable() {
         if (!isStarted) return;
+        RefreshUI();
+    }
+
+    public void RefreshUI() {
         coinText.text = ApplicationController.ac.PlayerData.coins.ToString() + " <sprite name=\"coin\">";
     }
 

@@ -16,7 +16,7 @@ public class CoinController : MonoBehaviour {
     }
 
     void OnHitPlayer(GameObject player) {
-        ApplicationController.ac.UpateCoins(value);
+        ApplicationController.ac.UpdateCoins(value);
         coinSoundCtrlr.Play();
         Destroy(this.gameObject);
     }

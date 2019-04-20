@@ -107,7 +107,7 @@ public class ApplicationController : MonoBehaviour {
         PlayerData.magnetControllerAlpha = alpha;
     }
 
-    public void UpateCoins(int value) {
+    public void UpdateCoins(int value) {
         PlayerData.coins = Mathf.Clamp(PlayerData.coins + value, 0, 999999);
     }
 
@@ -117,6 +117,18 @@ public class ApplicationController : MonoBehaviour {
 
     public void ResetTutorial() {
         PlayerData.isTutorialDone = false;
+    }
+
+    public void UnlockCharacter(int characterId) {
+        CharacterSettings character = characters[characterId];
+        if (!character.isUnlocked && PlayerData.coins >= character.cost) {
+            character.isUnlocked = true;
+            UpdateCoins(character.cost * -1);
+            SaveCharacters();
+        }
+        else {
+            Debug.LogWarning(String.Format("Can't unlock character {0}. isUnlocked={1} cost={2} coins={3}", characterId, character.isUnlocked, character.cost, PlayerData.coins));
+        }
     }
 
 }
