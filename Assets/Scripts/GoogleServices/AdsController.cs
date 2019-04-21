@@ -14,6 +14,7 @@ public class AdsController : MonoBehaviour {
     [SerializeField] Animator earnedCoinsAnim;
     InterstitialAd interstitial;
     RewardBasedVideoAd rewardBasedVideo;
+    bool isRequestingRewardAd = false;
 
     public void Awake() {
         if (instance == null) {
@@ -69,7 +70,6 @@ public class AdsController : MonoBehaviour {
             interstitial.LoadAd(request);
             interstitial.OnAdClosed += OnInterstitialFinished;
             interstitial.OnAdLeavingApplication += OnInterstitialFinished;
-
         }
     }
 
@@ -92,7 +92,12 @@ public class AdsController : MonoBehaviour {
     // REWARDED AD
     //--------------
     public void RequestRewardAd() {
-        if (Application.internetReachability != NetworkReachability.NotReachable && rewardBasedVideo != null && !rewardBasedVideo.IsLoaded()) {
+        Debug.Log("RequestRewardAd");
+        if (isRequestingRewardAd || (rewardBasedVideo != null && rewardBasedVideo.IsLoaded())) {
+            Debug.Log("Aborted because ad already loaded or already requesting ad.");
+            return;
+        }
+        if (Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
             string adUnitId = Config.ADMOB_ANDROID_REWARD_ID;
 #elif UNITY_IPHONE
@@ -104,6 +109,11 @@ public class AdsController : MonoBehaviour {
                 .AddTestDevice(Config.MY_DEVICE_ID_1)
                 .Build();
             rewardBasedVideo.LoadAd(request, adUnitId);
+            isRequestingRewardAd = true;
+        }
+        else {
+            Debug.Log("Couldn't Request Reward Ad beacause internet not reachable (retry in 10sec)");
+            Invoke("RequestRewardAd", 10);
         }
     }
 
@@ -123,11 +133,13 @@ public class AdsController : MonoBehaviour {
 
     void OnRewardBasedVideoLoaded(object sender, EventArgs args) {
         Debug.Log("OnRewardBasedVideoLoaded");
+        isRequestingRewardAd = false;
         RefreshRewardAdButtons();
     }
 
     public void OnRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args) {
-        Debug.Log("OnRewardBasedVideoFailedToLoad" + args.Message + "(retry in 10sec");
+        Debug.Log("OnRewardBasedVideoFailedToLoad " + args.Message + " (retry in 10sec)");
+        isRequestingRewardAd = false;
         RefreshRewardAdButtons();
         Invoke("RequestRewardAd", 10);
     }
@@ -154,8 +166,6 @@ public class AdsController : MonoBehaviour {
         else if (currentRewardAdType == RewardAdType.Bonuses)
             BonusesReward();
         ApplicationController.ac.Save();
-        RefreshRewardAdButtons();
-        RequestRewardAd();
     }
 
     public void OnRewardBasedVideoLeftApplication(object sender, EventArgs args) {
