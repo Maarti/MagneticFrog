@@ -8,7 +8,8 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField] GameObject oxygenBar;
     [SerializeField] GameObject magnetControllerLayout;
     [SerializeField] GameObject tutorialCanvas;
-    [SerializeField] GameObject uiJumpTuto, uiBubbleTuto, uiMagnetTuto;
+    [SerializeField] Animator tutorialCanvasAnimator;
+    //  [SerializeField] GameObject uiJumpTuto, uiBubbleTuto, uiMagnetTuto;
     [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
     [SerializeField] GameController gameCtrlr;
@@ -44,9 +45,9 @@ public class TutorialManager : MonoBehaviour {
         jumpCtrlr.Init();
         // Tuto canvas
         tutorialCanvas.SetActive(true);
-        uiJumpTuto.SetActive(false);
-        uiBubbleTuto.SetActive(false);
-        uiMagnetTuto.SetActive(false);
+        /*    uiJumpTuto.SetActive(false);
+            uiBubbleTuto.SetActive(false);
+            uiMagnetTuto.SetActive(false);*/
         // Oxygen
         oxygenBar.SetActive(false);
         oxygenCtrlr.enabled = false;
@@ -81,15 +82,25 @@ public class TutorialManager : MonoBehaviour {
                 if (nbBubbles >= 5) StartMagnetTutorial();
                 break;
 
-            // Switching magnet
+            // Switching magnet UI
             case 2:
+                break;
+
+            // Switching magnet UI Ended
+            case 3:
+                StartBubblesMagnetTutorial();
+                break;
+
+            // MagnetBubbles
+            case 4:
                 if (nbBubbles >= 10) state++;
                 break;
 
+
             // End
-            case 3:
+            case 5:
                 EndTutorial();
-                state++;
+                NextState();
                 break;
         }
     }
@@ -103,28 +114,39 @@ public class TutorialManager : MonoBehaviour {
     }
 
     void StartJumpTutorial() {
-        uiJumpTuto.SetActive(true);
+        // uiJumpTuto.SetActive(true);
+        tutorialCanvasAnimator.SetInteger("state", 1);
     }
 
     void StartBubblesTutorial() {
-        uiJumpTuto.SetActive(false);
-        uiBubbleTuto.SetActive(true);
+        tutorialCanvasAnimator.SetInteger("state", 2);
+        // uiJumpTuto.SetActive(false);
+        // uiBubbleTuto.SetActive(true);
         oxygenBar.SetActive(true);
         oxygenCtrlr.enabled = true;
         oxygenCtrlr.Init();
         blueBubblesCoroutine = StartCoroutine(SpawnBlueBubbles());
-        state++;
+        NextState();
     }
 
     void StartMagnetTutorial() {
-        uiBubbleTuto.SetActive(false);
-        uiMagnetTuto.SetActive(true);
+        tutorialCanvasAnimator.SetInteger("state", 3);
+        // uiBubbleTuto.SetActive(false);
+        // uiMagnetTuto.SetActive(true);
         StopCoroutine(blueBubblesCoroutine);
+        /*  magnetControllerLayout.SetActive(true);
+          magnetCtrlr.enabled = true;
+          magnetCtrlr.Init();
+          redBubblesCoroutine = StartCoroutine(SpawnRedBubbles()); */
+        NextState();
+    }
+
+    void StartBubblesMagnetTutorial() {
         magnetControllerLayout.SetActive(true);
         magnetCtrlr.enabled = true;
         magnetCtrlr.Init();
         redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
-        state++;
+        NextState();
     }
 
     IEnumerator SpawnBlueBubbles() {
@@ -141,8 +163,12 @@ public class TutorialManager : MonoBehaviour {
         }
     }
 
+    public void NextState() {
+        state++;
+    }
+
     void EndTutorial() {
-        screenTransition.ScreenFadeThen(AfterTutorialEnd);        
+        screenTransition.ScreenFadeThen(AfterTutorialEnd);
     }
 
     void AfterTutorialEnd() {
