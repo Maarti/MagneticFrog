@@ -46,7 +46,6 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
         gameUI.SetActive(true);
     }
 
-
     public void DisableJump() {
         jumpCtrlr.enabled = false;
     }

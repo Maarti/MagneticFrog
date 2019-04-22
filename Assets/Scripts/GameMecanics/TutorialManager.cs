@@ -9,7 +9,6 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField] GameObject magnetControllerLayout;
     [SerializeField] GameObject tutorialCanvas;
     [SerializeField] Animator tutorialCanvasAnimator;
-    //  [SerializeField] GameObject uiJumpTuto, uiBubbleTuto, uiMagnetTuto;
     [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
     [SerializeField] GameController gameCtrlr;
@@ -45,9 +44,6 @@ public class TutorialManager : MonoBehaviour {
         jumpCtrlr.Init();
         // Tuto canvas
         tutorialCanvas.SetActive(true);
-        /*    uiJumpTuto.SetActive(false);
-            uiBubbleTuto.SetActive(false);
-            uiMagnetTuto.SetActive(false);*/
         // Oxygen
         oxygenBar.SetActive(false);
         oxygenCtrlr.enabled = false;
@@ -114,14 +110,11 @@ public class TutorialManager : MonoBehaviour {
     }
 
     void StartJumpTutorial() {
-        // uiJumpTuto.SetActive(true);
         tutorialCanvasAnimator.SetInteger("state", 1);
     }
 
     void StartBubblesTutorial() {
         tutorialCanvasAnimator.SetInteger("state", 2);
-        // uiJumpTuto.SetActive(false);
-        // uiBubbleTuto.SetActive(true);
         oxygenBar.SetActive(true);
         oxygenCtrlr.enabled = true;
         oxygenCtrlr.Init();
@@ -131,13 +124,7 @@ public class TutorialManager : MonoBehaviour {
 
     void StartMagnetTutorial() {
         tutorialCanvasAnimator.SetInteger("state", 3);
-        // uiBubbleTuto.SetActive(false);
-        // uiMagnetTuto.SetActive(true);
         StopCoroutine(blueBubblesCoroutine);
-        /*  magnetControllerLayout.SetActive(true);
-          magnetCtrlr.enabled = true;
-          magnetCtrlr.Init();
-          redBubblesCoroutine = StartCoroutine(SpawnRedBubbles()); */
         NextState();
     }
 
@@ -146,6 +133,7 @@ public class TutorialManager : MonoBehaviour {
         magnetCtrlr.enabled = true;
         magnetCtrlr.Init();
         redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
+        tutorialCanvasAnimator.SetInteger("state", 5);
         NextState();
     }
 
@@ -172,6 +160,7 @@ public class TutorialManager : MonoBehaviour {
     }
 
     void AfterTutorialEnd() {
+        tutorialCanvasAnimator.SetInteger("state", 0);
         ApplicationController.ac.FinishTutorial();
         gameCtrlr.StopGame();
         gameCtrlr.StartGame();
