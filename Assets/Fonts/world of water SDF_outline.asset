@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: world of water SDF
+  m_Name: world of water SDF_outline
   m_EditorClassIdentifier: 
-  hashCode: 21405231
-  material: {fileID: 21414432689680392}
-  materialHashCode: -914512188
+  hashCode: -1429928944
+  material: {fileID: 21445434859386500}
+  materialHashCode: 743789467
   fontAssetType: 1
   m_fontInfo:
     Name: World of Water
@@ -38,7 +38,7 @@ MonoBehaviour:
     Padding: 5
     AtlasWidth: 512
     AtlasHeight: 512
-  atlas: {fileID: 28063059019338118}
+  atlas: {fileID: 28886187666175878}
   m_glyphInfoList:
   - id: 32
     x: 6
@@ -974,16 +974,16 @@ MonoBehaviour:
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
---- !u!21 &21414432689680392
+--- !u!21 &21445434859386500
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: world of water SDF Material
+  m_Name: world of water SDF_outline Material
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: OUTLINE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -1006,7 +1006,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 28063059019338118}
+        m_Texture: {fileID: 28886187666175878}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -1038,7 +1038,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.15
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -1074,13 +1074,13 @@ Material:
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!28 &28063059019338118
+--- !u!28 &28886187666175878
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: world of water SDF Atlas
+  m_Name: world of water SDF_outline Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
