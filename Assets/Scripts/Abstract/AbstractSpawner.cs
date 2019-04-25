@@ -3,7 +3,8 @@ using UnityEngine;
 
 public abstract class AbstractSpawner : MonoBehaviour {
 
-    [SerializeField] protected float minPosX = -2f, maxPosX = 2f;
+    [SerializeField] protected float minPosX = -2f;
+    [SerializeField] protected float maxPosX = 2f;
     [SerializeField] protected LevelSettings levelSettings;
     protected bool isSpwaningDuringThisLevel = true;
 

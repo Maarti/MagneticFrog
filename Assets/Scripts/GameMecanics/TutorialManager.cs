@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField] ScreenTransition screenTransition;
     [Header("Controllers")]
     [SerializeField] GameController gameCtrlr;
-    [SerializeField] PlayerController playerCtrlr;
+    // [SerializeField] PlayerController playerCtrlr;
     [SerializeField] OxygenController oxygenCtrlr;
     [SerializeField] MagnetController magnetCtrlr;
     [SerializeField] JumpController jumpCtrlr;
@@ -22,12 +22,11 @@ public class TutorialManager : MonoBehaviour {
     [SerializeField] MineSpawner mineSpawner;
     [Header("Misc")]
     [SerializeField] GameObject tutorialConfiner;
-    [SerializeField] float minPosX = -2f, maxPosX = 2f;
 
     int nbJump = 0;
     int nbBubbles = 0;
     int state = -1;
-    WaitForSeconds wait = new WaitForSeconds(2f);
+    readonly WaitForSeconds wait = new WaitForSeconds(2f);
     Coroutine blueBubblesCoroutine;
     Coroutine redBubblesCoroutine;
     Coroutine minesCoroutine;
@@ -89,12 +88,16 @@ public class TutorialManager : MonoBehaviour {
 
             // MagnetBubbles
             case 4:
-                if (nbBubbles >= 10) state++;
+                if (nbBubbles >= 10) StartMinesTutorial();
                 break;
 
+            // Mines
+            case 5:
+                // waiting for the end of coroutine
+                break;
 
             // End
-            case 5:
+            case 6:
                 EndTutorial();
                 NextState();
                 break;
@@ -133,7 +136,13 @@ public class TutorialManager : MonoBehaviour {
         magnetCtrlr.enabled = true;
         magnetCtrlr.Init();
         redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
+        tutorialCanvasAnimator.SetInteger("state", 4);
+        NextState();
+    }
+
+    void StartMinesTutorial() {
         tutorialCanvasAnimator.SetInteger("state", 5);
+        minesCoroutine = StartCoroutine(SpawnMines());
         NextState();
     }
 
@@ -151,12 +160,24 @@ public class TutorialManager : MonoBehaviour {
         }
     }
 
+    IEnumerator SpawnMines() {
+        int i = 0;
+        while (i < 10) {
+            yield return wait;
+            MineType color = (i < 4) ? MineType.Blue : MineType.Red;
+            mineSpawner.SpawnMine(color, 1f, 1f, .5f, .5f);
+            i++;
+        }
+        NextState();
+    }
+
     public void NextState() {
         state++;
     }
 
     void EndTutorial() {
         screenTransition.ScreenFadeThen(AfterTutorialEnd);
+        StopAllCoroutines();
     }
 
     void AfterTutorialEnd() {
