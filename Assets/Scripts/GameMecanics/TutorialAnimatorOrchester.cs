@@ -8,10 +8,18 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
     [SerializeField] JumpController jumpCtrlr;
     [SerializeField] TutorialManager tutorialManager;
     [SerializeField] Animator tutoMagnetAnim;
+    [SerializeField] GameObject[] tutos;
     Animator anim;
 
     void Awake() {
         anim = GetComponent<Animator>();
+    }
+
+    void OnDisable() {
+        // Be sure that all children are disabled (because when animator is disabled, objects are kept in their current state)
+        foreach(GameObject tuto in tutos) {
+            tuto.SetActive(false);
+        }
     }
 
     public void PauseGame() {
