@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class CoinSpawner : AbstractSpawner {
 
-    [SerializeField] GameObject standardCoinPrefab, blueCoinPrefab, redCoinPrefab;
+    [SerializeField] GameObject standardCoinPrefab;
+    [SerializeField] GameObject blueCoinPrefab;
+    [SerializeField] GameObject redCoinPrefab;
     public SoundController coinSoundCtrlr;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {

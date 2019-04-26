@@ -33,10 +33,10 @@ public class TutorialManager : MonoBehaviour {
 
     void OnEnable() {
         state = 0;
-        JumpController.OnJump += OnJump;
         nbJump = 0;
-        OxygenController.OnBubbleCollect += OnBubbleCollect;
         nbBubbles = 0;
+        JumpController.OnJump += OnJump;
+        OxygenController.OnBubbleCollect += OnBubbleCollect;
         tutorialConfiner.SetActive(true);
         meterCounter.SetActive(false);
         jumpCtrlr.enabled = true;
@@ -48,6 +48,7 @@ public class TutorialManager : MonoBehaviour {
         oxygenCtrlr.enabled = false;
         // Magnet
         magnetControllerLayout.SetActive(false);
+        magnetCtrlr.Init();
         magnetCtrlr.enabled = false;
         levelSettingsCtrlr.enabled = false;
         StartJumpTutorial();

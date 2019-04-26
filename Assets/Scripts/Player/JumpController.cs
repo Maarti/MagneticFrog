@@ -48,6 +48,7 @@ public class JumpController : MonoBehaviour {
         InitAgility();
         InitStamina();
         stunMultiplier = stunIncrementer;
+        Debug.Log("jump init");
         SetRotation(Vector2.zero);
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
         nbJumpForCurrentTouch = 0;
@@ -139,6 +140,7 @@ public class JumpController : MonoBehaviour {
 
     // Rotate the frog on the z axis with an angle between -40 and +40 depending of the direction
     void SetRotation(Vector2 direction) {
+        Debug.Log("setRotation");
         float xDirection = Mathf.Clamp(direction.x, -130f, 130f);
         float rotation = Mathf.Lerp(40f, -40f, (xDirection + 130f) / 260f);
         rb.rotation = rotation;

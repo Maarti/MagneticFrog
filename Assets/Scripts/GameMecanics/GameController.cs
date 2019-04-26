@@ -121,6 +121,7 @@ public class GameController : MonoBehaviour {
     }
 
     void DisplayHomeMenu() {
+        playerCtrlr.isPlayingTutorial = false;
         DestroyMainElements();
         gameOverCanvas.SetActive(false);
         gameOverRaycaster.enabled = true;

@@ -5,14 +5,20 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
 
     [SerializeField] GameObject tutorialMagnetAnimation;
     [SerializeField] GameObject gameUI;
+    [SerializeField] GameObject magnetTutoConfirmButton;
     [SerializeField] JumpController jumpCtrlr;
     [SerializeField] TutorialManager tutorialManager;
     [SerializeField] Animator tutoMagnetAnim;
     [SerializeField] GameObject[] tutos;
     Animator anim;
+    bool clickedOnRedMagnet = false;
+    bool clickedOnBlueMagnet = false;
 
     void Awake() {
         anim = GetComponent<Animator>();
+        clickedOnRedMagnet = false;
+        clickedOnBlueMagnet = false;
+        magnetTutoConfirmButton.SetActive(false);
     }
 
     void OnDisable() {
@@ -67,11 +73,20 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
     }
 
     public void SetMagnetAnimToBlue() {
-        tutoMagnetAnim.SetBool("isRed", false);
+        tutoMagnetAnim.SetBool("isRed", false);        
+        clickedOnBlueMagnet = true;
+        CheckIfConfirmButtonShouldBeDisplayed();
     }
 
     public void SetMagnetAnimToRed() {
         tutoMagnetAnim.SetBool("isRed", true);
+        clickedOnRedMagnet = true;
+        CheckIfConfirmButtonShouldBeDisplayed();
+    }
+
+    public void CheckIfConfirmButtonShouldBeDisplayed() {
+        if (clickedOnBlueMagnet && clickedOnRedMagnet)
+            magnetTutoConfirmButton.SetActive(true);
     }
 
 }
