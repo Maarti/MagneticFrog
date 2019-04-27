@@ -56,8 +56,8 @@ public class AdsController : MonoBehaviour {
         Debug.Log("LoadInterstitial())");
         if (!ApplicationController.ac.PlayerData.isPremium && Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
-            // string adUnitId = Config.ADMOB_TEST_INTERSTITIAL_ID;
-            string adUnitId = Config.ADMOB_ANDROID_ENDLEVEL_INTERSTITIAL_ID;
+            string adUnitId = Config.ADMOB_TEST_INTERSTITIAL_ID;
+            // string adUnitId = Config.ADMOB_ANDROID_ENDLEVEL_INTERSTITIAL_ID;
 #elif UNITY_IPHONE
             string adUnitId = "ios_not_supported";
 #else
@@ -99,7 +99,8 @@ public class AdsController : MonoBehaviour {
         }
         if (Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
-            string adUnitId = Config.ADMOB_ANDROID_REWARD_ID;
+            string adUnitId = Config.ADMOB_TEST_REWARDED_ID;
+            // string adUnitId = Config.ADMOB_ANDROID_REWARD_ID;
 #elif UNITY_IPHONE
             string adUnitId = "ios_not_supported";
 #else

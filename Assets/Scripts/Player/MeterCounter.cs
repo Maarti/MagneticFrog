@@ -30,7 +30,7 @@ public class MeterCounter : MonoBehaviour {
     }
 
     void OnGameOver(int score) {
-        this.isCounting = false;
+       isCounting = false;
         Value = score;
     }
 }

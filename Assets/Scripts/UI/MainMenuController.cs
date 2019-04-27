@@ -7,25 +7,25 @@ public class MainMenuController : MonoBehaviour {
 
     [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] GameObject gameTitleCanvas;
+    [SerializeField] GameObject scoreSign;
     [SerializeField] AudioSource playClickSound;
     Animator mainMenuAnim;
     bool isStarted = false;
 
     private void Start() {
         mainMenuAnim = GetComponent<Animator>();
+        GameController.OnGameOver += OnGameOver;
         isStarted = true;
         OnEnable();
+    }
+    
+    void OnDestroy() {
+        GameController.OnGameOver -= OnGameOver;
     }
 
     private void OnEnable() {
         if (!isStarted) return;
-        if (ApplicationController.ac.PlayerData.bestScore >= 0) {
-            bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString() + "m";
-            bestScoreText.gameObject.SetActive(true);
-        }
-        else {
-            bestScoreText.gameObject.SetActive(false);
-        }
+        RefreshScoreDisplay();
         gameTitleCanvas.SetActive(true);
     }
 
@@ -43,6 +43,21 @@ public class MainMenuController : MonoBehaviour {
         playClickSound.Play();
         GameController.gc.StartGame();
     }
+       
+    void OnGameOver(int score) {
+        RefreshScoreDisplay();
+    }
+
+    void RefreshScoreDisplay() {
+        if (ApplicationController.ac.PlayerData.bestScore >= 0) {
+            bestScoreText.text = ApplicationController.ac.PlayerData.bestScore.ToString() + "m";
+            scoreSign.SetActive(true);
+        }
+        else {
+            scoreSign.SetActive(false);
+        }
+    }
+
 
 
 }

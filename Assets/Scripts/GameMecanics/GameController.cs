@@ -94,12 +94,12 @@ public class GameController : MonoBehaviour {
     }
 
     public void TriggerGameOver(int score) {
-        if (OnGameOver != null)
-            OnGameOver(score);
-        StopGame();
-        DisplayGameOverScreen(score);
         ApplicationController.ac.RecordNewScore(score);
         ApplicationController.ac.Save();
+        StopGame();
+        DisplayGameOverScreen(score);
+        if (OnGameOver != null)
+            OnGameOver(score);
     }
 
     void DisplayGameOverScreen(int score) {
