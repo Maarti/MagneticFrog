@@ -1718,7 +1718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 133.33334, y: -710.8753}
+  m_AnchoredPosition: {x: 133.33337, y: -800.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124436416
@@ -2675,14 +2675,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
-  m_Children: []
+  m_Children:
+  - {fileID: 2125148047}
   m_Father: {fileID: 741244922}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -270}
-  m_SizeDelta: {x: 700, y: 20}
+  m_AnchoredPosition: {x: 391.50003, y: -4140}
+  m_SizeDelta: {x: 700, y: 2300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249778160
 MonoBehaviour:
@@ -2704,7 +2705,68 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Credits
+  m_text: "_____________________________________\r\n<size=120%><b>Terms & Conditions</b></size>\r\n\r\nBy
+    downloading or using the app, these terms will automatically apply to you \u2013
+    you should make sure therefore that you read them carefully before using the app.
+    You\u2019re not allowed to copy, or modify the app, any part of the app, or our
+    trademarks in any way. You\u2019re not allowed to attempt to extract the source
+    code of the app, and you also shouldn\u2019t try to translate the app into other
+    languages, or make derivative versions. The app itself, and all the trade marks,
+    copyright, database rights and other intellectual property rights related to it,
+    still belong to Bryan Martinet.\r\n\r\nBryan Martinet is committed to ensuring
+    that the app is as useful and efficient as possible. For that reason, we reserve
+    the right to make changes to the app or to charge for its services, at any time
+    and for any reason. We will never charge you for the app or its services without
+    making it very clear to you exactly what you\u2019re paying for.\r\n\r\nThe Magnetic
+    Frog app stores and processes personal data that you have provided to us, in order
+    to provide my Service. It\u2019s your responsibility to keep your phone and access
+    to the app secure. We therefore recommend that you do not jailbreak or root your
+    phone, which is the process of removing software restrictions and limitations
+    imposed by the official operating system of your device. It could make your phone
+    vulnerable to malware/viruses/malicious programs, compromise your phone\u2019s
+    security features and it could mean that the Magnetic Frog app won\u2019t work
+    properly or at all.\r\n\r\nYou should be aware that there are certain things that
+    Bryan Martinet will not take responsibility for. Certain functions of the app
+    will require the app to have an active internet connection. The connection can
+    be Wi-Fi, or provided by your mobile network provider, but Bryan Martinet cannot
+    take responsibility for the app not working at full functionality if you don\u2019t
+    have access to Wi-Fi, and you don\u2019t have any of your data allowance left.\r\n\r\nIf
+    you\u2019re using the app outside of an area with Wi-Fi, you should remember that
+    your terms of the agreement with your mobile network provider will still apply.
+    As a result, you may be charged by your mobile provider for the cost of data for
+    the duration of the connection while accessing the app, or other third party charges.
+    In using the app, you\u2019re accepting responsibility for any such charges, including
+    roaming data charges if you use the app outside of your home territory (i.e. region
+    or country) without turning off data roaming. If you are not the bill payer for
+    the device on which you\u2019re using the app, please be aware that we assume
+    that you have received permission from the bill payer for using the app.\r\n\r\nAlong
+    the same lines, Bryan Martinet cannot always take responsibility for the way you
+    use the app i.e. You need to make sure that your device stays charged \u2013 if
+    it runs out of battery and you can\u2019t turn it on to avail the Service, Bryan
+    Martinet cannot accept responsibility.\r\n\r\nWith respect to Bryan Martinet\u2019s
+    responsibility for your use of the app, when you\u2019re using the app, it\u2019s
+    important to bear in mind that although we endeavour to ensure that it is updated
+    and correct at all times, we do rely on third parties to provide information to
+    us so that we can make it available to you. Bryan Martinet accepts no liability
+    for any loss, direct or indirect, you experience as a result of relying wholly
+    on this functionality of the app.\r\n\r\nAt some point, we may wish to update
+    the app. The app is currently available on Android \u2013 the requirements for
+    system (and for any additional systems we decide to extend the availability of
+    the app to) may change, and you\u2019ll need to download the updates if you want
+    to keep using the app. Bryan Martinet does not promise that it will always update
+    the app so that it is relevant to you and/or works with the Android version that
+    you have installed on your device. However, you promise to always accept updates
+    to the application when offered to you, We may also wish to stop providing the
+    app, and may terminate use of it at any time without giving notice of termination
+    to you. Unless we tell you otherwise, upon any termination, (a) the rights and
+    licenses granted to you in these terms will end; (b) you must stop using the app,
+    and (if needed) delete it from your device.\r\n\r\n<u><b>Changes to This Terms
+    and Conditions</b></u>\r\n\r\nI may update our Terms and Conditions from time
+    to time. Thus, you are advised to review this page periodically for any changes.
+    I will notify you of any changes by posting the new Terms and Conditions on this
+    page. These changes are effective immediately after they are posted on this page.\r\n\r\n<u><b>Contact
+    Us</b></u>\r\n\r\nIf you have any questions or suggestions about my Terms and
+    Conditions, do not hesitate to contact me at contact.magneticfrog@maarti.net."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1fd5850b291f1e448a60b1a25637505b, type: 2}
   m_sharedMaterial: {fileID: 21414432689680392, guid: 1fd5850b291f1e448a60b1a25637505b,
@@ -2733,13 +2795,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
+  m_fontSize: 21.45
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontSizeMax: 22
+  m_fontStyle: 0
   m_textAlignment: 257
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
@@ -2751,7 +2813,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2774,14 +2836,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 249778160}
-    characterCount: 7
+    characterCount: 4855
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 852
+    wordCount: 844
     linkCount: 0
-    lineCount: 1
+    lineCount: 89
     pageCount: 1
-    materialCount: 1
+    materialCount: 2
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2791,7 +2853,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2125148048}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -10148,7 +10210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 183.33334, y: -50}
+  m_AnchoredPosition: {x: 183.33337, y: -50}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485671267
@@ -10349,7 +10411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &491696061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10366,7 +10428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -180}
+  m_AnchoredPosition: {x: 391.50003, y: -180}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491696062
@@ -10510,7 +10572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493473415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10527,7 +10589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -90}
+  m_AnchoredPosition: {x: 391.50003, y: -90}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493473416
@@ -11806,7 +11868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &535414454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11823,7 +11885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -210}
+  m_AnchoredPosition: {x: 391.50003, y: -210}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535414455
@@ -12601,7 +12663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &567485802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12618,7 +12680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -120}
+  m_AnchoredPosition: {x: 391.50003, y: -120}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567485803
@@ -12780,7 +12842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 666.6667, y: -710.8753}
+  m_AnchoredPosition: {x: 666.6667, y: -800.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582681944
@@ -19051,7 +19113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -30}
+  m_AnchoredPosition: {x: 391.50003, y: -30}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685080032
@@ -19233,7 +19295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &692042639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19250,7 +19312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -240}
+  m_AnchoredPosition: {x: 391.50003, y: -240}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692042640
@@ -19925,15 +19987,15 @@ RectTransform:
   - {fileID: 491696061}
   - {fileID: 535414454}
   - {fileID: 692042639}
-  - {fileID: 249778159}
   - {fileID: 1482618005}
+  - {fileID: 249778159}
   m_Father: {fileID: 484609578}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00006070634}
-  m_SizeDelta: {x: 0, y: 310}
+  m_SizeDelta: {x: 0, y: 5290}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &741244923
 MonoBehaviour:
@@ -20081,7 +20143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 133.33334, y: -960.8753}
+  m_AnchoredPosition: {x: 133.33337, y: -1050}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755682162
@@ -20624,7 +20686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -60}
+  m_AnchoredPosition: {x: 391.50003, y: -60}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783278035
@@ -22757,7 +22819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -5}
+  m_AnchoredPosition: {x: 391.50003, y: -5}
   m_SizeDelta: {x: 700, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &918061648
@@ -22925,7 +22987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -710.8753}
+  m_AnchoredPosition: {x: 400.00003, y: -800.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &931965019
@@ -28735,7 +28797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 133.33334, y: -460.8753}
+  m_AnchoredPosition: {x: 133.33337, y: -550.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013029361
@@ -46790,8 +46852,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1340467217}
   m_HandleRect: {fileID: 1340467216}
   m_Direction: 2
-  m_Value: 0.99999946
-  m_Size: 0.6451612
+  m_Value: 1
+  m_Size: 0.037807185
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46957,7 +47019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 666.6667, y: -960.8753}
+  m_AnchoredPosition: {x: 666.6667, y: -1050}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227235515
@@ -53040,7 +53102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283619012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53057,7 +53119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -150}
+  m_AnchoredPosition: {x: 391.50003, y: -150}
   m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283619013
@@ -54180,8 +54242,8 @@ RectTransform:
   m_Father: {fileID: 1686728951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.3548386}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 0.96219283}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -54944,7 +55006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -960.8753}
+  m_AnchoredPosition: {x: 400.00003, y: -1050}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368801114
@@ -56177,7 +56239,7 @@ GameObject:
   - component: {fileID: 1482618007}
   - component: {fileID: 1482618006}
   m_Layer: 5
-  m_Name: TextMeshPro Text (9)
+  m_Name: PrivacyPolicy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56193,14 +56255,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
-  m_Children: []
+  m_Children:
+  - {fileID: 1558852732}
   m_Father: {fileID: 741244922}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391.5, y: -300}
-  m_SizeDelta: {x: 700, y: 20}
+  m_AnchoredPosition: {x: 391.50003, y: -1530}
+  m_SizeDelta: {x: 700, y: 2900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482618006
 MonoBehaviour:
@@ -56222,7 +56285,65 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Credits
+  m_text: "\r\n_____________________________________\r\n<size=120%><b>Privacy Policy</b></size>\r\n\r\nBryan
+    Martinet built the Magnetic Frog app as an Ad Supported app. This SERVICE is provided
+    by Bryan Martinet at no cost and is intended for use as is.\r\n\r\nThis page is
+    used to inform visitors regarding my policies with the collection, use, and disclosure
+    of Personal Information if anyone decided to use my Service.\r\n\r\nIf you choose
+    to use my Service, then you agree to the collection and use of information in
+    relation to this policy. The Personal Information that I collect is used for providing
+    and improving the Service. I will not use or share your information with anyone
+    except as described in this Privacy Policy.\r\n\r\nThe terms used in this Privacy
+    Policy have the same meanings as in our Terms and Conditions, which is accessible
+    at Magnetic Frog unless otherwise defined in this Privacy Policy.\r\n\r\n<u><b>Information
+    Collection and Use\r</b></u>\r\n\r\nFor a better experience, while using our Service,
+    I may require you to provide us with certain personally identifiable information,
+    including but not limited to Android advertising ID. The information that I request
+    will be retained on your device and is not collected by me in any way.\r\n\r\nThe
+    app does use third party services that may collect information used to identify
+    you.\r\n\r\n<u><b>Log Data</b></u>\r\n\r\nI want to inform you that whenever you
+    use my Service, in a case of an error in the app I collect data and information
+    (through third party products) on your phone called Log Data. This Log Data may
+    include information such as your device Internet Protocol (\u201CIP\u201D) address,
+    device name, operating system version, the configuration of the app when utilizing
+    my Service, the time and date of your use of the Service, and other statistics.\r\n\r\n<u><b>Cookies</b></u>\r\n\r\nCookies
+    are files with a small amount of data that are commonly used as anonymous unique
+    identifiers. These are sent to your browser from the websites that you visit and
+    are stored on your device's internal memory.\r\n\r\nThis Service does not use
+    these \u201Ccookies\u201D explicitly. However, the app may use third party code
+    and libraries that use \u201Ccookies\u201D to collect information and improve
+    their services. You have the option to either accept or refuse these cookies and
+    know when a cookie is being sent to your device. If you choose to refuse our cookies,
+    you may not be able to use some portions of this Service.\r\n\r\n<u><b>Service
+    Providers</b></u>\r\n\r\nI may employ third-party companies and individuals due
+    to the following reasons:\r\n\r\nTo facilitate our Service;\r\nTo provide the
+    Service on our behalf;\r\nTo perform Service-related services; or\r\nTo assist
+    us in analyzing how our Service is used.\r\nI want to inform users of this Service
+    that these third parties have access to your Personal Information. The reason
+    is to perform the tasks assigned to them on our behalf. However, they are obligated
+    not to disclose or use the information for any other purpose.\r\n\r\n<u><b>Security</b></u>\r\n\r\nI
+    value your trust in providing us your Personal Information, thus we are striving
+    to use commercially acceptable means of protecting it. But remember that no method
+    of transmission over the internet, or method of electronic storage is 100% secure
+    and reliable, and I cannot guarantee its absolute security.\r\n\r\n<u><b>Links
+    to Other Sites</b></u>\r\n\r\nThis Service may contain links to other sites. If
+    you click on a third-party link, you will be directed to that site. Note that
+    these external sites are not operated by me. Therefore, I strongly advise you
+    to review the Privacy Policy of these websites. I have no control over and assume
+    no responsibility for the content, privacy policies, or practices of any third-party
+    sites or services.\r\n\r\n<u><b>Children\u2019s Privacy</b></u>\r\n\r\nThese Services
+    do not address anyone under the age of 13. I do not knowingly collect personally
+    identifiable information from children under 13. In the case I discover that a
+    child under 13 has provided me with personal information, I immediately delete
+    this from our servers. If you are a parent or guardian and you are aware that
+    your child has provided us with personal information, please contact me so that
+    I will be able to do necessary actions.\r\n\r\n<u><b>Changes to This Privacy Policy</b></u>\r\n\r\nI
+    may update our Privacy Policy from time to time. Thus, you are advised to review
+    this page periodically for any changes. I will notify you of any changes by posting
+    the new Privacy Policy on this page. These changes are effective immediately after
+    they are posted on this page.\r\n\r\n<u><b>Contact Us</b></u>\r\n\r\nIf you have
+    any questions or suggestions about my Privacy Policy, do not hesitate to contact
+    me at contact.magneticfrog@maarti.net.\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1fd5850b291f1e448a60b1a25637505b, type: 2}
   m_sharedMaterial: {fileID: 21414432689680392, guid: 1fd5850b291f1e448a60b1a25637505b,
@@ -56251,13 +56372,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
+  m_fontSize: 21.7
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 22
+  m_fontStyle: 0
   m_textAlignment: 257
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
@@ -56269,7 +56390,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -56292,14 +56413,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1482618006}
-    characterCount: 7
+    characterCount: 4571
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 784
+    wordCount: 760
     linkCount: 0
-    lineCount: 1
+    lineCount: 111
     pageCount: 1
-    materialCount: 1
+    materialCount: 2
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -56309,7 +56430,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1558852733}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -62062,6 +62183,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558552687}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1558852731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558852732}
+  - component: {fileID: 1558852734}
+  - component: {fileID: 1558852733}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [world of water SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1558852732
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558852731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1482618005}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1558852733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558852731}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 0.5
+  m_canvasRenderer: {fileID: 1558852734}
+  m_TextComponent: {fileID: 1482618006}
+  m_materialReferenceIndex: 1
+--- !u!222 &1558852734
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558852731}
+  m_CullTransparentMesh: 0
 --- !u!1 &1591767988
 GameObject:
   m_ObjectHideFlags: 0
@@ -74140,7 +74335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -50}
+  m_AnchoredPosition: {x: 400.00003, y: -50}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866399734
@@ -74280,7 +74475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 666.6667, y: -460.8753}
+  m_AnchoredPosition: {x: 666.6667, y: -550.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870944021
@@ -80072,7 +80267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -460.8753}
+  m_AnchoredPosition: {x: 400.00003, y: -550.00006}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965715024
@@ -92490,6 +92685,80 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2125148046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125148047}
+  - component: {fileID: 2125148049}
+  - component: {fileID: 2125148048}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [world of water SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2125148047
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125148046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 249778159}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2125148048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125148046}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 0.5
+  m_canvasRenderer: {fileID: 2125148049}
+  m_TextComponent: {fileID: 249778160}
+  m_materialReferenceIndex: 1
+--- !u!222 &2125148049
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125148046}
+  m_CullTransparentMesh: 0
 --- !u!1 &2135199356
 GameObject:
   m_ObjectHideFlags: 0
