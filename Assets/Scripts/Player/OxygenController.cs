@@ -9,7 +9,8 @@ public class OxygenController : MonoBehaviour {
     [SerializeField] PlayerController playerCtrlr;
     [SerializeField] Slider oxygenBar;
     [SerializeField] Animator oxygenBarAnimator;
-    public float oxygenMax = 20f;
+    [SerializeField] RectTransform lockedArea;
+    public float oxygenMax = 35f;
     public float oxygenConsumption = 1f;    // oxygen consumption per second
     float oxygen;
     public float Oxygen {
@@ -60,15 +61,19 @@ public class OxygenController : MonoBehaviour {
         switch (ApplicationController.ac.characters[CharacterSelector.currentCharacter].breath) {
             case 0:
                 oxygenMax = 20f;
+                lockedArea.sizeDelta = new Vector2(lockedArea.sizeDelta.x, 422);
                 break;
             case 1:
                 oxygenMax = 25f;
+                lockedArea.sizeDelta = new Vector2(lockedArea.sizeDelta.x, 297);
                 break;
             case 2:
                 oxygenMax = 30f;
+                lockedArea.sizeDelta = new Vector2(lockedArea.sizeDelta.x, 170);
                 break;
             case 3:
                 oxygenMax = 35f;
+                lockedArea.sizeDelta = new Vector2(lockedArea.sizeDelta.x, 0);
                 break;
         }
     }
@@ -82,8 +87,8 @@ public class OxygenController : MonoBehaviour {
                 audioAnim.SetBool("isStressful", false);
             if (stressfulMusic.isPlaying)
                 stressfulMusic.Stop();
-         /*   if (mainTheme.volume < maxMainThemeVolume)
-                mainTheme.volume = maxMainThemeVolume;*/
+            /*   if (mainTheme.volume < maxMainThemeVolume)
+                   mainTheme.volume = maxMainThemeVolume;*/
             return;
         }
         else {
@@ -97,10 +102,10 @@ public class OxygenController : MonoBehaviour {
                 stressfulMusic.pitch = 1.25f;
             else
                 stressfulMusic.pitch = 1f;
-          /*  float mainThemeVolumeRatio = Oxygen / OXYGEN_LEVEL_WHEN_STRESSFUL_MUSIC_START;
-            float stressfulMusicVolumeRatio = 1f - mainThemeVolumeRatio;
-            mainTheme.volume = mainThemeVolumeRatio * maxMainThemeVolume;
-            stressfulMusic.volume = stressfulMusicVolumeRatio * maxStressfulMusicVolume;*/
+            /*  float mainThemeVolumeRatio = Oxygen / OXYGEN_LEVEL_WHEN_STRESSFUL_MUSIC_START;
+              float stressfulMusicVolumeRatio = 1f - mainThemeVolumeRatio;
+              mainTheme.volume = mainThemeVolumeRatio * maxMainThemeVolume;
+              stressfulMusic.volume = stressfulMusicVolumeRatio * maxStressfulMusicVolume;*/
         }
     }
 
