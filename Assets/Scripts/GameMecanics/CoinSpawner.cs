@@ -6,6 +6,9 @@ public class CoinSpawner : AbstractSpawner {
     [SerializeField] GameObject standardCoinPrefab;
     [SerializeField] GameObject blueCoinPrefab;
     [SerializeField] GameObject redCoinPrefab;
+    [SerializeField] Camera cam;
+    [SerializeField] RectTransform coinIndicator;
+    [SerializeField] Animator coinIndicatorAnim;
     public SoundController coinSoundCtrlr;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
@@ -28,7 +31,11 @@ public class CoinSpawner : AbstractSpawner {
                 }
                 else
                     coin = Instantiate(standardCoinPrefab, pos, Quaternion.identity);
-                coin.GetComponent<CoinController>().coinSoundCtrlr = coinSoundCtrlr;
+                CoinController ctrlr = coin.GetComponent<CoinController>();
+                ctrlr.coinSoundCtrlr = coinSoundCtrlr;
+                ctrlr.cam = cam;
+                ctrlr.coinIndicator = coinIndicator;
+                ctrlr.coinIndicatorAnim = coinIndicatorAnim;
             }
             else {
                 yield return waitOneSec;
