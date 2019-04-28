@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TMP_sprite_data_source
   m_EditorClassIdentifier: 
   hashCode: -1521386958
-  material: {fileID: 21046622782521882}
+  material: {fileID: 21092579532753306}
   materialHashCode: 0
   spriteSheet: {fileID: 2800000, guid: e123b271ec653c54198fcdaf71d0c9d0, type: 3}
   spriteInfoList:
@@ -242,7 +242,7 @@ MonoBehaviour:
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   fallbackSpriteAssets: []
---- !u!21 &21046622782521882
+--- !u!21 &21092579532753306
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 1
