@@ -8,8 +8,10 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
 
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject defaultButton;
-    [SerializeField] GameObject alphaSliderBackground;
-    [SerializeField] GameObject alphaSliderHandle;
+    // [SerializeField] GameObject alphaSliderBackground;
+    // [SerializeField] GameObject alphaSliderHandle;
+    [Tooltip("Area around the slider, preventing to move the layout while interacting with the alpha slider")]
+    [SerializeField] GameObject alphaPanel;
     [SerializeField] bool isMoving = false;
     [SerializeField] RectTransform parentRect;
     [SerializeField] CanvasGroup canvasGroup;
@@ -46,7 +48,8 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
 #endif
             // Don't move layout if we are touching the buttons
             if (!IsPointerOverUIObject(confirmButton, inputController) && !IsPointerOverUIObject(defaultButton, inputController)
-                && !IsPointerOverUIObject(alphaSliderBackground, inputController) && !IsPointerOverUIObject(alphaSliderHandle, inputController)) {
+                /*&& !IsPointerOverUIObject(alphaSliderBackground, inputController) && !IsPointerOverUIObject(alphaSliderHandle, inputController)*/
+                && !IsPointerOverUIObject(alphaPanel, inputController)) {
                 Vector2 anchorPos = ScreenPointToAnchorPos(inputController);
                 MoveLayout(anchorPos.y);
             }
@@ -61,6 +64,7 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
     }
 
     void MoveLayout(float yAnchoredPosition) {
+        Debug.LogFormat("MoveLayout() to {0}", yAnchoredPosition);
         Vector3 newPos = rectTransform.anchoredPosition;
         newPos.y = Mathf.Clamp(yAnchoredPosition, yMin, yMax);
         rectTransform.anchoredPosition = newPos;
@@ -91,7 +95,7 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
     }
 
     public void SetAlphaToDefault() {
-        SetLayoutAlpha(0.5f);
+        SetLayoutAlpha(0.8f);
         InitAlphaSliderValue();
     }
 
