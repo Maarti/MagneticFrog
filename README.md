@@ -12,6 +12,9 @@
 6. Select > Shrink > 2px
 7. Fill with background color
 
+### Blured UI background
+Filters > Blur > Median Blur > Radius: 30
+
 ## Credits
 * "Water Swirl" by InspectorJ of Freesound.org
 * "Underwater ambience" by akemov of Freesound.org
