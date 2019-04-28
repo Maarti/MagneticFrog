@@ -34,7 +34,8 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
             SetLayoutAlpha(ApplicationController.ac.PlayerData.magnetControllerAlpha ?? .5f);
             InitAlphaSliderValue();
         }
-        anim.SetBool("handIsShowing", true);
+        if (isMoving && anim != null)
+            anim.SetBool("handIsShowing", true);
     }
 
     void Update() {

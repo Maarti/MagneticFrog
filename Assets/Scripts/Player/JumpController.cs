@@ -56,6 +56,8 @@ public class JumpController : MonoBehaviour {
 
     void OnDisable() {
         rb.velocity = Vector2.zero;
+        jumpCooldownImg.gameObject.SetActive(false);
+        stunCooldownImg.gameObject.SetActive(false);
     }
 
 
