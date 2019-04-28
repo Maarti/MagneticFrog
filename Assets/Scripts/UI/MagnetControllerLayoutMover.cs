@@ -16,6 +16,7 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
     [SerializeField] RectTransform parentRect;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] Slider alphaSlider;
+    [SerializeField] Animator anim;
 
     RectTransform rectTransform;
     float yMin = -550f;
@@ -33,6 +34,7 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
             SetLayoutAlpha(ApplicationController.ac.PlayerData.magnetControllerAlpha ?? .5f);
             InitAlphaSliderValue();
         }
+        anim.SetBool("handIsShowing", true);
     }
 
     void Update() {
@@ -52,6 +54,8 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
                 && !IsPointerOverUIObject(alphaPanel, inputController)) {
                 Vector2 anchorPos = ScreenPointToAnchorPos(inputController);
                 MoveLayout(anchorPos.y);
+                if (anim.GetBool("handIsShowing"))
+                    anim.SetBool("handIsShowing", false);
             }
         }
     }
@@ -59,12 +63,11 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
     Vector2 ScreenPointToAnchorPos(Vector2 screenPoint) {
         Vector2 anchorPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, screenPoint, null, out anchorPos);
-        Debug.Log("ScreenPos=" + screenPoint + "   AnchorPos=" + anchorPos + " Parent=" + parentRect, parentRect);
+        // Debug.Log("ScreenPos=" + screenPoint + "   AnchorPos=" + anchorPos + " Parent=" + parentRect, parentRect);
         return anchorPos;
     }
 
     void MoveLayout(float yAnchoredPosition) {
-        Debug.LogFormat("MoveLayout() to {0}", yAnchoredPosition);
         Vector3 newPos = rectTransform.anchoredPosition;
         newPos.y = Mathf.Clamp(yAnchoredPosition, yMin, yMax);
         rectTransform.anchoredPosition = newPos;
@@ -103,7 +106,7 @@ public class MagnetControllerLayoutMover : MonoBehaviour {
     public void KeepTrackOfDefaultMagnetControllerLayoutPosition() {
         if (ApplicationController.ac.defaultMagnetControllerHeight == null) {
             ApplicationController.ac.defaultMagnetControllerHeight = rectTransform.anchoredPosition.y;
-            Debug.Log("KeepTrackOfDefaultMagnetControllerLayoutPosition to " + ApplicationController.ac.defaultMagnetControllerHeight);
+            // Debug.Log("KeepTrackOfDefaultMagnetControllerLayoutPosition to " + ApplicationController.ac.defaultMagnetControllerHeight);
         }
     }
 
