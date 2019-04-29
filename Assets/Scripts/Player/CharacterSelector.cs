@@ -8,8 +8,12 @@ public class CharacterSelector : MonoBehaviour {
     public static int currentCharacter = 0;
     public static int currentlyDisplayedCharacter = 0;
     public static CharacterId DEFAULT_CHARACTER = CharacterId.HYLA;
-    [SerializeField] Slider agilitySlider, staminaSlider, breathSlider;
-    [SerializeField] Button agilityButton, staminaButton, breathButton;
+    [SerializeField] Slider agilitySlider;
+    [SerializeField] Slider staminaSlider;
+    [SerializeField] Slider breathSlider;
+    [SerializeField] Button agilityButton;
+    [SerializeField] Button staminaButton;
+    [SerializeField] Button breathButton;
     [SerializeField] Button selectButton;
     [SerializeField] TextMeshProUGUI characterName;
     [SerializeField] GameObject selectButtonObj;
