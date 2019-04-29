@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Animator))]
 public class AnimatorFunctions : MonoBehaviour {
 
+    [SerializeField] SoundController bubbleSoundCtrlr;
     Animator anim;
 
     void Awake() {
@@ -15,6 +16,10 @@ public class AnimatorFunctions : MonoBehaviour {
                 anim.SetTrigger("touch");
                 break;
         }
+    }
+
+    public void PlayBubbleSound() {
+        bubbleSoundCtrlr.Play();
     }
 
 }

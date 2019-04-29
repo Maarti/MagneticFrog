@@ -33,8 +33,10 @@ public class BubbleSpawner : AbstractSpawner {
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
         GameObject bubble = Instantiate(blueBubblePrefab, pos, Quaternion.identity);
-        // bubble.GetComponent<BubbleController>().SetColor(blueColor);
-        bubble.GetComponent<BubbleController>().bubbleSoundCtrlr = bubbleSoundCtrlr;
+        // bubble.GetComponent<BubbleController>().SetColor(blueColor);        
+        BubbleController bubbleCtrlr = bubble.GetComponent<BubbleController>();
+        bubbleCtrlr.type = ElementType.Blue;
+        bubbleCtrlr.bubbleSoundCtrlr = bubbleSoundCtrlr;
         return bubble;
     }
 
@@ -42,8 +44,10 @@ public class BubbleSpawner : AbstractSpawner {
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
         GameObject bubble = Instantiate(redBubblePrefab, pos, Quaternion.identity);
-       // bubble.GetComponent<BubbleController>().SetColor(redColor);
-        bubble.GetComponent<BubbleController>().bubbleSoundCtrlr = bubbleSoundCtrlr;
+        // bubble.GetComponent<BubbleController>().SetColor(redColor);
+        BubbleController bubbleCtrlr = bubble.GetComponent<BubbleController>();
+        bubbleCtrlr.type = ElementType.Red;
+        bubbleCtrlr.bubbleSoundCtrlr = bubbleSoundCtrlr;
         return bubble;
     }
 

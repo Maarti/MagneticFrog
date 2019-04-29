@@ -10,6 +10,7 @@ public class JumpController : MonoBehaviour {
     public float timeBetweenJumps = 1.2f;                       // time to wait between each jump
     public float stunIncrementer = .75f;                        // increment the stunMultiplier by this value at each stun
     [HideInInspector] public float lastJump = -1f;              // time the last jump happened
+    [SerializeField] Camera cam;
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
     [SerializeField] float horizontalForce = 200f;              // multiplier of the y vector
     [SerializeField] bool movingRelativeToPlayer = true;        // when touching the screen, move relatively to the player or to the middle of the screen
@@ -114,7 +115,7 @@ public class JumpController : MonoBehaviour {
         if (!movingRelativeToPlayer)
             direction.x = (pointer.x - Screen.width / 2f) / (Screen.width / 2);   // Move relatively to the middle of the screen
         else
-            direction.x = (pointer.x - Camera.main.WorldToScreenPoint(transform.position).x) / Screen.width; // Move relatively to the player
+            direction.x = (pointer.x - cam.WorldToScreenPoint(transform.position).x) / Screen.width; // Move relatively to the player
         direction.y = 1f;
         direction.Normalize();
         direction = new Vector2(direction.x * horizontalForce, direction.y * jumpForce);

@@ -23,6 +23,12 @@ public class GameController : MonoBehaviour {
     [SerializeField] Canvas goCanvas;
     [SerializeField] Text goScoreText;
     [SerializeField] Text goBestScoreText;
+    [Header("UI collected bubble effect")]
+    [SerializeField] Camera cam;
+    [SerializeField] CollectedBubble[] uiBlueBubbles;
+    [SerializeField] CollectedBubble[] uiRedBubbles;
+    int uiBlueBubbleCurrentIndex = 0;
+    int uiRedBubbleCurrentIndex = 0;
 
     public static GameController gc;
     public delegate void GameOver(int score);
@@ -78,7 +84,7 @@ public class GameController : MonoBehaviour {
         StartGame();
         RestartBubblesParticlySystm();
     }
-       
+
     public void StopGame() {
         gameUICanvas.SetActive(false);
         bestScoreMarker.SetActive(false);
@@ -145,6 +151,25 @@ public class GameController : MonoBehaviour {
     void RestartBubblesParticlySystm() {
         bubbleParticleSystm.Stop();
         bubbleParticleSystm.Play();
+    }
+
+    public void StartCollectedBubbleAnimation(ElementType type, Vector3 worldPosition) {
+        CollectedBubble bubble;
+        if (type == ElementType.Blue) {
+            bubble = uiBlueBubbles[uiBlueBubbleCurrentIndex++];
+            if (uiBlueBubbleCurrentIndex >= uiBlueBubbles.Length)
+                uiBlueBubbleCurrentIndex = 0;
+        }
+        else {
+            bubble = uiRedBubbles[uiRedBubbleCurrentIndex++];
+            if (uiRedBubbleCurrentIndex >= uiRedBubbles.Length)
+                uiRedBubbleCurrentIndex = 0;
+        }
+
+        if (!bubble.gameObject.activeSelf) {
+            bubble.Recycle(cam.WorldToScreenPoint(worldPosition));
+        }
+
     }
 
 }
