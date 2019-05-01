@@ -25,7 +25,7 @@ public class OxygenController : MonoBehaviour {
     [SerializeField] AudioSource stressfulMusic;
     const float MAX_ANIM_SPEED = 3f;
     const float ANIM_START_WHEN_OXYGEN_REACHES = 7.5f;
-    const float OXYGEN_LEVEL_WHEN_STRESSFUL_MUSIC_START = 15f;
+    float oxygenLevelWhenStressfulMusicStart = 15f;
     float maxMainThemeVolume = 1f;
     float maxStressfulMusicVolume = 1f;
 
@@ -36,6 +36,7 @@ public class OxygenController : MonoBehaviour {
 
     public void Init() {
         InitBreath();
+        oxygenLevelWhenStressfulMusicStart = .4f * oxygenMax;
         oxygenBar.minValue = 0f;
         oxygenBar.maxValue = 35f;
         oxygenBar.value = Oxygen = oxygenMax;
@@ -82,7 +83,7 @@ public class OxygenController : MonoBehaviour {
     void MixMusic() {
         if (playerCtrlr.isPlayingTutorial || Time.timeScale <= 0f) return;
 
-        if (Oxygen > OXYGEN_LEVEL_WHEN_STRESSFUL_MUSIC_START || Oxygen <= 0f) {
+        if (Oxygen > oxygenLevelWhenStressfulMusicStart || Oxygen <= 0f) {
             if (audioAnim.GetBool("isStressful"))
                 audioAnim.SetBool("isStressful", false);
             if (stressfulMusic.isPlaying)

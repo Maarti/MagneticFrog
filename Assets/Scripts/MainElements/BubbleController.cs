@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 public class BubbleController : MonoBehaviour {
 
     public SoundController bubbleSoundCtrlr;
     public ElementType type;
     [SerializeField] float oxygenAmount = 8f;
-    Renderer render;
+    [SerializeField] SpriteRenderer renderer;
 
     void Start() {
-        Destroy(gameObject, 15f);
+        Invoke("Destroy", 15f);
     }
 
     void Awake() {
-        render = GetComponentInChildren<Renderer>();
+        renderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -23,13 +24,12 @@ public class BubbleController : MonoBehaviour {
 
     void OnHitPlayer(GameObject player) {
         player.GetComponent<OxygenController>().AddOxygen(oxygenAmount);
-        //    bubbleSoundCtrlr.Play();
         GameController.gc.StartCollectedBubbleAnimation(type, transform.position);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
-
-    public void SetColor(Color color) {
-        if (render != null)
-            render.material.SetColor("_Color", color);
+    
+    void Destroy() {
+        renderer.DOColor(new Color(1, 1, 1, 0), 2f);
+        Destroy(gameObject, 2f);
     }
 }
