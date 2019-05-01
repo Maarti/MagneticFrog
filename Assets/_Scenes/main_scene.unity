@@ -19663,7 +19663,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 602141684}
         m_MethodName: SetActive
@@ -19678,6 +19678,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 566351820}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2058162494}
+        m_MethodName: HideSettingsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20084,7 +20095,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 391.50003, y: -83}
-  m_SizeDelta: {x: 700, y: 126}
+  m_SizeDelta: {x: 700, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685080032
 MonoBehaviour:
@@ -20106,8 +20117,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\r\n_____________________________________\r\n<size=120%><b>Credits</b></size>\r\n\nMain
-    theme and all sounds FX were kindly made by Nullrate of nullrate.com"
+  m_text: "<size=120%><b>Credits</b></size>\r\n\nMain theme and all sounds FX were
+    kindly made by Nullrate of nullrate.com"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1fd5850b291f1e448a60b1a25637505b, type: 2}
   m_sharedMaterial: {fileID: 21414432689680392, guid: 1fd5850b291f1e448a60b1a25637505b,
@@ -20185,11 +20196,11 @@ MonoBehaviour:
     lineCount: 5
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -21350,7 +21361,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 956397809}
         m_MethodName: SetActive
@@ -21365,6 +21376,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 566351820}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2058162494}
+        m_MethodName: DisplaySettingsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29013,6 +29035,7 @@ GameObject:
   - component: {fileID: 956397813}
   - component: {fileID: 956397812}
   - component: {fileID: 956397811}
+  - component: {fileID: 956397810}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -29020,6 +29043,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!225 &956397810
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956397809}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &956397811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48818,7 +48853,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &1243402957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56709,6 +56744,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2058162494}
+        m_MethodName: DisplayCharacterMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1375491744
@@ -57940,6 +57986,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1093994015}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2058162494}
+        m_MethodName: HideCharacterMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70732,6 +70789,7 @@ GameObject:
   - component: {fileID: 1837133261}
   - component: {fileID: 1837133260}
   - component: {fileID: 1837133259}
+  - component: {fileID: 1837133262}
   m_Layer: 0
   m_Name: GameTitleCanvas
   m_TagString: Untagged
@@ -70819,6 +70877,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1837133262
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837133257}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1844373054
 GameObject:
   m_ObjectHideFlags: 0
@@ -93401,6 +93471,10 @@ MonoBehaviour:
   gameTitleCanvas: {fileID: 1837133257}
   scoreSign: {fileID: 840931813}
   playClickSound: {fileID: 1011504670}
+  gameTitleCanvasGroup: {fileID: 1837133262}
+  mainMenuCanvasGroup: {fileID: 2058162497}
+  characterMenu: {fileID: 1243402955}
+  settingsCanvasGroup: {fileID: 956397810}
 --- !u!95 &2058162495
 Animator:
   serializedVersion: 3

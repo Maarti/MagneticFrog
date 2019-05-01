@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Animator))]
 public class MainMenuController : MonoBehaviour {
@@ -9,6 +10,15 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject gameTitleCanvas;
     [SerializeField] GameObject scoreSign;
     [SerializeField] AudioSource playClickSound;
+    [Header("Game Title")]
+    [SerializeField] CanvasGroup gameTitleCanvasGroup;
+    [Header("Main Menu")]
+    [SerializeField] CanvasGroup mainMenuCanvasGroup;
+    [Header("Character Menu")]
+    [SerializeField] RectTransform characterMenu;
+    [Header("Settings Menu")]
+    [SerializeField] CanvasGroup settingsCanvasGroup;
+
     Animator mainMenuAnim;
     bool isStarted = false;
 
@@ -18,7 +28,7 @@ public class MainMenuController : MonoBehaviour {
         isStarted = true;
         OnEnable();
     }
-    
+
     void OnDestroy() {
         GameController.OnGameOver -= OnGameOver;
     }
@@ -43,7 +53,7 @@ public class MainMenuController : MonoBehaviour {
         playClickSound.Play();
         GameController.gc.StartGame();
     }
-       
+
     void OnGameOver(int score) {
         RefreshScoreDisplay();
     }
@@ -56,6 +66,39 @@ public class MainMenuController : MonoBehaviour {
         else {
             scoreSign.SetActive(false);
         }
+    }
+
+    public void DisplayCharacterMenu() {
+        characterMenu.localScale = new Vector3(0f, 0f, 1f);
+        characterMenu.DOScale(Vector3.one, .25f);
+        mainMenuCanvasGroup.DOFade(0f, .25f).OnComplete(()=>mainMenuCanvasGroup.transform.parent.gameObject.SetActive(false));
+     //   gameTitleCanvasGroup.DOFade(0f, .25f);
+    }
+
+    public void HideCharacterMenu() {
+        characterMenu.localScale = Vector3.one;
+        gameTitleCanvasGroup.alpha = 1f;
+        mainMenuCanvasGroup.transform.parent.gameObject.SetActive(true);
+        mainMenuCanvasGroup.alpha = 0f;
+        mainMenuCanvasGroup.DOFade(1f, 1f);
+        characterMenu.DOScale(new Vector3(0f, 0f, 1f), .25f).OnComplete(() => characterMenu.transform.parent.gameObject.SetActive(false));
+    }
+
+    public void DisplaySettingsMenu() {        
+        gameTitleCanvasGroup.DOFade(0f, .5f);
+        mainMenuCanvasGroup.DOFade(0f, .5f).OnComplete(() => mainMenuCanvasGroup.transform.parent.gameObject.SetActive(false));
+        settingsCanvasGroup.gameObject.SetActive(true);
+        settingsCanvasGroup.alpha = 0f;
+        settingsCanvasGroup.DOFade(1f, .5f);
+    }
+
+    public void HideSettingsMenu() {        
+        gameTitleCanvasGroup.DOFade(1f, .5f);
+        mainMenuCanvasGroup.transform.parent.gameObject.SetActive(true);
+        mainMenuCanvasGroup.alpha = 0f;
+        mainMenuCanvasGroup.DOFade(1f, .5f);
+        settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));
+        
     }
 
 
