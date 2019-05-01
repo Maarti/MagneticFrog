@@ -21,6 +21,7 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] SoundController sound;
     bool magnetIsRed = true;                    // True = red (+)  False = blue (-)
     Vector3 initialModelLocalPosition;
+    Coroutine coroutineMovingMagnet;
 
     public void Awake() {
         initialModelLocalPosition = magnetModel.transform.localPosition;
@@ -62,7 +63,6 @@ public class MagnetController : MonoBehaviour {
         magnetCtrlrAnim.SetBool("isNorth", true);
         modelAnim.SetBool("isRed", true);
         sound.Play();
-        // audioSource.PlayOneShot(audioSource.clip);
     }
 
     void SwitchMagnetToBlue() {
@@ -74,13 +74,11 @@ public class MagnetController : MonoBehaviour {
         magnetCtrlrAnim.SetBool("isNorth", false);
         modelAnim.SetBool("isRed", false);
         sound.Play();
-        // audioSource.PlayOneShot(audioSource.clip);
     }
 
     public void SetMagnetToMenuState() {
-        StopCoroutine(MoveMagnetToFrog());
-        modelAnim.enabled = true;
-        modelAnim.SetBool("isMenuState", true);
+         if(coroutineMovingMagnet!=null)
+            StopCoroutine(coroutineMovingMagnet); 
         magnetModel.transform.parent = null;
         magnetModel.transform.position = magnetTitlePlaceholder.transform.position;
         magnetRb.bodyType = RigidbodyType2D.Kinematic;
@@ -92,11 +90,10 @@ public class MagnetController : MonoBehaviour {
     }
 
     public void SetMagnetToGameState() {
-        StopCoroutine(MoveMagnetToFrog());
-        // modelAnim.enabled = false;
+        if (coroutineMovingMagnet != null)
+            StopCoroutine(coroutineMovingMagnet);
         magnetModel.transform.parent = magnetModelContainer.transform;
         magnetModel.transform.localPosition = initialModelLocalPosition;
-
         magnetRb.bodyType = RigidbodyType2D.Dynamic;
         magnetJoint.enabled = true;
         necklaceRendering.SetActive(true);
@@ -105,14 +102,11 @@ public class MagnetController : MonoBehaviour {
     }
 
     public void StartMovingMagnetToFrog() {
-        StartCoroutine(MoveMagnetToFrog());
-        magnetModel.transform.DOScale(Vector3.one, 1f);
-        magnetModel.transform.DORotate(Vector3.zero, 1f);
+        coroutineMovingMagnet = StartCoroutine(MoveMagnetToFrog());               
     }
 
     IEnumerator MoveMagnetToFrog() {
         magnetModel.SetActive(true);
-        // modelAnim.SetBool("isMenuState", false);
         magnetModel.transform.localScale = new Vector3(2.2f, 2.2f, 1f);
         magnetModel.transform.rotation = new Quaternion(0f, 0f, 180f, 1f);
         magnetModel.transform.DOScale(Vector3.one, 1f);
