@@ -28,8 +28,6 @@ public class TutorialManager : MonoBehaviour {
     int state = -1;
     readonly WaitForSeconds wait = new WaitForSeconds(2f);
     Coroutine blueBubblesCoroutine;
-    Coroutine redBubblesCoroutine;
-    Coroutine minesCoroutine;
 
     void OnEnable() {
         state = 0;
@@ -136,14 +134,14 @@ public class TutorialManager : MonoBehaviour {
         magnetControllerLayout.SetActive(true);
         magnetCtrlr.enabled = true;
         magnetCtrlr.Init();
-        redBubblesCoroutine = StartCoroutine(SpawnRedBubbles());
+         StartCoroutine(SpawnRedBubbles());
         tutorialCanvasAnimator.SetInteger("state", 4);
         NextState();
     }
 
     void StartMinesTutorial() {
         tutorialCanvasAnimator.SetInteger("state", 5);
-        minesCoroutine = StartCoroutine(SpawnMines());
+         StartCoroutine(SpawnMines());
         NextState();
     }
 

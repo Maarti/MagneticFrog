@@ -6,14 +6,14 @@ public class BubbleController : MonoBehaviour {
     public SoundController bubbleSoundCtrlr;
     public ElementType type;
     [SerializeField] float oxygenAmount = 8f;
-    [SerializeField] SpriteRenderer renderer;
+    SpriteRenderer render;
 
     void Start() {
         Invoke("Destroy", 15f);
     }
 
     void Awake() {
-        renderer = GetComponentInChildren<SpriteRenderer>();
+        render = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -29,7 +29,7 @@ public class BubbleController : MonoBehaviour {
     }
     
     void Destroy() {
-        renderer.DOColor(new Color(1, 1, 1, 0), 2f);
+        render.DOColor(new Color(1, 1, 1, 0), 2f);
         Destroy(gameObject, 2f);
     }
 }

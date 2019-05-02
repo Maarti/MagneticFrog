@@ -97,10 +97,7 @@ public class MainMenuController : MonoBehaviour {
         mainMenuCanvasGroup.transform.parent.gameObject.SetActive(true);
         mainMenuCanvasGroup.alpha = 0f;
         mainMenuCanvasGroup.DOFade(1f, .5f);
-        settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));
-        
+        settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));        
     }
-
-
 
 }

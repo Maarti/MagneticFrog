@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class BubbleSpawner : AbstractSpawner {
 
-    [SerializeField] GameObject blueBubblePrefab, redBubblePrefab;
+    [SerializeField] GameObject blueBubblePrefab;
+    [SerializeField] GameObject redBubblePrefab;
     [SerializeField] Color redColor;
     [SerializeField] Color blueColor;
     [SerializeField] SoundController bubbleSoundCtrlr;

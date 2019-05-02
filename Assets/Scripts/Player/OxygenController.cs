@@ -26,13 +26,13 @@ public class OxygenController : MonoBehaviour {
     const float MAX_ANIM_SPEED = 3f;
     const float ANIM_START_WHEN_OXYGEN_REACHES = 7.5f;
     float oxygenLevelWhenStressfulMusicStart = 15f;
-    float maxMainThemeVolume = 1f;
-    float maxStressfulMusicVolume = 1f;
+ /*   float maxMainThemeVolume = 1f;
+    float maxStressfulMusicVolume = 1f;*/
 
-    public void Start() {
+  /*  public void Start() {
         maxMainThemeVolume = mainTheme.volume;
         maxStressfulMusicVolume = stressfulMusic.volume;
-    }
+    }*/
 
     public void Init() {
         InitBreath();
