@@ -64030,7 +64030,7 @@ MonoBehaviour:
     id: 0
     name: Hyla
     agility: 0
-    stamina: 0
+    stamina: 1
     breath: 1
     cost: 0
     isUnlocked: 1
@@ -64038,7 +64038,7 @@ MonoBehaviour:
     id: 4
     name: Gottlebei
     agility: 2
-    stamina: 0
+    stamina: 1
     breath: 1
     cost: 50
     isUnlocked: 0
