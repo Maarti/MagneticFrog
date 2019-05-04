@@ -100,6 +100,7 @@ public class ApplicationController : MonoBehaviour {
         if (newScore > PlayerData.bestScore) {
             PlayerData.bestScore = newScore;
         }
+        Leaderboard.ReportScore(newScore);
     }
 
     public void SetMagnetControllerLayoutPositionAndAlpha(float yPosition, float alpha) {
