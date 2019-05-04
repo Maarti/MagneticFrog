@@ -14,7 +14,7 @@ public class Leaderboard : MonoBehaviour
 
     public static void ReportScore(int score) {
         if (Social.localUser.authenticated) {
-            Social.ReportScore(12345, GPGSIds.leaderboard_best_scores, (bool success) => {
+            Social.ReportScore(score, GPGSIds.leaderboard_best_scores, (bool success) => {
                 Debug.LogFormat("ReportScore {0} to leaderboard: {1}", score, success);
             });
         }

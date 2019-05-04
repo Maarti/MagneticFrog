@@ -12,7 +12,9 @@ public class AdsController : MonoBehaviour {
     [SerializeField] CoinDisplayer[] coinDisplayers;
     [SerializeField] TextMeshProUGUI earnedCoinsText;
     [SerializeField] Animator earnedCoinsAnim;
+    [SerializeField] float timeBetweenInterstitialsInSecond = 60 * 2;
     InterstitialAd interstitial;
+    float lastInterstitialTime = -1;
     RewardBasedVideoAd rewardBasedVideo;
     bool isRequestingRewardAd = false;
 
@@ -28,6 +30,7 @@ public class AdsController : MonoBehaviour {
     }
 
     public void Start() {
+        lastInterstitialTime = Time.realtimeSinceStartup;
 #if UNITY_ANDROID
         string appId = Config.ADMOB_ANDROID_APP_ID;
 #elif UNITY_IPHONE
@@ -56,8 +59,8 @@ public class AdsController : MonoBehaviour {
         Debug.Log("LoadInterstitial())");
         if (!ApplicationController.ac.PlayerData.isPremium && Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
-            string adUnitId = Config.ADMOB_TEST_INTERSTITIAL_ID;
-            // string adUnitId = Config.ADMOB_ANDROID_ENDLEVEL_INTERSTITIAL_ID;
+            // string adUnitId = Config.ADMOB_TEST_INTERSTITIAL_ID;
+            string adUnitId = Config.ADMOB_ANDROID_ENDLEVEL_INTERSTITIAL_ID;
 #elif UNITY_IPHONE
             string adUnitId = "ios_not_supported";
 #else
@@ -66,6 +69,7 @@ public class AdsController : MonoBehaviour {
             interstitial = new InterstitialAd(adUnitId);
             AdRequest request = new AdRequest.Builder()
                 .AddTestDevice(Config.MY_DEVICE_ID_1)
+                .AddTestDevice(Config.MY_DEVICE_ID_2)
                 .Build();
             interstitial.LoadAd(request);
             interstitial.OnAdClosed += OnInterstitialFinished;
@@ -74,7 +78,7 @@ public class AdsController : MonoBehaviour {
     }
 
     public void ShowInterstitial() {
-        if (!ApplicationController.ac.PlayerData.isPremium && interstitial != null && interstitial.IsLoaded()) {
+        if (!ApplicationController.ac.PlayerData.isPremium && isReadyToPlayInterstitial()) {
             Debug.Log("Showing Interstitial");
             interstitial.Show();
         }
@@ -82,8 +86,15 @@ public class AdsController : MonoBehaviour {
             Debug.Log("Don't show Interstitial");
     }
 
+    bool isReadyToPlayInterstitial() {
+        return
+            interstitial != null && interstitial.IsLoaded() &&
+             Time.realtimeSinceStartup >= lastInterstitialTime + timeBetweenInterstitialsInSecond;
+    }
+
     void OnInterstitialFinished(object sender, EventArgs args) {
         Debug.Log("HandleOnAdFinished())");
+        lastInterstitialTime = Time.realtimeSinceStartup;
         interstitial.Destroy();
         interstitial = null;
     }
@@ -99,8 +110,8 @@ public class AdsController : MonoBehaviour {
         }
         if (Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
-            string adUnitId = Config.ADMOB_TEST_REWARDED_ID;
-            // string adUnitId = Config.ADMOB_ANDROID_REWARD_ID;
+            // string adUnitId = Config.ADMOB_TEST_REWARDED_ID;
+            string adUnitId = Config.ADMOB_ANDROID_REWARD_ID;
 #elif UNITY_IPHONE
             string adUnitId = "ios_not_supported";
 #else
@@ -108,6 +119,7 @@ public class AdsController : MonoBehaviour {
 #endif
             AdRequest request = new AdRequest.Builder()
                 .AddTestDevice(Config.MY_DEVICE_ID_1)
+                .AddTestDevice(Config.MY_DEVICE_ID_2)
                 .Build();
             rewardBasedVideo.LoadAd(request, adUnitId);
             isRequestingRewardAd = true;

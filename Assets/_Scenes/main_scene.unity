@@ -20823,6 +20823,7 @@ GameObject:
   - component: {fileID: 755682164}
   - component: {fileID: 755682163}
   - component: {fileID: 755682162}
+  - component: {fileID: 755682165}
   m_Layer: 5
   m_Name: LeaderboardButton
   m_TagString: Untagged
@@ -20884,11 +20885,22 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 755682163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 755682165}
+        m_MethodName: ShowLeaderboardUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &755682163
@@ -20928,6 +20940,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755682160}
   m_CullTransparentMesh: 0
+--- !u!114 &755682165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755682160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf95265ec6458404a8fc122339f72471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756766001
 GameObject:
   m_ObjectHideFlags: 0
@@ -64125,6 +64149,7 @@ MonoBehaviour:
   - {fileID: 1380599198}
   earnedCoinsText: {fileID: 1022459878}
   earnedCoinsAnim: {fileID: 1717791634}
+  timeBetweenInterstitialsInSecond: 120
 --- !u!114 &1759637276
 MonoBehaviour:
   m_ObjectHideFlags: 0
