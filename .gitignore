@@ -36,6 +36,8 @@ sysinfo.txt
 
 # Security
 /Assets/Scripts/Application/Config.*
+/Assets/Scripts/GoogleServices/GPGSIds*
+GooglePlayGameSettings.txt
 *.keystore
 
 # Big files
