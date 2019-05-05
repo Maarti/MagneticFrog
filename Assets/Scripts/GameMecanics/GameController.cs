@@ -27,8 +27,12 @@ public class GameController : MonoBehaviour {
     [SerializeField] Camera cam;
     [SerializeField] CollectedBubble[] uiBlueBubbles;
     [SerializeField] CollectedBubble[] uiRedBubbles;
+    [Header("Audio")]
+    [SerializeField] AudioSource gameOverAudio;
+
     int uiBlueBubbleCurrentIndex = 0;
     int uiRedBubbleCurrentIndex = 0;
+    bool isGameStarted = false;
 
     public static GameController gc;
     public delegate void GameOver(int score);
@@ -43,6 +47,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void StartGame() {
+        isGameStarted = true;
         DestroyMainElements();
         mainMenuCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
@@ -86,6 +91,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void StopGame() {
+        isGameStarted = false;
         gameUICanvas.SetActive(false);
         bestScoreMarker.SetActive(false);
         playerCtrlr.enabled = false;
@@ -100,6 +106,8 @@ public class GameController : MonoBehaviour {
     }
 
     public void TriggerGameOver(int score) {
+        if (!isGameStarted) return;
+        gameOverAudio.Play();
         ApplicationController.ac.RecordNewScore(score);
         ApplicationController.ac.Save();
         StopGame();
