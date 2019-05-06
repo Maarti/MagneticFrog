@@ -28,5 +28,6 @@ public class Cheater : MonoBehaviour {
     public void LowGravity() {
         GetComponent<Rigidbody2D>().gravityScale /= 2;
     }
+
 }
 #endif

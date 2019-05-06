@@ -96,6 +96,8 @@ public class CharacterSelector : MonoBehaviour {
         ApplicationController.ac.SaveCurrentCharacter();
         ApplicationController.ac.Save();
         RefreshUI();
+        Animator anim = ApplicationController.ac.characters[currentCharacter].skin.GetComponent<Animator>();
+        if (anim != null) anim.SetTrigger("flip");
     }
 
     public void RefreshUI() {

@@ -44,6 +44,7 @@ public class JumpController : MonoBehaviour {
     public void Init() {
         animator = GetCurrentAnimator();
         isStuned = false;
+        animator.SetBool("isStun", isStuned);
         jumpCooldownImg.gameObject.SetActive(false);
         stunCooldownImg.gameObject.SetActive(false);
         InitAgility();
@@ -185,11 +186,13 @@ public class JumpController : MonoBehaviour {
 
     IEnumerator StunForSeconds(float duration) {
         isStuned = true;
+        animator.SetBool("isStun", isStuned);
         lastStun = Time.time;
         lastJump = -10f; // when stuned, we reset the jump cooldown
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(duration);
-        isStuned = false;
+        isStuned = false;        
+        animator.SetBool("isStun", isStuned);
     }
 
     void InitAgility() {
