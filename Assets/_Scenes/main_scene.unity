@@ -9609,6 +9609,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346796201}
   m_CullTransparentMesh: 0
+--- !u!1 &357716258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100040, guid: f2b6426bfef61d649ae6b4aa21664f96,
+    type: 3}
+  m_PrefabInstance: {fileID: 463402561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &357716259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96,
+    type: 3}
+  m_PrefabInstance: {fileID: 463402561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358036722
 GameObject:
   m_ObjectHideFlags: 0
@@ -10798,6 +10810,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453329312}
   m_CullTransparentMesh: 0
+--- !u!1001 &463402561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1289790560}
+    m_Modifications:
+    - target: {fileID: 100040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_Name
+      value: poison_pyro_frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.308
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8eea2f540713a6b40898abb6dad53667, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
 --- !u!1 &484609577
 GameObject:
   m_ObjectHideFlags: 0
@@ -22167,12 +22244,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822499336}
   m_CullTransparentMesh: 0
---- !u!1 &828745383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100022, guid: 2f622133eb4a1774fb14e05a5af22f38,
-    type: 3}
-  m_PrefabInstance: {fileID: 1390309822}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &828745384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400022, guid: 2f622133eb4a1774fb14e05a5af22f38,
@@ -29054,6 +29125,10 @@ PrefabInstance:
     - target: {fileID: 100032, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
       propertyPath: m_Name
       value: hyla_frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 100032, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400032, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54273,6 +54348,7 @@ Transform:
   - {fileID: 884530659}
   - {fileID: 727874933}
   - {fileID: 828745384}
+  - {fileID: 357716259}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64589,20 +64665,20 @@ MonoBehaviour:
     cost: 0
     isUnlocked: 1
   - skin: {fileID: 727874932}
-    id: 4
+    id: 6
     name: Gottlebei
     agility: 2
     stamina: 1
     breath: 1
     cost: 50
     isUnlocked: 0
-  - skin: {fileID: 828745383}
-    id: 7
-    name: Douglass
-    agility: 3
-    stamina: 1
-    breath: 2
-    cost: 250
+  - skin: {fileID: 357716258}
+    id: 3
+    name: Poison Pyro
+    agility: 1
+    stamina: 2
+    breath: 1
+    cost: 80
     isUnlocked: 0
 --- !u!4 &1759637273
 Transform:
