@@ -29,6 +29,7 @@ public class ApplicationController : MonoBehaviour {
         bf.Serialize(file, PlayerData);
         file.Close();
         Debug.Log(string.Format("Game saved with score {0}", PlayerData.bestScore));
+        CloudSavedGame.instance.SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);
     }
 
     public void Load() {

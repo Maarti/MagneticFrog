@@ -10781,7 +10781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: f2b6426bfef61d649ae6b4aa21664f96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10846,7 +10846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 55718596c4546a84db7e6ad7094d35d4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 55718596c4546a84db7e6ad7094d35d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10863,7 +10863,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 55718596c4546a84db7e6ad7094d35d4, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8eea2f540713a6b40898abb6dad53667, type: 2}
+      objectReference: {fileID: 9100000, guid: ebabe2ac4b3d6084a951b421a4b9a183, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55718596c4546a84db7e6ad7094d35d4, type: 3}
 --- !u!1 &484609577
@@ -21028,7 +21028,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 755682165}
-        m_MethodName: ShowLeaderboardUI
+        m_MethodName: ShowBestScoresLeaderboardUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23949,6 +23949,7 @@ GameObject:
   - component: {fileID: 931965021}
   - component: {fileID: 931965020}
   - component: {fileID: 931965019}
+  - component: {fileID: 931965022}
   m_Layer: 5
   m_Name: ViewAdsButton
   m_TagString: Untagged
@@ -24010,13 +24011,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 931965020}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1759637275}
-        m_MethodName: ShowBonusesRewardAd
+      - m_Target: {fileID: 931965022}
+        m_MethodName: ShowSelectUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24076,6 +24077,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931965017}
   m_CullTransparentMesh: 0
+--- !u!114 &931965022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931965017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e2480d4157edb46824a12216d6aa8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &942542614
 GameObject:
   m_ObjectHideFlags: 0
