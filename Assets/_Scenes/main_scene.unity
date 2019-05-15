@@ -23949,7 +23949,6 @@ GameObject:
   - component: {fileID: 931965021}
   - component: {fileID: 931965020}
   - component: {fileID: 931965019}
-  - component: {fileID: 931965022}
   m_Layer: 5
   m_Name: ViewAdsButton
   m_TagString: Untagged
@@ -24016,7 +24015,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 931965022}
+      - m_Target: {fileID: 1759637277}
         m_MethodName: ShowSelectUI
         m_Mode: 1
         m_Arguments:
@@ -24077,18 +24076,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931965017}
   m_CullTransparentMesh: 0
---- !u!114 &931965022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931965017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e2480d4157edb46824a12216d6aa8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &942542614
 GameObject:
   m_ObjectHideFlags: 0
@@ -64560,6 +64547,7 @@ GameObject:
   - component: {fileID: 1759637274}
   - component: {fileID: 1759637275}
   - component: {fileID: 1759637276}
+  - component: {fileID: 1759637277}
   m_Layer: 0
   m_Name: _ApplicationController
   m_TagString: Untagged
@@ -64710,6 +64698,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loginButton: {fileID: 1227235513}
   logoutButton: {fileID: 1845143788}
+--- !u!114 &1759637277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759637271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e2480d4157edb46824a12216d6aa8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760625746
 GameObject:
   m_ObjectHideFlags: 0

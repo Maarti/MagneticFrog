@@ -8,7 +8,7 @@ public class CloudSavedGame : MonoBehaviour {
 
     public static CloudSavedGame instance;
     public ISavedGameMetadata savedGameMetadata;
-    Texture2D savedImage;
+    //  Texture2D savedImage;
 
     public void Awake() {
         if (instance == null) {
@@ -22,9 +22,9 @@ public class CloudSavedGame : MonoBehaviour {
     }
 
     public void ShowSelectUI() {
-     //   savedImage = GetScreenshot();
+        //   savedImage = GetScreenshot();
         if (Social.localUser.authenticated) {
-            uint maxNumToDisplay = 5;
+            uint maxNumToDisplay = 3;
             bool allowCreateNew = true;
             bool allowDelete = true;
 
@@ -34,8 +34,9 @@ public class CloudSavedGame : MonoBehaviour {
                 allowCreateNew,
                 allowDelete,
                 OnSavedGameSelected);
-        }else
-            Debug.LogFormat("ShowSelectUI error not authenticated");
+        }
+        else
+            PlayGamesActivator.instance.AuthenticateUser();
     }
 
 
@@ -44,7 +45,8 @@ public class CloudSavedGame : MonoBehaviour {
             // handle selected game save
             Debug.LogFormat("Save selected {0}", game);
             savedGameMetadata = game;
-            OpenSavedGame("slot_1");
+            string filename = (game.Filename == "")? "slot_2" : game.Filename;            
+            OpenSavedGame(filename);
         }
         else {
             // handle cancel or error            
@@ -62,7 +64,7 @@ public class CloudSavedGame : MonoBehaviour {
         if (status == SavedGameRequestStatus.Success) {
             // handle reading or writing of saved game.
             Debug.LogFormat("OnSavedGameOpened {0}", game);
-            savedGameMetadata = game;            
+            savedGameMetadata = game;
         }
         else {
             // handle error
@@ -76,12 +78,12 @@ public class CloudSavedGame : MonoBehaviour {
             SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
             builder = builder
                 .WithUpdatedPlayedTime(totalPlaytime)
-                .WithUpdatedDescription("Saved game at " + DateTime.Now);
-            if (savedImage != null) {
-                // This assumes that savedImage is an instance of Texture2D and that you have already called a function equivalent to getScreenshot() to set savedImage
-                byte[] pngData = savedImage.EncodeToPNG();
-                builder = builder.WithUpdatedPngCoverImage(pngData);
-            }
+                .WithUpdatedDescription(string.Format("Saved game at {0} - {1} coin(s)", DateTime.Now, ApplicationController.ac.PlayerData.coins));
+            /*   if (savedImage != null) {
+                   // This assumes that savedImage is an instance of Texture2D and that you have already called a function equivalent to getScreenshot() to set savedImage
+                   byte[] pngData = savedImage.EncodeToPNG();
+                   builder = builder.WithUpdatedPngCoverImage(pngData);
+               }*/
             SavedGameMetadataUpdate updatedMetadata = builder.Build();
             savedGameClient.CommitUpdate(savedGameMetadata, updatedMetadata, savedData, OnSavedGameWritten);
         }
@@ -96,12 +98,12 @@ public class CloudSavedGame : MonoBehaviour {
         }
     }
 
-    public Texture2D GetScreenshot() {
-        // Create a 2D texture that is 1024x700 pixels from which the PNG will be extracted
-        Texture2D screenShot = new Texture2D(1024, 700);
+    /* public Texture2D GetScreenshot() {
+         // Create a 2D texture that is 1024x700 pixels from which the PNG will be extracted
+         Texture2D screenShot = new Texture2D(1024, 700);
 
-        // Takes the screenshot from top left hand corner of screen and maps to top left hand corner of screenShot texture
-        screenShot.ReadPixels(new Rect(0, 0, Screen.width, (Screen.width / 1024) * 700), 0, 0);
-        return screenShot;
-    }
+         // Takes the screenshot from top left hand corner of screen and maps to top left hand corner of screenShot texture
+         screenShot.ReadPixels(new Rect(0, 0, Screen.width, (Screen.width / 1024) * 700), 0, 0);
+         return screenShot;
+     }*/
 }
