@@ -2,13 +2,15 @@
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CloudSavedGame : MonoBehaviour {
 
     public static CloudSavedGame instance;
     public ISavedGameMetadata savedGameMetadata;
-    //  Texture2D savedImage;
+    public ISavedGameClient savedGameClient;
+    public int totalSavedSlots = 0;
 
     public void Awake() {
         if (instance == null) {
@@ -21,14 +23,21 @@ public class CloudSavedGame : MonoBehaviour {
         }
     }
 
+    public void Init() {
+            Debug.LogFormat("CloudSavedGame.Init() authent={0}", Social.localUser.authenticated);
+        if (Social.localUser.authenticated) {
+            savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+            FetchAllSavedGames();
+        }
+    }
+
     public void ShowSelectUI() {
-        //   savedImage = GetScreenshot();
         if (Social.localUser.authenticated) {
             uint maxNumToDisplay = 3;
-            bool allowCreateNew = true;
+            bool allowCreateNew = totalSavedSlots>2;
             bool allowDelete = true;
 
-            ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+
             savedGameClient.ShowSelectSavedGameUI("Select saved game",
                 maxNumToDisplay,
                 allowCreateNew,
@@ -39,14 +48,23 @@ public class CloudSavedGame : MonoBehaviour {
             PlayGamesActivator.instance.AuthenticateUser();
     }
 
+    public void FetchAllSavedGames() {
+        savedGameClient.FetchAllSavedGames(DataSource.ReadCacheOrNetwork, (SavedGameRequestStatus status, List<ISavedGameMetadata> games) => {
+            if (status == SavedGameRequestStatus.Success)
+                totalSavedSlots = games.Count;
+            else
+                Debug.LogFormat("OnFetchAll error {0}", status);
+        });
+    }
 
     public void OnSavedGameSelected(SelectUIStatus status, ISavedGameMetadata game) {
         if (status == SelectUIStatus.SavedGameSelected) {
             // handle selected game save
             Debug.LogFormat("Save selected {0}", game);
             savedGameMetadata = game;
-            string filename = (game.Filename == "")? "slot_2" : game.Filename;            
-            OpenSavedGame(filename);
+            bool isNewSlot = (game.Filename == "");
+            string filename = isNewSlot ? GetNewSlotName() : game.Filename;
+            OpenSavedGame(filename, (game.Filename == ""));
         }
         else {
             // handle cancel or error            
@@ -54,7 +72,11 @@ public class CloudSavedGame : MonoBehaviour {
         }
     }
 
-    void OpenSavedGame(string filename) {
+    string GetNewSlotName() {
+        return "slot_" + totalSavedSlots;
+    }
+
+    void OpenSavedGame(string filename, bool saveImmediately = false) {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
@@ -64,6 +86,8 @@ public class CloudSavedGame : MonoBehaviour {
         if (status == SavedGameRequestStatus.Success) {
             // handle reading or writing of saved game.
             Debug.LogFormat("OnSavedGameOpened {0}", game);
+            if(savedGameMetadata.Filename == "")
+                SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);
             savedGameMetadata = game;
         }
         else {
@@ -79,11 +103,7 @@ public class CloudSavedGame : MonoBehaviour {
             builder = builder
                 .WithUpdatedPlayedTime(totalPlaytime)
                 .WithUpdatedDescription(string.Format("Saved game at {0} - {1} coin(s)", DateTime.Now, ApplicationController.ac.PlayerData.coins));
-            /*   if (savedImage != null) {
-                   // This assumes that savedImage is an instance of Texture2D and that you have already called a function equivalent to getScreenshot() to set savedImage
-                   byte[] pngData = savedImage.EncodeToPNG();
-                   builder = builder.WithUpdatedPngCoverImage(pngData);
-               }*/
+
             SavedGameMetadataUpdate updatedMetadata = builder.Build();
             savedGameClient.CommitUpdate(savedGameMetadata, updatedMetadata, savedData, OnSavedGameWritten);
         }
@@ -91,19 +111,12 @@ public class CloudSavedGame : MonoBehaviour {
 
     public void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game) {
         if (status == SavedGameRequestStatus.Success) {
-            Debug.LogFormat("OnSavedGameWritten suvvess {0}", game);
+            Debug.LogFormat("OnSavedGameWritten success {0}", game);
+            FetchAllSavedGames();
         }
         else {
             Debug.LogFormat("OnSavedGameWritten failed {0}", status);   // handle error
         }
     }
 
-    /* public Texture2D GetScreenshot() {
-         // Create a 2D texture that is 1024x700 pixels from which the PNG will be extracted
-         Texture2D screenShot = new Texture2D(1024, 700);
-
-         // Takes the screenshot from top left hand corner of screen and maps to top left hand corner of screenShot texture
-         screenShot.ReadPixels(new Rect(0, 0, Screen.width, (Screen.width / 1024) * 700), 0, 0);
-         return screenShot;
-     }*/
 }
