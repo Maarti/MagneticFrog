@@ -24,7 +24,7 @@ public class CloudSavedGame : MonoBehaviour {
     }
 
     public void Init() {
-            Debug.LogFormat("CloudSavedGame.Init() authent={0}", Social.localUser.authenticated);
+        Debug.LogFormat("CloudSavedGame.Init() authent={0}", Social.localUser.authenticated);
         if (Social.localUser.authenticated) {
             savedGameClient = PlayGamesPlatform.Instance.SavedGame;
             FetchAllSavedGames();
@@ -34,7 +34,7 @@ public class CloudSavedGame : MonoBehaviour {
     public void ShowSelectUI() {
         if (Social.localUser.authenticated) {
             uint maxNumToDisplay = 3;
-            bool allowCreateNew = totalSavedSlots>2;
+            bool allowCreateNew = totalSavedSlots <= 2;
             bool allowDelete = true;
 
 
@@ -50,8 +50,10 @@ public class CloudSavedGame : MonoBehaviour {
 
     public void FetchAllSavedGames() {
         savedGameClient.FetchAllSavedGames(DataSource.ReadCacheOrNetwork, (SavedGameRequestStatus status, List<ISavedGameMetadata> games) => {
-            if (status == SavedGameRequestStatus.Success)
+            if (status == SavedGameRequestStatus.Success) {
                 totalSavedSlots = games.Count;
+                Debug.LogFormat("FetchAllSavedGames() totalSavedSlots={0}", totalSavedSlots);
+            }
             else
                 Debug.LogFormat("OnFetchAll error {0}", status);
         });
@@ -86,7 +88,7 @@ public class CloudSavedGame : MonoBehaviour {
         if (status == SavedGameRequestStatus.Success) {
             // handle reading or writing of saved game.
             Debug.LogFormat("OnSavedGameOpened {0}", game);
-            if(savedGameMetadata.Filename == "")
+            if (savedGameMetadata.Filename == "")
                 SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);
             savedGameMetadata = game;
         }
