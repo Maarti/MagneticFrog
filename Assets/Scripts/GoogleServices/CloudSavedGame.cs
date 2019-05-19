@@ -3,6 +3,8 @@ using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class CloudSavedGame : MonoBehaviour {
@@ -118,6 +120,16 @@ public class CloudSavedGame : MonoBehaviour {
         }
         else {
             Debug.LogFormat("OnSavedGameWritten failed {0}", status);   // handle error
+        }
+    }
+
+    public static byte[] ObjectToByteArray(object obj) {
+        if (obj == null)
+            return null;
+        BinaryFormatter bf = new BinaryFormatter();
+        using (MemoryStream ms = new MemoryStream()) {
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
         }
     }
 
