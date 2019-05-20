@@ -54,7 +54,7 @@ public class PlayGamesActivator : MonoBehaviour {
         if (success) {
             Debug.Log("Play Games Authentication SUCCEEDED");
             DisplayLogoutButton();
-            CloudSavedGame.instance.Init();
+            CloudSavedGame.OpenSavedGame();
         }
         else {
             Debug.Log("Play Games Authentication FAILED");
