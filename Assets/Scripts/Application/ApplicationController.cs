@@ -29,7 +29,7 @@ public class ApplicationController : MonoBehaviour {
         bf.Serialize(file, PlayerData);
         file.Close();
         Debug.Log(string.Format("Game saved with score {0}", PlayerData.bestScore));
-        CloudSavedGame.instance.SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);
+        CloudSavedGame.SaveGame();
     }
 
     public void Load() {
@@ -45,6 +45,12 @@ public class ApplicationController : MonoBehaviour {
             PlayerData.lang = Application.systemLanguage;
             Save();
         }
+        MergeSaveIntoInitialData();
+        CharacterSelector.RefreshCurrentCharacterDisplay();
+    }
+
+    public void LoadCloudSave(PlayerData playerData) {
+        PlayerData = playerData;
         MergeSaveIntoInitialData();
         CharacterSelector.RefreshCurrentCharacterDisplay();
     }

@@ -14,4 +14,8 @@ public class PlayerData {
     public Dictionary<CharacterId, CharacterSavedData> characters;
     public CharacterId currentCharacater = CharacterSelector.DEFAULT_CHARACTER;
     public bool isPremium = false;  // no Ads
+
+    public override string ToString() {
+        return string.Format("score={0} coins={1} tuto={2} chars={3}",bestScore,coins,isTutorialDone,characters.Count);
+    }
 }
