@@ -10,7 +10,8 @@ using UnityEngine;
 public class CloudSavedGame : MonoBehaviour {
 
     public static CloudSavedGame instance;
-    public ISavedGameMetadata savedGameMetadata;
+    public static ISavedGameMetadata savedGameMetadata;
+    public static string SAVE_FILENAME = "magnetic_frog_save";
     public ISavedGameClient savedGameClient;
     public int totalSavedSlots = 0;
 
@@ -25,15 +26,15 @@ public class CloudSavedGame : MonoBehaviour {
         }
     }
 
-    public void Init() {
+  /*  public void Init() {
         Debug.LogFormat("CloudSavedGame.Init() authent={0}", Social.localUser.authenticated);
         if (Social.localUser.authenticated) {
-            savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+           savedGameClient = PlayGamesPlatform.Instance.SavedGame;
             FetchAllSavedGames();
         }
-    }
+    }*/
 
-    public void ShowSelectUI() {
+  /*  public void ShowSelectUI() {
         if (Social.localUser.authenticated) {
             uint maxNumToDisplay = 3;
             bool allowCreateNew = totalSavedSlots <= 2;
@@ -78,20 +79,22 @@ public class CloudSavedGame : MonoBehaviour {
 
     string GetNewSlotName() {
         return "slot_" + totalSavedSlots;
+    }*/
+
+    public static void OpenSavedGame() {
+        if (Social.localUser.authenticated) {
+            ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+            savedGameClient.OpenWithAutomaticConflictResolution(SAVE_FILENAME, DataSource.ReadCacheOrNetwork,
+                ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
+        }
     }
 
-    void OpenSavedGame(string filename, bool saveImmediately = false) {
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-        savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
-            ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
-    }
-
-    public void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game) {
+    public static void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game) {
         if (status == SavedGameRequestStatus.Success) {
             // handle reading or writing of saved game.
             Debug.LogFormat("OnSavedGameOpened {0}", game);
-            if (savedGameMetadata.Filename == "")
-                SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);
+         /*   if (savedGameMetadata.Filename == "")
+                SaveGame(System.Text.Encoding.ASCII.GetBytes("test"), TimeSpan.MinValue);*/
             savedGameMetadata = game;
         }
         else {
@@ -100,23 +103,22 @@ public class CloudSavedGame : MonoBehaviour {
         }
     }
 
-    public void SaveGame(byte[] savedData, TimeSpan totalPlaytime) {
-        if (Social.localUser.authenticated) {
+    public static void SaveGame(byte[] savedData, TimeSpan totalPlaytime) {
+        if (Social.localUser.authenticated && savedGameMetadata != null) {
             ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
             SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
             builder = builder
                 .WithUpdatedPlayedTime(totalPlaytime)
                 .WithUpdatedDescription(string.Format("Saved game at {0} - {1} coin(s)", DateTime.Now, ApplicationController.ac.PlayerData.coins));
-
             SavedGameMetadataUpdate updatedMetadata = builder.Build();
             savedGameClient.CommitUpdate(savedGameMetadata, updatedMetadata, savedData, OnSavedGameWritten);
         }
     }
 
-    public void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game) {
+    public static void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game) {
         if (status == SavedGameRequestStatus.Success) {
             Debug.LogFormat("OnSavedGameWritten success {0}", game);
-            FetchAllSavedGames();
+     //       FetchAllSavedGames();
         }
         else {
             Debug.LogFormat("OnSavedGameWritten failed {0}", status);   // handle error
