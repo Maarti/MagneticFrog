@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class ApplicationController : MonoBehaviour {
     public static ApplicationController ac;
+    public delegate void LoadDelegate();
+    public static event LoadDelegate OnLoad;
     [SerializeField] public PlayerData PlayerData; // { get; private set; }
     public float? defaultMagnetControllerHeight = null;
     public CharacterSettings[] characters;
@@ -29,7 +31,7 @@ public class ApplicationController : MonoBehaviour {
         bf.Serialize(file, PlayerData);
         file.Close();
         Debug.Log(string.Format("Game saved with score {0}", PlayerData.bestScore));
-        CloudSavedGame.SaveGame();
+        CloudSavedGame.OpenSavedGameThenSave();
     }
 
     public void Load() {
@@ -47,12 +49,14 @@ public class ApplicationController : MonoBehaviour {
         }
         MergeSaveIntoInitialData();
         CharacterSelector.RefreshCurrentCharacterDisplay();
+        if (OnLoad != null) OnLoad();
     }
 
     public void LoadCloudSave(PlayerData playerData) {
         PlayerData = playerData;
         MergeSaveIntoInitialData();
         CharacterSelector.RefreshCurrentCharacterDisplay();
+        if (OnLoad != null) OnLoad();
     }
 
     void MergeSaveIntoInitialData() {

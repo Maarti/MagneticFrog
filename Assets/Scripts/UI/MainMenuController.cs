@@ -27,6 +27,7 @@ public class MainMenuController : MonoBehaviour {
         GameController.OnGameOver += OnGameOver;
         isStarted = true;
         OnEnable();
+        ApplicationController.OnLoad += RefreshScoreDisplay;
     }
 
     void OnDestroy() {

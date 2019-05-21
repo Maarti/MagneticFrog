@@ -8,6 +8,7 @@ public class CoinDisplayer : MonoBehaviour {
     private void Start() {
         isStarted = true;
         OnEnable();
+        ApplicationController.OnLoad += RefreshUI;
     }
 
     private void OnEnable() {
