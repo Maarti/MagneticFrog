@@ -76,6 +76,7 @@ public class PlayGamesActivator : MonoBehaviour {
     public void AuthenticateUser() {
         Social.localUser.Authenticate(AuthenticationCallback);
     }
+
     public void LogoutUser() {
         PlayGamesPlatform.Instance.SignOut();
         DisplayLoginButton();

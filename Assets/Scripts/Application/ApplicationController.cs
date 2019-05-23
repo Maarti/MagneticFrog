@@ -112,6 +112,7 @@ public class ApplicationController : MonoBehaviour {
             PlayerData.bestScore = newScore;
         }
         Leaderboard.ReportScore(newScore);
+        Achievement.UnlockScore(newScore);
     }
 
     public void SetMagnetControllerLayoutPositionAndAlpha(float yPosition, float alpha) {

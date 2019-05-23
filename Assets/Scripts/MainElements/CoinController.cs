@@ -22,7 +22,14 @@ public class CoinController : MonoBehaviour {
     void OnHitPlayer(GameObject player) {
         ApplicationController.ac.UpdateCoins(value);
         coinSoundCtrlr.Play();
-        Destroy(this.gameObject);
+        Destroy(gameObject);
+        Achievement.Unlock(GPGSIds.achievement_coin_collector_1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_20, 1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_50, 1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_100, 1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_200, 1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_500, 1);
+        Achievement.Increment(GPGSIds.achievement_coin_collector_1000, 1);
     }
 
     void DisplayCoinIndicator() {
