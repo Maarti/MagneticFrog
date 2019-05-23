@@ -26,6 +26,10 @@ public class BubbleController : MonoBehaviour {
         player.GetComponent<OxygenController>().AddOxygen(oxygenAmount);
         GameController.gc.StartCollectedBubbleAnimation(type, transform.position);
         Destroy(gameObject);
+        Achievement.Increment(GPGSIds.achievement_pardon_me_for_breathing_50, 1);
+        Achievement.Increment(GPGSIds.achievement_pardon_me_for_breathing_200, 1);
+        Achievement.Increment(GPGSIds.achievement_pardon_me_for_breathing_1000, 1);
+        Achievement.Increment(GPGSIds.achievement_pardon_me_for_breathing_5000, 1);
     }
     
     void Destroy() {

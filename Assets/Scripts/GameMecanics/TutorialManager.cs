@@ -177,6 +177,7 @@ public class TutorialManager : MonoBehaviour {
     void EndTutorial() {
         screenTransition.ScreenFadeThen(AfterTutorialEnd);
         StopAllCoroutines();
+        Achievement.Unlock(GPGSIds.achievement_fast_learner);
     }
 
     void AfterTutorialEnd() {
