@@ -177,7 +177,18 @@ public class GameController : MonoBehaviour {
         if (!bubble.gameObject.activeSelf) {
             bubble.Recycle(cam.WorldToScreenPoint(worldPosition));
         }
-
     }
 
-}
+    public void BeginPowerStart() {
+        // invincible
+        screenTransition.ScreenFadeThen(EndPowerStart);
+    }
+
+    public void EndPowerStart() {
+        // remove invicibilty in 3 sec
+        Vector3 pos = playerCtrlr.transform.position;
+        pos.y += 100f;
+        playerCtrlr.transform.position = pos;
+    }
+
+    }
