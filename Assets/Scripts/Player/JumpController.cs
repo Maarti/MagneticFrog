@@ -9,6 +9,7 @@ public class JumpController : MonoBehaviour {
     public static event JumpDelegate OnJump;
     public float timeBetweenJumps = 1.2f;                       // time to wait between each jump
     public float stunIncrementer = .75f;                        // increment the stunMultiplier by this value at each stun
+    public bool isInvincible = false;
     [HideInInspector] public float lastJump = -1f;              // time the last jump happened
     [SerializeField] Camera cam;
     [SerializeField] float jumpForce = 250f;                    // multiplier of the x vector
@@ -44,6 +45,7 @@ public class JumpController : MonoBehaviour {
     public void Init() {
         animator = GetCurrentAnimator();
         isStuned = false;
+        isInvincible = false;
         animator.SetBool("isStun", isStuned);
         jumpCooldownImg.gameObject.SetActive(false);
         stunCooldownImg.gameObject.SetActive(false);
@@ -174,6 +176,7 @@ public class JumpController : MonoBehaviour {
     }
 
     public void Stun(float mineStunDuration) {
+        if (isInvincible || isStuned) return;
         totalStunDuration = mineStunDuration * stunMultiplier;
         StartCoroutine(StunForSeconds(totalStunDuration));
         // We increment the stun multiplier at each stun, so next time, it will be longer
