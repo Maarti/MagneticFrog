@@ -144,4 +144,8 @@ public class ApplicationController : MonoBehaviour {
         }
     }
 
+    public void ActivateBonuses() {
+        PlayerData.bonusesActivationTime = DateTime.Now;
+    }
+
 }
