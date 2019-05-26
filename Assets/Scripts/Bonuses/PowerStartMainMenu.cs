@@ -1,20 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using System;
 
 public class PowerStartMainMenu : MonoBehaviour {
-    [SerializeField] TMP_Text timerText;
+    [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] GameObject timerIcon;
-    bool isStarted = false;
-
-    /*public void OnEnable() {
-        if (ShouldPowerStart())
-            gameObject.SetActive(true);
-        else
-            gameObject.SetActive(false);
-    }*/
 
     void Update() {
         TimeSpan timeSinceLastActivation = DateTime.Now.Subtract(ApplicationController.ac.PlayerData.bonusesActivationTime);

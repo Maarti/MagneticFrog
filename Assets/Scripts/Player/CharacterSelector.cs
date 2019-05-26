@@ -18,6 +18,8 @@ public class CharacterSelector : MonoBehaviour {
     [SerializeField] TextMeshProUGUI characterName;
     [SerializeField] GameObject selectButtonObj;
     [SerializeField] GameObject purchaseButtonObj;
+    [SerializeField] GameObject cloudImg;
+    [SerializeField] TextMeshProUGUI priceTxt;
 
     void OnEnable() {
         RefreshCurrentCharacterDisplay();
@@ -119,10 +121,13 @@ public class CharacterSelector : MonoBehaviour {
         if (displayedChar.isUnlocked) {
             selectButtonObj.SetActive(true);
             purchaseButtonObj.SetActive(false);
+            cloudImg.SetActive(false);
         }
         else {
             selectButtonObj.SetActive(false);
             purchaseButtonObj.SetActive(true);
+            cloudImg.SetActive(true);
+            priceTxt.text = displayedChar.cost + " <sprite name=\"coin\">";
         }
     }
 
