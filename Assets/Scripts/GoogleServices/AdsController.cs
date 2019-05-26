@@ -36,7 +36,7 @@ public class AdsController : MonoBehaviour {
 #elif UNITY_IPHONE
         string appId = "ios_not_supported";
 #else
-        string appId = "unexpected_platform";
+        string appId = "unexpected_platform";        
 #endif
         MobileAds.Initialize(appId);
 
@@ -50,6 +50,10 @@ public class AdsController : MonoBehaviour {
         rewardBasedVideo.OnAdClosed += OnRewardBasedVideoClosed;
         rewardBasedVideo.OnAdLeavingApplication += OnRewardBasedVideoLeftApplication;
         RequestRewardAd();
+
+#if UNITY_EDITOR
+        RefreshRewardAdButtons();
+#endif
     }
 
     //--------------
@@ -131,20 +135,31 @@ public class AdsController : MonoBehaviour {
             Invoke("RequestRewardAd", 10);
         }
     }
-
+#if UNITY_EDITOR
+    public void ShowCoinsRewardAd() {
+        CoinsReward(20);
+    }
+#else
     public void ShowCoinsRewardAd() {
         if (rewardBasedVideo != null && rewardBasedVideo.IsLoaded()) {
             currentRewardAdType = RewardAdType.Coins;
             rewardBasedVideo.Show();
         }
     }
+#endif
 
+#if UNITY_EDITOR
+    public void ShowBonusesRewardAd() {
+        BonusesReward();
+    }
+#else
     public void ShowBonusesRewardAd() {
         if (rewardBasedVideo != null && rewardBasedVideo.IsLoaded()) {
             currentRewardAdType = RewardAdType.Bonuses;
             rewardBasedVideo.Show();
         }
     }
+#endif
 
     void OnRewardBasedVideoLoaded(object sender, EventArgs args) {
         Debug.Log("OnRewardBasedVideoLoaded");
@@ -197,7 +212,7 @@ public class AdsController : MonoBehaviour {
 
     void BonusesReward() {
         Debug.Log("Bonuses rewarded");
-        // [clear the bonuses cooldown here]
+        ApplicationController.ac.ActivateBonuses();
         // RefreshBonusesIcons();
     }
 
@@ -207,6 +222,9 @@ public class AdsController : MonoBehaviour {
             bool enable = (rewardBasedVideo != null && rewardBasedVideo.IsLoaded());
             foreach (Button button in rewardAdButtons) {
                 button.interactable = enable;
+#if UNITY_EDITOR
+                button.interactable = true;
+#endif
             }
         }
     }

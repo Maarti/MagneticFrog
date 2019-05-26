@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ public class PowerStart : MonoBehaviour {
     bool isStarted = false;
 
     public void Start() {
-        Debug.Log("onstart");
         GameController.OnGameStart += Init;
         isStarted = true;
     }
@@ -31,7 +31,6 @@ public class PowerStart : MonoBehaviour {
     }
 
     void Init() {
-        Debug.Log("init");
         gameObject.SetActive(true);
     }
 
@@ -45,14 +44,15 @@ public class PowerStart : MonoBehaviour {
         Invoke("RemovePlayerInvincibility", 3f);
         playerCtrlr.jumpCtrlr.isInvincible = true;
         Vector3 pos = playerCtrlr.transform.position;
-        float targetDistance = Mathf.Max(pos.y, ApplicationController.ac.PlayerData.bestScore * .33f);
-        pos.y = targetDistance;
+        float targetDistance =  ApplicationController.ac.PlayerData.bestScore * Random.Range(.33f,.45f);
+        pos.y = Mathf.Max(pos.y,targetDistance);
         playerCtrlr.transform.position = pos;
     }
 
     bool IsPowerStartAvailable() {
-        Debug.Log("is="+ApplicationController.ac.PlayerData.bestScore);
-        return ApplicationController.ac.PlayerData.bestScore >= 100f;
+        if (ApplicationController.ac.PlayerData.isPremium) return true;
+        System.TimeSpan timeSinceLastActivation = System.DateTime.Now.Subtract(ApplicationController.ac.PlayerData.bonusesActivationTime);
+        return (ApplicationController.ac.PlayerData.bestScore >= 100f) && (timeSinceLastActivation.TotalMinutes <= 10f);
     }
 
     void RemovePlayerInvincibility() {
