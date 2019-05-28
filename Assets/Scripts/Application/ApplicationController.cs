@@ -145,7 +145,11 @@ public class ApplicationController : MonoBehaviour {
     }
 
     public void ActivateBonuses() {
-        PlayerData.bonusesActivationTime = DateTime.Now;
+        UpdatePowerStart(3);
+    }
+
+    public void UpdatePowerStart(int value) {
+        PlayerData.nbPowerStart = Mathf.Clamp(PlayerData.nbPowerStart + value, 0, 10);
     }
 
 }
