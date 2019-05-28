@@ -13,6 +13,7 @@ public class AdsController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI earnedCoinsText;
     [SerializeField] Animator earnedCoinsAnim;
     [SerializeField] float timeBetweenInterstitialsInSecond = 60 * 2;
+    [SerializeField] PowerStartMainMenu powerStartMainMenu;
     InterstitialAd interstitial;
     float lastInterstitialTime = -1;
     RewardBasedVideoAd rewardBasedVideo;
@@ -213,7 +214,7 @@ public class AdsController : MonoBehaviour {
     void BonusesReward() {
         Debug.Log("Bonuses rewarded");
         ApplicationController.ac.ActivateBonuses();
-        // RefreshBonusesIcons();
+        powerStartMainMenu.RefreshUI();
     }
 
     void RefreshRewardAdButtons() {

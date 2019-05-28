@@ -1,7 +1,4 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PowerStart : MonoBehaviour {
     [SerializeField] ScreenTransition screenTransition;
@@ -35,6 +32,8 @@ public class PowerStart : MonoBehaviour {
     }
 
     public void BeginPowerStart() {
+        if (ApplicationController.ac.PlayerData.nbPowerStart <= 0) return;
+        ApplicationController.ac.UpdatePowerStart(-1);
         gameObject.SetActive(false);
         playerCtrlr.jumpCtrlr.isInvincible = true;
         screenTransition.ScreenFadeThen(EndPowerStart);
@@ -51,8 +50,8 @@ public class PowerStart : MonoBehaviour {
 
     bool IsPowerStartAvailable() {
         if (ApplicationController.ac.PlayerData.isPremium) return true;
-        System.TimeSpan timeSinceLastActivation = System.DateTime.Now.Subtract(ApplicationController.ac.PlayerData.bonusesActivationTime);
-        return (ApplicationController.ac.PlayerData.bestScore >= 100f) && (timeSinceLastActivation.TotalMinutes <= 10f);
+       // System.TimeSpan timeSinceLastActivation = System.DateTime.Now.Subtract(ApplicationController.ac.PlayerData.bonusesActivationTime);
+        return (ApplicationController.ac.PlayerData.bestScore >= 100f) && (ApplicationController.ac.PlayerData.nbPowerStart > 0);
     }
 
     void RemovePlayerInvincibility() {
