@@ -17,12 +17,13 @@ public class CoinSpawner : AbstractSpawner {
 
     protected override IEnumerator SpawningRoutine() {
         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
+        CoinController ctrlr;
+        GameObject coin;
+        Vector3 pos = transform.position;
         while (true) {
             if (isSpwaningDuringThisLevel) {
                 yield return new WaitForSeconds(Random.Range(levelSettings.coinMinWait, levelSettings.coinMaxWait));
-                Vector3 pos = transform.position;
                 pos.x = Random.Range(minPosX, maxPosX);
-                GameObject coin;
                 if (Random.value > 1f) {
                     if (Random.value > .5f)
                         coin = Instantiate(blueCoinPrefab, pos, Quaternion.identity);
@@ -31,7 +32,7 @@ public class CoinSpawner : AbstractSpawner {
                 }
                 else
                     coin = Instantiate(standardCoinPrefab, pos, Quaternion.identity);
-                CoinController ctrlr = coin.GetComponent<CoinController>();
+                ctrlr = coin.GetComponent<CoinController>();
                 ctrlr.coinSoundCtrlr = coinSoundCtrlr;
                 ctrlr.cam = cam;
                 ctrlr.coinIndicator = coinIndicator;
@@ -41,6 +42,28 @@ public class CoinSpawner : AbstractSpawner {
                 yield return waitOneSec;
             }
         }
+    }
+
+    public IEnumerator Burst(int quantity, float timeInSeconds = 0f) {
+        if (quantity <= 0) yield break;
+        Vector3 pos = transform.position;
+        GameObject coin;
+        CoinController ctrlr;
+        float rate = timeInSeconds / quantity;
+        WaitForSeconds waitingTime = new WaitForSeconds(rate);
+        int nbSpawned = 0;
+        while (nbSpawned > quantity) {
+            pos.x = Random.Range(minPosX, maxPosX);
+            coin = Instantiate(standardCoinPrefab, pos, Quaternion.identity);
+            ctrlr = coin.GetComponent<CoinController>();
+            ctrlr.coinSoundCtrlr = coinSoundCtrlr;
+            ctrlr.cam = cam;
+            ctrlr.coinIndicator = coinIndicator;
+            ctrlr.coinIndicatorAnim = coinIndicatorAnim;
+            nbSpawned++;
+            yield return waitingTime;
+        }
+
     }
 
 
