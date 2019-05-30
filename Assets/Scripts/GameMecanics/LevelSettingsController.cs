@@ -8,6 +8,9 @@ public class LevelSettingsController : MonoBehaviour {
     public static event LevelSettingsChange OnLevelSettingsChange;
     [SerializeField] MeterCounter meterCounter;
     [SerializeField] CoinSpawner coinSpawner;
+    [SerializeField] BubbleSpawner bubbleSpawner;
+    [SerializeField] MineSpawner mineSpawner;
+    [SerializeField] RockSpawner rockSpawner;
 
     void OnEnable() {
         currentLevelSettings = LevelSettings.GetLevelSettingsScore(LevelSettings.LEVEL_10_SCORE);
@@ -32,7 +35,20 @@ public class LevelSettingsController : MonoBehaviour {
             SpawningBurst burst = LevelSettings.spawningBursts[nextBurstIndex++];
             switch (burst.type) {
                 case BurstType.Coin:
-                    coinSpawner.StartBurst(burst.quantity, burst.time);                    
+                    coinSpawner.StartBurst(burst.quantity, burst.time, burst.type);                    
+                    break;
+                case BurstType.Bubble:
+                case BurstType.RedBubble:
+                case BurstType.BlueBubble:
+                    bubbleSpawner.StartBurst(burst.quantity, burst.time, burst.type);
+                    break;
+                case BurstType.Mine:
+                case BurstType.BlueMine:
+                case BurstType.RedMine:
+                    mineSpawner.StartBurst(burst.quantity, burst.time, burst.type);
+                    break;
+                case BurstType.Rock:
+                    rockSpawner.StartBurst(burst.quantity, burst.time, burst.type);
                     break;
             }
         }

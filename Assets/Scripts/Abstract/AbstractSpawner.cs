@@ -27,4 +27,9 @@ public abstract class AbstractSpawner : MonoBehaviour {
     protected abstract void UpdateIsSpwaningDuringThisLevel();
 
     protected abstract IEnumerator SpawningRoutine();
+
+    protected abstract IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType);
+
+    public abstract void StartBurst(int quantity, float timeInSeconds, BurstType burstType);
+
 }
