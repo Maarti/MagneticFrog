@@ -14,33 +14,54 @@ public class RockSpawner : AbstractSpawner {
         while (true) {
             if (isSpwaningDuringThisLevel) {
                 yield return new WaitForSeconds(Random.Range(levelSettings.rockMinWait, levelSettings.rockMaxWait));
-                
-                // Position
-                Vector3 pos = transform.position;
-                pos.x = Random.Range(minPosX, maxPosX);
-                
-                // Type
-                GameObject rock;
-               /* if (Random.value > .5f)
-                    rock = Instantiate(rockPrefab, pos, Quaternion.identity);
-                else*/
-                    rock = Instantiate(rockPrefab, pos, Quaternion.identity);
-                
-                // Size
-                Vector3 scale = rock.transform.localScale;
-                scale *= Random.Range(levelSettings.rockMinSize, levelSettings.rockMaxSize);
-                rock.transform.localScale = scale;
-
-                // Speed
-                Rigidbody2D rb = rock.GetComponent<Rigidbody2D>();
-                rb.gravityScale *= Random.Range(levelSettings.rockMinSpeed, levelSettings.rockMaxSpeed);
-
+                SpawnOne(levelSettings.rockMinSize, levelSettings.rockMaxSize, levelSettings.rockMinSpeed, levelSettings.rockMaxSpeed);
             }
             else {
                 yield return waitOneSec;
             }
         }
     }
+
+    GameObject SpawnOne(float minScale, float maxScale, float minSpeed, float maxSpeed) {
+        // Position
+        Vector3 pos = transform.position;
+        pos.x = Random.Range(minPosX, maxPosX);
+
+        // Type
+        GameObject rock;
+        /* if (Random.value > .5f)
+             rock = Instantiate(rockPrefab, pos, Quaternion.identity);
+         else*/
+        rock = Instantiate(rockPrefab, pos, Quaternion.identity);
+
+        // Size
+        Vector3 scale = rock.transform.localScale;
+        scale *= Random.Range(minScale, maxScale);
+        rock.transform.localScale = scale;
+
+        // Speed
+        Rigidbody2D rb = rock.GetComponent<Rigidbody2D>();
+        rb.gravityScale *= Random.Range(minSpeed, maxSpeed);
+
+        return rock;
+    }
+
+    public override void StartBurst(int quantity, float timeInSeconds, BurstType burstType) {
+        StartCoroutine(Burst(quantity, timeInSeconds, burstType));
+    }
+
+    protected override IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType) {
+        if (quantity <= 0) yield break;
+        float rate = timeInSeconds / quantity;
+        WaitForSeconds waitingTime = new WaitForSeconds(rate);
+        int nbSpawned = 0;
+        while (nbSpawned < quantity) {
+            SpawnOne(levelSettings.rockMinSize, levelSettings.rockMaxSize, levelSettings.rockMinSpeed, levelSettings.rockMaxSpeed);
+            nbSpawned++;
+            yield return waitingTime;
+        }
+    }
+
 
 
 }

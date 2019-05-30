@@ -45,11 +45,11 @@ public class CoinSpawner : AbstractSpawner {
         }
     }
 
-    public void StartBurst(int quantity, float timeInSeconds = 0f) {
-        StartCoroutine(Burst(quantity, timeInSeconds));
+    public override void StartBurst(int quantity, float timeInSeconds, BurstType burstType) {
+        StartCoroutine(Burst(quantity, timeInSeconds, burstType));
     }
 
-    IEnumerator Burst(int quantity, float timeInSeconds) {
+    protected override IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType) {
         if (quantity <= 0) yield break;
         Vector3 pos;
         GameObject coin;
@@ -69,7 +69,6 @@ public class CoinSpawner : AbstractSpawner {
             nbSpawned++;
             yield return waitingTime;
         }
-
     }
 
 

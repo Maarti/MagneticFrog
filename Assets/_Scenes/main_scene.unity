@@ -156,6 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meterCounter: {fileID: 1289790556}
+  coinSpawner: {fileID: 743653166}
+  bubbleSpawner: {fileID: 1851604388}
+  mineSpawner: {fileID: 1130394639}
+  rockSpawner: {fileID: 445116100}
 --- !u!1 &4146879
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,4 +52,33 @@ public class BubbleSpawner : AbstractSpawner {
         return bubble;
     }
 
+    public override void StartBurst(int quantity, float timeInSeconds, BurstType burstType) {
+        StartCoroutine(Burst(quantity, timeInSeconds, burstType));
+    }
+
+    protected override IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType) {
+        if (quantity <= 0) yield break;
+        float rate = timeInSeconds / quantity;
+        WaitForSeconds waitingTime = new WaitForSeconds(rate);
+        int nbSpawned = 0;
+        while (nbSpawned < quantity) {
+            switch (burstType) {
+                case BurstType.BlueBubble:
+                    SpawnBlueBubble();
+                    break;
+                case BurstType.RedBubble:
+                    SpawnRedBubble();
+                    break;
+                default:
+                    if (Random.value > .5f)
+                        SpawnBlueBubble();
+                    else
+                        SpawnRedBubble();
+                    break;
+            }
+            nbSpawned++;
+            yield return waitingTime;
+        }
+    }
+
 }

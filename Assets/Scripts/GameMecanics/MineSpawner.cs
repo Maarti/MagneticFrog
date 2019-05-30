@@ -19,38 +19,8 @@ public class MineSpawner : AbstractSpawner {
         while (true) {
             if (isSpwaningDuringThisLevel) {
                 yield return new WaitForSeconds(Random.Range(levelSettings.mineMinWait, levelSettings.mineMaxWait));
-
-                // Color
                 MineType type = (Random.value > .5f) ? MineType.Blue : MineType.Red;
-                
-                /* GameObject mine;
-                MineController mineCtrlr;
-                if (Random.value > .5f) {
-                    mine = SpawnBlueMine(pos);
-                    mineCtrlr = mine.GetComponent<MineController>();
-                }
-                else {
-                    mine = SpawnRedMine(pos);                     
-                    mineCtrlr = mine.GetComponent<MineController>();
-                }
-                // Init
-                mineCtrlr.explosionVFX = explosionVFX;
-                mineCtrlr.explosionSoundCtrlr = explosionSoundCtrlr;
-
-                // Rotation
-                mine.transform.localRotation = Random.rotation;
-                
-                // Size
-                Vector3 scale = mine.transform.localScale;
-                scale *= Random.Range(levelSettings.mineMinSize, levelSettings.mineMaxSize);
-                mine.transform.localScale = scale;
-
-                // Speed
-                Rigidbody2D rb = mine.GetComponent<Rigidbody2D>();
-                rb.gravityScale *= Random.Range(levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);*/
-
                 SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
-
             }
             else {
                 yield return waitOneSec;
@@ -65,7 +35,7 @@ public class MineSpawner : AbstractSpawner {
 
         // Init
         GameObject mine;
-        if(type==MineType.Blue)
+        if (type == MineType.Blue)
             mine = Instantiate(blueMinePrefab, pos, Quaternion.identity);
         else
             mine = Instantiate(redMinePrefab, pos, Quaternion.identity);
@@ -86,6 +56,34 @@ public class MineSpawner : AbstractSpawner {
         rb.gravityScale *= Random.Range(minSpeed, maxSpeed);
 
         return mine;
+    }
+
+    public override void StartBurst(int quantity, float timeInSeconds, BurstType burstType) {
+        StartCoroutine(Burst(quantity, timeInSeconds, burstType));
+    }
+
+    protected override IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType) {
+        if (quantity <= 0) yield break;
+        float rate = timeInSeconds / quantity;
+        WaitForSeconds waitingTime = new WaitForSeconds(rate);
+        int nbSpawned = 0;
+        while (nbSpawned < quantity) {
+            MineType type;
+            switch (burstType) {
+                case BurstType.BlueMine:
+                    type = MineType.Blue;
+                    break;
+                case BurstType.RedMine:
+                    type = MineType.Red;
+                    break;
+                default:
+                    type = (Random.value > .5f) ? MineType.Blue : MineType.Red;
+                    break;
+            }
+            SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
+            nbSpawned++;
+            yield return waitingTime;
+        }
     }
 
 }
