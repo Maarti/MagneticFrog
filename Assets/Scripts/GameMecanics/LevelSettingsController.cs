@@ -2,15 +2,16 @@
 
 public class LevelSettingsController : MonoBehaviour {
 
-    [SerializeField] MeterCounter meterCounter;
     public static LevelSettings currentLevelSettings;
-    public static int nextBurst = 0;
+    public static int nextBurstIndex = 0;
     public delegate void LevelSettingsChange(LevelSettings levelSettings);
     public static event LevelSettingsChange OnLevelSettingsChange;
+    [SerializeField] MeterCounter meterCounter;
+    [SerializeField] CoinSpawner coinSpawner;
 
     void OnEnable() {
         currentLevelSettings = LevelSettings.GetLevelSettingsScore(LevelSettings.LEVEL_10_SCORE);
-        nextBurst = 0;
+        nextBurstIndex = 0;
         if (OnLevelSettingsChange != null)
             OnLevelSettingsChange(currentLevelSettings);
     }
@@ -21,7 +22,20 @@ public class LevelSettingsController : MonoBehaviour {
             if (OnLevelSettingsChange != null)
                 OnLevelSettingsChange(currentLevelSettings);
         }
+        Manageburst();
     }
 
+    void Manageburst() {
+        if (nextBurstIndex >= LevelSettings.spawningBursts.Length) return;        
+        if(meterCounter.Value >= LevelSettings.spawningBursts[nextBurstIndex].score) {
+        
+            SpawningBurst burst = LevelSettings.spawningBursts[nextBurstIndex++];
+            switch (burst.type) {
+                case BurstType.Coin:
+                    coinSpawner.StartBurst(burst.quantity, burst.time);                    
+                    break;
+            }
+        }
+    }
 
 }
