@@ -26,6 +26,9 @@ public class LevelSettings {
             { LEVEL_80_SCORE, new LevelSettings(LEVEL_80_SCORE, LEVEL_90_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f ) },  // rocks
             { LEVEL_90_SCORE, new LevelSettings(LEVEL_90_SCORE, LEVEL_100_SCORE,4f, 7f,     2f, 3f,     2.5f,4f,    .75f,1f,    1f,2f,      .5f,1.5f,   .5f,2f,     1f,2f ) },  // lot of rocks
         };
+    public readonly static SpawningBurst[] spawningBursts = {
+        new SpawningBurst(10f ,BurstType.Coin, 20, 5f),
+    };
 
     public float scoreMin;
     public float scoreMax;
@@ -78,3 +81,20 @@ public class LevelSettings {
     }
 
 }
+
+[Serializable]
+public class SpawningBurst {
+    public BurstType type = BurstType.Bubble;
+    public float score = -1;
+    public int quantity = 10;
+    public float time = 0f;
+
+    public SpawningBurst(float score, BurstType type, int quantity, float time) {
+        this.type = type;
+        this.score = score;
+        this.quantity = quantity;
+        this.time = time;
+    }
+}
+
+public enum BurstType { Mine, Bubble, Coin, Rock }

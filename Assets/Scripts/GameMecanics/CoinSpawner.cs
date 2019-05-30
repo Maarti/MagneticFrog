@@ -19,10 +19,11 @@ public class CoinSpawner : AbstractSpawner {
         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
         CoinController ctrlr;
         GameObject coin;
-        Vector3 pos = transform.position;
+        Vector3 pos;
         while (true) {
             if (isSpwaningDuringThisLevel) {
                 yield return new WaitForSeconds(Random.Range(levelSettings.coinMinWait, levelSettings.coinMaxWait));
+                pos = transform.position;
                 pos.x = Random.Range(minPosX, maxPosX);
                 if (Random.value > 1f) {
                     if (Random.value > .5f)
@@ -44,15 +45,20 @@ public class CoinSpawner : AbstractSpawner {
         }
     }
 
-    public IEnumerator Burst(int quantity, float timeInSeconds = 0f) {
+    public void StartBurst(int quantity, float timeInSeconds = 0f) {
+        StartCoroutine(Burst(quantity, timeInSeconds));
+    }
+
+    IEnumerator Burst(int quantity, float timeInSeconds) {
         if (quantity <= 0) yield break;
-        Vector3 pos = transform.position;
+        Vector3 pos;
         GameObject coin;
         CoinController ctrlr;
         float rate = timeInSeconds / quantity;
         WaitForSeconds waitingTime = new WaitForSeconds(rate);
         int nbSpawned = 0;
-        while (nbSpawned > quantity) {
+        while (nbSpawned < quantity) {
+            pos = transform.position;
             pos.x = Random.Range(minPosX, maxPosX);
             coin = Instantiate(standardCoinPrefab, pos, Quaternion.identity);
             ctrlr = coin.GetComponent<CoinController>();
