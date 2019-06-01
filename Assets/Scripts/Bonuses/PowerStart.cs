@@ -2,7 +2,7 @@
 
 public class PowerStart : MonoBehaviour {
     [SerializeField] ScreenTransition screenTransition;
-    [SerializeField] PlayerController playerCtrlr;
+    [SerializeField] PlayerController playerCtrlr;    
     bool isStarted = false;
 
     public void Start() {
@@ -44,6 +44,7 @@ public class PowerStart : MonoBehaviour {
         playerCtrlr.jumpCtrlr.isInvincible = true;
         Vector3 pos = playerCtrlr.transform.position;
         float targetDistance =  ApplicationController.ac.PlayerData.bestScore * Random.Range(.33f,.45f);
+        LevelSettingsController.SkipBurstsUntil(targetDistance);
         pos.y = Mathf.Max(pos.y,targetDistance);
         playerCtrlr.transform.position = pos;
     }
