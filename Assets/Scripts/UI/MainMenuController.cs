@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using DG.Tweening;
 
 [RequireComponent(typeof(Animator))]
@@ -10,6 +9,7 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject gameTitleCanvas;
     [SerializeField] GameObject scoreSign;
     [SerializeField] AudioSource playClickSound;
+    [SerializeField] Animator scoreShellAnim;
     [Header("Game Title")]
     [SerializeField] CanvasGroup gameTitleCanvasGroup;
     [Header("Main Menu")]
@@ -72,8 +72,9 @@ public class MainMenuController : MonoBehaviour {
     public void DisplayCharacterMenu() {
         characterMenu.localScale = new Vector3(0f, 0f, 1f);
         characterMenu.DOScale(Vector3.one, .25f);
-        mainMenuCanvasGroup.DOFade(0f, .25f).OnComplete(()=>mainMenuCanvasGroup.transform.parent.gameObject.SetActive(false));
-     //   gameTitleCanvasGroup.DOFade(0f, .25f);
+        mainMenuCanvasGroup.DOFade(0f, .25f).OnComplete(() => mainMenuCanvasGroup.transform.parent.gameObject.SetActive(false));
+        //   gameTitleCanvasGroup.DOFade(0f, .25f);
+        scoreShellAnim.SetBool("isDisplayed", false);
     }
 
     public void HideCharacterMenu() {
@@ -82,10 +83,11 @@ public class MainMenuController : MonoBehaviour {
         mainMenuCanvasGroup.transform.parent.gameObject.SetActive(true);
         mainMenuCanvasGroup.alpha = 0f;
         mainMenuCanvasGroup.DOFade(1f, 1f);
+        scoreShellAnim.SetBool("isDisplayed", true);
         characterMenu.DOScale(new Vector3(0f, 0f, 1f), .25f).OnComplete(() => characterMenu.transform.parent.gameObject.SetActive(false));
     }
 
-    public void DisplaySettingsMenu() {        
+    public void DisplaySettingsMenu() {
         gameTitleCanvasGroup.DOFade(0f, .5f);
         mainMenuCanvasGroup.DOFade(0f, .5f).OnComplete(() => mainMenuCanvasGroup.transform.parent.gameObject.SetActive(false));
         settingsCanvasGroup.gameObject.SetActive(true);
@@ -93,12 +95,12 @@ public class MainMenuController : MonoBehaviour {
         settingsCanvasGroup.DOFade(1f, .5f);
     }
 
-    public void HideSettingsMenu() {        
+    public void HideSettingsMenu() {
         gameTitleCanvasGroup.DOFade(1f, .5f);
         mainMenuCanvasGroup.transform.parent.gameObject.SetActive(true);
         mainMenuCanvasGroup.alpha = 0f;
         mainMenuCanvasGroup.DOFade(1f, .5f);
-        settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));        
+        settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));
     }
 
 }
