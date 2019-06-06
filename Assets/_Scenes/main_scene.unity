@@ -23400,6 +23400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840931814}
+  - component: {fileID: 840931815}
   m_Layer: 0
   m_Name: ScoreSign
   m_TagString: Untagged
@@ -23423,6 +23424,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &840931815
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840931813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44575ec9620384a498016f2a8a4d2ad1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &841666323
 GameObject:
   m_ObjectHideFlags: 0
@@ -48293,6 +48313,7 @@ GameObject:
   - component: {fileID: 1200094614}
   - component: {fileID: 1200094613}
   - component: {fileID: 1200094612}
+  - component: {fileID: 1200094615}
   m_Layer: 0
   m_Name: ScoreCanvas
   m_TagString: Untagged
@@ -48380,6 +48401,18 @@ Canvas:
   m_SortingLayerID: -407714727
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!225 &1200094615
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200094610}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1206341684
 GameObject:
   m_ObjectHideFlags: 0
@@ -94854,6 +94887,7 @@ MonoBehaviour:
   gameTitleCanvas: {fileID: 1837133257}
   scoreSign: {fileID: 840931813}
   playClickSound: {fileID: 1011504670}
+  scoreShellAnim: {fileID: 840931815}
   gameTitleCanvasGroup: {fileID: 1837133262}
   mainMenuCanvasGroup: {fileID: 2058162497}
   characterMenu: {fileID: 1243402955}
