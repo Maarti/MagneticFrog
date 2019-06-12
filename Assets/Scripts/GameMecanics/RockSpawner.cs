@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class RockSpawner : AbstractSpawner {
 
-    [SerializeField] GameObject rockPrefab;
+    [SerializeField] GameObject rockPrefab1;
+    [SerializeField] GameObject rockPrefab2;
+    [SerializeField] GameObject rockPrefab3;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.rockMinWait >= 0 && levelSettings.rockMaxWait > 0);
@@ -29,10 +31,14 @@ public class RockSpawner : AbstractSpawner {
 
         // Type
         GameObject rock;
-        /* if (Random.value > .5f)
-             rock = Instantiate(rockPrefab, pos, Quaternion.identity);
-         else*/
-        rock = Instantiate(rockPrefab, pos, Quaternion.identity);
+        float rand = Random.value;
+        Debug.Log(rand);
+        if (rand > 2f/3)
+            rock = Instantiate(rockPrefab1, pos, Quaternion.identity);
+        else if (rand > 1f/3)
+            rock = Instantiate(rockPrefab2, pos, Quaternion.identity);
+        else
+            rock = Instantiate(rockPrefab3, pos, Quaternion.identity);
 
         // Size
         Vector3 scale = rock.transform.localScale;
