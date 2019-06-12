@@ -9,7 +9,7 @@ public class BoundaryController : MonoBehaviour {
             obj.GetComponent<PlayerController>().Die();
         }
         else if (obj.CompareTag("MainElement"))
-            Destroy(obj);
+            Destroy(obj, .5f); // let some time to get out of the screen
         else if (obj.tag == "MainElement/Bubble") {
 
         }
