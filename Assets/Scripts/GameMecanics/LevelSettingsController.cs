@@ -58,7 +58,6 @@ public class LevelSettingsController : MonoBehaviour {
         foreach(SpawningBurst burst in LevelSettings.spawningBursts) {
             if (burst.score <= score) {
                 nextBurstIndex++;
-                Debug.Log("skip");
             }
             else
                 break;
