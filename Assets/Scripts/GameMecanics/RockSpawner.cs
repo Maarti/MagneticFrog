@@ -32,13 +32,12 @@ public class RockSpawner : AbstractSpawner {
         // Type
         GameObject rock;
         float rand = Random.value;
-        Debug.Log(rand);
-        if (rand > 2f/3)
+        if (rand > .5f)
             rock = Instantiate(rockPrefab1, pos, Quaternion.identity);
-        else if (rand > 1f/3)
+        else {
             rock = Instantiate(rockPrefab2, pos, Quaternion.identity);
-        else
-            rock = Instantiate(rockPrefab3, pos, Quaternion.identity);
+            rock.transform.rotation = Random.rotation;
+        }
 
         // Size
         Vector3 scale = rock.transform.localScale;
