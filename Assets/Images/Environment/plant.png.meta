@@ -4,6 +4,9 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: plant_mid
     21300002: plant_base
+    21300004: alga_base
+    21300006: alga_mid
+    21300008: alga_mid2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -154,6 +157,66 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d6dba864418499048b696d0712a9c5eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alga_base
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 245
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.46530053, y: 0.07815791}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8daf614603b0a44c92dc4d35b5f23e2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alga_mid
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 310
+        width: 41
+        height: 104
+      alignment: 9
+      pivot: {x: 0.48086995, y: 0.062589794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4afec344d9a9e949937dd47b722c970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alga_mid2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 306
+        width: 40
+        height: 104
+      alignment: 9
+      pivot: {x: 0.48525277, y: 0.07176355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a4dee8cff9f8a42a3112c4da45f30f
       vertices: []
       indices: 
       edges: []
