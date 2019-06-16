@@ -183,6 +183,7 @@ public class TutorialManager : MonoBehaviour {
     void AfterTutorialEnd() {
         tutorialCanvasAnimator.SetInteger("state", 0);
         ApplicationController.ac.FinishTutorial();
+        ApplicationController.ac.Save();
         gameCtrlr.StopGame();
         gameCtrlr.StartGame();
     }
