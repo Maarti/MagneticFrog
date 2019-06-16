@@ -52,6 +52,7 @@ public class CloudSavedGame : MonoBehaviour {
     static void SaveOnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game) {
         if (status == SavedGameRequestStatus.Success) {
             Debug.LogFormat("SaveOnSavedGameOpened {0}", game);
+            savedGameMetadata = game;
             SaveGame();
         }
         else {
@@ -66,11 +67,12 @@ public class CloudSavedGame : MonoBehaviour {
             SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
             TimeSpan totalPlaytime = new TimeSpan(0, 0, Mathf.FloorToInt(Time.realtimeSinceStartup));
             totalPlaytime = totalPlaytime.Add(savedGameMetadata.TotalTimePlayed);
-            builder = builder
+            SavedGameMetadataUpdate updatedMetadata = builder
                 .WithUpdatedPlayedTime(totalPlaytime)
-                .WithUpdatedDescription(string.Format("Saved game at {0} - Playtime: {1} - {2} coin(s)", DateTime.Now, totalPlaytime, ApplicationController.ac.PlayerData.coins));
-            SavedGameMetadataUpdate updatedMetadata = builder.Build();
+                .WithUpdatedDescription(string.Format("Saved game at {0} - Playtime: {1} - {2} coin(s)", DateTime.Now, totalPlaytime, ApplicationController.ac.PlayerData.coins))
+                .Build();
             byte[] savedData = ObjectToByteArray(ApplicationController.ac.PlayerData);
+            Debug.LogFormat("Trying to CommitUpdate() with savedGameMetadata={0} - updatedMetadata={1} - savedData={2}", savedGameMetadata, updatedMetadata, savedData);
             savedGameClient.CommitUpdate(savedGameMetadata, updatedMetadata, savedData, OnSavedGameWritten);
         }
     }
