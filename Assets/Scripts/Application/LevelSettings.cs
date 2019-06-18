@@ -27,9 +27,9 @@ public class LevelSettings {
             { LEVEL_90_SCORE, new LevelSettings(LEVEL_90_SCORE, LEVEL_100_SCORE,4f, 7f,     2f, 3f,     2.5f,4f,    .75f,1f,    1f,2f,      .5f,1.5f,   .5f,2f,     1f,2f ) },  // lot of rocks
         };
     public readonly static SpawningBurst[] spawningBursts = {
-        new SpawningBurst(20f ,BurstType.BlueBubble, 30, 0f),
+        new SpawningBurst(20f ,BurstType.BlueBubble, 12, 0f),
         new SpawningBurst(100f ,BurstType.Coin, 5, 5f),
-        new SpawningBurst(150f ,BurstType.RedMine, 15, 0f),
+        new SpawningBurst(150f ,BurstType.RedMine, 8, 0f),
      /*   new SpawningBurst(30f ,BurstType.RedBubble, 10, 0f),
         new SpawningBurst(40f ,BurstType.Bubble, 10, 0f),
         new SpawningBurst(60f ,BurstType.BlueMine, 10, 0f),
