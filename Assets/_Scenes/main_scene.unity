@@ -5712,6 +5712,7 @@ MonoBehaviour:
   - {fileID: 1145176511}
   - {fileID: 1525105718}
   - {fileID: 1660589848}
+  magnetSound: {fileID: 609251095}
 --- !u!1 &220246579
 GameObject:
   m_ObjectHideFlags: 0
