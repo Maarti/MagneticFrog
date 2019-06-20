@@ -10,6 +10,7 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
     [SerializeField] TutorialManager tutorialManager;
     [SerializeField] Animator tutoMagnetAnim;
     [SerializeField] GameObject[] tutos;
+    [SerializeField] SoundController magnetSound;
     Animator anim;
     bool clickedOnRedMagnet = false;
     bool clickedOnBlueMagnet = false;
@@ -76,12 +77,14 @@ public class TutorialAnimatorOrchester : MonoBehaviour {
         tutoMagnetAnim.SetBool("isRed", false);        
         clickedOnBlueMagnet = true;
         CheckIfConfirmButtonShouldBeDisplayed();
+        magnetSound.Play();
     }
 
     public void SetMagnetAnimToRed() {
         tutoMagnetAnim.SetBool("isRed", true);
         clickedOnRedMagnet = true;
         CheckIfConfirmButtonShouldBeDisplayed();
+        magnetSound.Play();
     }
 
     public void CheckIfConfirmButtonShouldBeDisplayed() {
