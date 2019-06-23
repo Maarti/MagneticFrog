@@ -81,16 +81,19 @@ public class CharacterSelector : MonoBehaviour {
 
     public static void DisableAllCharacters() {
         foreach (CharacterSettings character in ApplicationController.ac.characters) {
-            character.skin.SetActive(false);
+            if (character.skin != null)
+                character.skin.SetActive(false);
         }
     }
 
     public static void EnableCurrentCharacter() {
         GameObject charSkin = ApplicationController.ac.characters[currentCharacter].skin;
-        charSkin.SetActive(true);
-        Vector3 charPos = charSkin.transform.position;
-        charPos.x = 0f;
-        charSkin.transform.position = charPos;
+        if (charSkin != null) {
+            charSkin.SetActive(true);
+            Vector3 charPos = charSkin.transform.position;
+            charPos.x = 0f;
+            charSkin.transform.position = charPos;
+        }
     }
 
     public static void RefreshCurrentCharacterDisplay() {
