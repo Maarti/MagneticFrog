@@ -11,8 +11,10 @@ public class IAPManager : MonoBehaviour, IStoreListener {
     IExtensionProvider extensions;
 
     public static string ID_COINS_SMALL = "net.maarti.magnetic_frog.coins_small";
-    public static string ID_COINS_MEDIUM = "500_coins";
+    public static string ID_COINS_MEDIUM = "net.maarti.magnetic_frog.coins_medium";
     public static string ID_COINS_HIGH = "net.maarti.magnetic_frog.coins_high";
+    public static string ID_PREMIUM = "net.maarti.magnetic_frog.premium";
+    public static string ID_FROGBOT = "net.maarti.magnetic_frog.frogbot";
 
     void Start() {
         if (controller == null) {
@@ -46,7 +48,6 @@ public class IAPManager : MonoBehaviour, IStoreListener {
             if (product != null && product.availableToPurchase) {
                 Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
                 // ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed asynchronously.
-                Debug.Log(product.metadata.localizedPriceString);
                 controller.InitiatePurchase(product);
             }
             else {
@@ -61,6 +62,28 @@ public class IAPManager : MonoBehaviour, IStoreListener {
     public void BuyCoinsMedium() {
         BuyProductID(ID_COINS_MEDIUM);
     }
+
+    public void OnPurchasedCoinsSmall() {
+        ApplicationController.ac.UpdateCoins(200);
+    }
+
+    public void OnPurchasedCoinsMedium() {
+        ApplicationController.ac.UpdateCoins(500);
+    }
+
+    public void OnPurchasedCoinsHigh() {
+        ApplicationController.ac.UpdateCoins(1500);
+    }
+
+    public void OnPurchasedPremium() {
+        // ApplicationController.ac.UnlockPremium();
+    }
+
+    public void OnPurchasedFrogbot() {
+        // ApplicationController.ac.UnlockFrogbot();
+    }
+
+
 
     void RefreshButtons() {
         if (purchaseButtons != null) {
@@ -92,7 +115,7 @@ public class IAPManager : MonoBehaviour, IStoreListener {
         if (String.Equals(e.purchasedProduct.definition.id, ID_COINS_MEDIUM, StringComparison.Ordinal)) {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", e.purchasedProduct.definition.id));
             // The consumable item has been successfully purchased, add 500 coins to the player's in-game score.
-            ApplicationController.ac.UpdateCoins(500);
+            OnPurchasedCoinsMedium();
         }
         else {
             Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", e.purchasedProduct.definition.id));
