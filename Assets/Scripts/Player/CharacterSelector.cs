@@ -52,7 +52,6 @@ public class CharacterSelector : MonoBehaviour {
     }
 
     IEnumerator SwipeCharacterOverTime(int characterIndex, float duration, float xOffsetStart, float xOffsetEnd, bool activeAtTheEnd = true) {
-        Debug.Log("START SWIPING");
         GameObject character = ApplicationController.ac.characters[characterIndex].skin;
         float startTime = Time.time;
         float endTime = startTime + duration;
@@ -76,7 +75,6 @@ public class CharacterSelector : MonoBehaviour {
             character.transform.position = startPos;
             character.SetActive(false);
         }
-        Debug.Log("END SWIPING");
     }
 
     public static void DisableAllCharacters() {

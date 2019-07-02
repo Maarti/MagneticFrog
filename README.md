@@ -13,7 +13,7 @@
 7. Fill with background color
 
 ### Blured UI background
-Filters > Blur > Median Blur > Radius: 30
+Filters > Blur > Median Blur > Radius: 6
 
 ## Credits
 * "Water Swirl" by InspectorJ of Freesound.org
