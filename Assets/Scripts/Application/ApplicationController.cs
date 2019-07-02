@@ -152,4 +152,8 @@ public class ApplicationController : MonoBehaviour {
         PlayerData.nbPowerStart = Mathf.Clamp(PlayerData.nbPowerStart + value, 0, 10);
     }
 
+    public void CollectMenuCoin() {
+        PlayerData.lastMenuCoin = DateTime.Now;
+    }
+
 }

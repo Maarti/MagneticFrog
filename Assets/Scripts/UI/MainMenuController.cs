@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(Animator))]
 public class MainMenuController : MonoBehaviour {
@@ -18,6 +19,8 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] RectTransform characterMenu;
     [Header("Settings Menu")]
     [SerializeField] CanvasGroup settingsCanvasGroup;
+    [Header("Menu Coin")]
+    [SerializeField] SoundController coinSound;
 
     Animator mainMenuAnim;
     bool isStarted = false;
@@ -37,6 +40,7 @@ public class MainMenuController : MonoBehaviour {
     private void OnEnable() {
         if (!isStarted) return;
         RefreshScoreDisplay();
+        RefreshMenuCoin();
         gameTitleCanvas.SetActive(true);
     }
 
@@ -101,6 +105,26 @@ public class MainMenuController : MonoBehaviour {
         mainMenuCanvasGroup.alpha = 0f;
         mainMenuCanvasGroup.DOFade(1f, .5f);
         settingsCanvasGroup.DOFade(0f, .5f).OnComplete(() => settingsCanvasGroup.gameObject.SetActive(false));
+    }
+
+    //----------------------
+    // Menu Coin
+    void RefreshMenuCoin() {
+        bool isCoinDisplayed = IsMenuCoinDisplayed();
+        scoreShellAnim.SetBool("coinIsDisplayed", isCoinDisplayed);
+    }
+
+    bool IsMenuCoinDisplayed() {
+        TimeSpan timeSinceLastCoin = DateTime.Now - ApplicationController.ac.PlayerData.lastMenuCoin;
+        return timeSinceLastCoin.TotalMinutes > 10f;
+    }
+
+    public void CollectMenuCoin() {
+        ApplicationController.ac.CollectMenuCoin();
+        ApplicationController.ac.UpdateCoins(1);
+        scoreShellAnim.SetBool("coinIsDisplayed", false);
+        ApplicationController.ac.Save();
+        coinSound.Play();
     }
 
 }
