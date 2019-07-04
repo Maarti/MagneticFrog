@@ -72378,7 +72378,6 @@ MonoBehaviour:
   magnetModel: {fileID: 2120105532}
   magnetTitlePlaceholder: {fileID: 1910557995}
   magnetModelContainer: {fileID: 1728360427}
-  necklaceRendering: {fileID: 2116823764}
   lineRendering: {fileID: 1694481238}
   magnetRb: {fileID: 2120105535}
   magnetJoint: {fileID: 2120105534}
@@ -123314,7 +123313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2116823765
 Transform:
   m_ObjectHideFlags: 0
