@@ -12,7 +12,7 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] GameObject magnetModel;
     [SerializeField] GameObject magnetTitlePlaceholder;
     [SerializeField] GameObject magnetModelContainer;
-    [SerializeField] GameObject necklaceRendering;
+    // [SerializeField] GameObject necklaceRendering;
     [SerializeField] GameObject lineRendering;
     [SerializeField] Rigidbody2D magnetRb;
     [SerializeField] DistanceJoint2D magnetJoint;
@@ -84,7 +84,7 @@ public class MagnetController : MonoBehaviour {
         magnetRb.bodyType = RigidbodyType2D.Kinematic;
         magnetJoint.enabled = false;
         magnetRb.velocity = Vector2.zero;
-        necklaceRendering.SetActive(false);
+      //  necklaceRendering.SetActive(false);
         lineRendering.SetActive(false);
         magnetModel.SetActive(false);
     }
@@ -96,7 +96,7 @@ public class MagnetController : MonoBehaviour {
         magnetModel.transform.localPosition = initialModelLocalPosition;
         magnetRb.bodyType = RigidbodyType2D.Dynamic;
         magnetJoint.enabled = true;
-        necklaceRendering.SetActive(true);
+     //   necklaceRendering.SetActive(true);
         lineRendering.SetActive(true);
         magnetModel.SetActive(true);
     }
