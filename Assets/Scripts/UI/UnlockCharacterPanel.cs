@@ -54,8 +54,5 @@ public class UnlockCharacterPanel : MonoBehaviour {
         coinDisplayer.RefreshUI();
     }
 
-    public void WatchRewardAd() {
-        
-    }
 
 }

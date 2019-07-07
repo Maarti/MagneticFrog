@@ -15,15 +15,13 @@ public class LevelSettingsController : MonoBehaviour {
     void OnEnable() {
         currentLevelSettings = LevelSettings.GetLevelSettingsScore(LevelSettings.LEVEL_10_SCORE);
         nextBurstIndex = 0;
-        if (OnLevelSettingsChange != null)
-            OnLevelSettingsChange(currentLevelSettings);
+        OnLevelSettingsChange?.Invoke(currentLevelSettings);
     }
 
     void Update() {
         if (meterCounter.Value >= currentLevelSettings.scoreMax) {
             currentLevelSettings = LevelSettings.GetLevelSettingsScore(meterCounter.Value);
-            if (OnLevelSettingsChange != null)
-                OnLevelSettingsChange(currentLevelSettings);
+            OnLevelSettingsChange?.Invoke(currentLevelSettings);
         }
         Manageburst();
     }

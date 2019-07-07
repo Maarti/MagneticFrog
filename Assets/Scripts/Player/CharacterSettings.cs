@@ -3,7 +3,8 @@ using UnityEngine;
 
 [Serializable]
 public class CharacterSettings {
-    public static int MAX_STAT = 3;
+    public static int MAX_STAT = 3;                     // Max points in a stat
+    public static int[] STATS_COST = { 10, 40, 100 };   // Cost of the 1st, 2nd, 3rd... point in a stat
     public GameObject skin;
     public CharacterId id;
     public string name;
@@ -32,4 +33,4 @@ public struct CharacterSavedData {
     public int breath;
 }
 
-public enum CharacterId { HYLA, GOLIATH, PACMAN, POISON_PYRO, POISON_AQUA, POISON_VOLT, GOTTLEBEI, GOLDEN, DARWIN, DOUGLASS, FROBOT, MEGOPHRYS}
+public enum CharacterId { HYLA, GOLIATH, PACMAN, POISON_PYRO, POISON_AQUA, POISON_VOLT, GOTTLEBEI, GOLDEN, DARWIN, DOUGLASS, FROBOT, MEGOPHRYS }

@@ -149,23 +149,5 @@ public class CharacterSelector : MonoBehaviour {
             priceTxt.text = displayedChar.cost + " <sprite name=\"coin\">";
         }
     }
-
-    public void UpgradeAgility() {
-        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
-        ApplicationController.ac.UpgradeAgility(displayedChar);
-        RefreshUI();
-    }
-
-    public void UpgradeStamina() {
-        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
-        ApplicationController.ac.UpgradeStamina(displayedChar);
-        RefreshUI();
-    }
-
-    public void UpgradeBreath() {
-        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
-        ApplicationController.ac.UpgradeBreath(displayedChar);
-        RefreshUI();
-    }
-
+       
 }
