@@ -3,6 +3,7 @@ using UnityEngine;
 
 [Serializable]
 public class CharacterSettings {
+    public static int MAX_STAT = 3;
     public GameObject skin;
     public CharacterId id;
     public string name;

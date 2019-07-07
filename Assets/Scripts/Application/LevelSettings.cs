@@ -33,9 +33,9 @@ public class LevelSettings {
             { LEVEL_120_SCORE,new LevelSettings(LEVEL_120_SCORE,LEVEL_130_SCORE,3f, 5f,     4f, 4f,     .5f,1.5f,   .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,2f ) },  // low bubble + mines
         };
     public readonly static SpawningBurst[] spawningBursts = {
-        new SpawningBurst(20f ,BurstType.BlueBubble, 12, 0f),
+        new SpawningBurst(20f ,BurstType.BlueBubble, 12, 2f),
         new SpawningBurst(100f ,BurstType.Coin, 5, 5f),
-        new SpawningBurst(150f ,BurstType.RedMine, 6, 0f),
+        new SpawningBurst(150f ,BurstType.RedMine, 6, 2f),
         new SpawningBurst(300f ,BurstType.BlueBubble, 20, 0f),
         new SpawningBurst(690f ,BurstType.RedBubble, 20, 1f),
      /* new SpawningBurst(30f ,BurstType.RedBubble, 10, 0f),

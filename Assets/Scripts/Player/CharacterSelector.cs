@@ -117,19 +117,26 @@ public class CharacterSelector : MonoBehaviour {
     public void RefreshUI() {
         CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
         characterName.text = displayedChar.name;
+        // Stat value
         agilitySlider.value = displayedChar.agility;
         staminaSlider.value = displayedChar.stamina;
         breathSlider.value = displayedChar.breath;
+        // Display upgrade btn
         agilityButton.gameObject.SetActive(displayedChar.agility < 3);
         staminaButton.gameObject.SetActive(displayedChar.stamina < 3);
         breathButton.gameObject.SetActive(displayedChar.breath < 3);
-
+        // Enable upgrade btn
+        agilityButton.interactable = displayedChar.isUnlocked;
+        staminaButton.interactable = displayedChar.isUnlocked;
+        breathButton.interactable = displayedChar.isUnlocked;
+        // Select btn
         if (currentCharacter == currentlyDisplayedCharacter) {
             selectButton.interactable = false;
         }
         else {
             selectButton.interactable = true;
         }
+        // Purchase btn
         if (displayedChar.isUnlocked) {
             selectButtonObj.SetActive(true);
             purchaseButtonObj.SetActive(false);
@@ -141,6 +148,24 @@ public class CharacterSelector : MonoBehaviour {
             cloudImg.SetActive(true);
             priceTxt.text = displayedChar.cost + " <sprite name=\"coin\">";
         }
+    }
+
+    public void UpgradeAgility() {
+        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
+        ApplicationController.ac.UpgradeAgility(displayedChar);
+        RefreshUI();
+    }
+
+    public void UpgradeStamina() {
+        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
+        ApplicationController.ac.UpgradeStamina(displayedChar);
+        RefreshUI();
+    }
+
+    public void UpgradeBreath() {
+        CharacterSettings displayedChar = ApplicationController.ac.characters[currentlyDisplayedCharacter];
+        ApplicationController.ac.UpgradeBreath(displayedChar);
+        RefreshUI();
     }
 
 }
