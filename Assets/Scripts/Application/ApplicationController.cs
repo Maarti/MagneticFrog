@@ -77,6 +77,7 @@ public class ApplicationController : MonoBehaviour {
         }
     }
 
+    // Save all current characters into PlayerData
     public void SaveCharacters() {
         Dictionary<CharacterId, CharacterSavedData> newData = new Dictionary<CharacterId, CharacterSavedData>();
         foreach (CharacterSettings character in characters) {
@@ -156,34 +157,43 @@ public class ApplicationController : MonoBehaviour {
         PlayerData.lastMenuCoin = DateTime.Now;
     }
 
-    public void UpgradeAgility(CharacterSettings character) {
-        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
-            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
-            if (character.agility < CharacterSettings.MAX_STAT) {
-                character.agility++;
-                savedCharacter.agility= character.agility;
-            }
+    public void UpgradeAgility(CharacterSettings character, int cost) {
+        if (
+        character.isUnlocked &&
+        PlayerData.characters.ContainsKey(character.id) &&
+        character.agility < CharacterSettings.MAX_STAT &&
+        PlayerData.coins >= cost
+        ) {
+            character.agility++;
+            UpdateCoins(cost * -1);
+            SaveCharacters();
         }
     }
 
-    public void UpgradeStamina(CharacterSettings character) {
-        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
-            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
-            if (character.stamina < CharacterSettings.MAX_STAT) {
-                character.stamina++;
-                savedCharacter.stamina = character.stamina;
-            }
+    public void UpgradeStamina(CharacterSettings character, int cost) {
+        if (
+        character.isUnlocked &&
+        PlayerData.characters.ContainsKey(character.id) &&
+        character.stamina < CharacterSettings.MAX_STAT &&
+        PlayerData.coins >= cost
+        ) {
+            character.stamina++;
+            UpdateCoins(cost * -1);
+            SaveCharacters();
         }
     }
 
-    public void UpgradeBreath(CharacterSettings character) {
-        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
-            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
-            if (character.breath < CharacterSettings.MAX_STAT) {
-                character.breath++;
-                savedCharacter.breath = character.breath;
-            }
+    public void UpgradeBreath(CharacterSettings character, int cost) {
+        if (
+        character.isUnlocked &&
+        PlayerData.characters.ContainsKey(character.id) &&
+        character.breath < CharacterSettings.MAX_STAT &&
+        PlayerData.coins >= cost
+        ) {
+            character.breath++;
+            UpdateCoins(cost * -1);
+            SaveCharacters();
         }
     }
 
-    }
+}
