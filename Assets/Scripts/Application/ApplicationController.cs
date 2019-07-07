@@ -101,7 +101,7 @@ public class ApplicationController : MonoBehaviour {
         CharacterSelector.currentlyDisplayedCharacter = CharacterSelector.currentCharacter;
     }
 
-    public void SaveCurrentCharacter() {        
+    public void SaveCurrentCharacter() {
         PlayerData.currentCharacater = characters[CharacterSelector.currentCharacter].id;
     }
 
@@ -156,4 +156,34 @@ public class ApplicationController : MonoBehaviour {
         PlayerData.lastMenuCoin = DateTime.Now;
     }
 
-}
+    public void UpgradeAgility(CharacterSettings character) {
+        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
+            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
+            if (character.agility < CharacterSettings.MAX_STAT) {
+                character.agility++;
+                savedCharacter.agility= character.agility;
+            }
+        }
+    }
+
+    public void UpgradeStamina(CharacterSettings character) {
+        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
+            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
+            if (character.stamina < CharacterSettings.MAX_STAT) {
+                character.stamina++;
+                savedCharacter.stamina = character.stamina;
+            }
+        }
+    }
+
+    public void UpgradeBreath(CharacterSettings character) {
+        if (character.isUnlocked && PlayerData.characters.ContainsKey(character.id)) {
+            CharacterSavedData savedCharacter = PlayerData.characters[character.id];
+            if (character.breath < CharacterSettings.MAX_STAT) {
+                character.breath++;
+                savedCharacter.breath = character.breath;
+            }
+        }
+    }
+
+    }
