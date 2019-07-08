@@ -16232,6 +16232,85 @@ Transform:
   m_Father: {fileID: 2120105533}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &390328856
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1289790560}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_Name
+      value: poison_aqua_frog
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ebabe2ac4b3d6084a951b421a4b9a183, type: 2}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.308
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6b1876db5a5b37478f737e758aa5f76, type: 3}
 --- !u!1 &391201928
 GameObject:
   m_ObjectHideFlags: 0
@@ -16312,6 +16391,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &394228441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e6b1876db5a5b37478f737e758aa5f76,
+    type: 3}
+  m_PrefabInstance: {fileID: 390328856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &394228442 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e6b1876db5a5b37478f737e758aa5f76,
+    type: 3}
+  m_PrefabInstance: {fileID: 390328856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &395780926
 GameObject:
   m_ObjectHideFlags: 0
@@ -72981,6 +73072,7 @@ Transform:
   - {fileID: 727874933}
   - {fileID: 1069399275}
   - {fileID: 357716259}
+  - {fileID: 394228442}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89005,6 +89097,14 @@ MonoBehaviour:
     agility: 2
     stamina: 1
     breath: 1
+    cost: 80
+    isUnlocked: 0
+  - skin: {fileID: 394228441}
+    id: 4
+    name: Poison Aqua
+    agility: 1
+    stamina: 1
+    breath: 2
     cost: 80
     isUnlocked: 0
 --- !u!4 &1759637273
