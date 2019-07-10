@@ -2809,7 +2809,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1759637278}
-        m_MethodName: OnPurchasedCoinsSmall
+        m_MethodName: OnPurchasedCoinsMedium
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6831,7 +6831,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1759637278}
-        m_MethodName: OnPurchasedCoinsSmall
+        m_MethodName: OnPurchasedPremium
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30733,7 +30733,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1759637278}
-        m_MethodName: OnPurchasedCoinsSmall
+        m_MethodName: OnPurchasedCoinsHigh
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58557,7 +58557,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1759637278}
-        m_MethodName: OnPurchasedCoinsSmall
+        m_MethodName: OnPurchasedFrogbot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -89089,7 +89089,7 @@ MonoBehaviour:
     agility: 1
     stamina: 2
     breath: 1
-    cost: 80
+    cost: 60
     isUnlocked: 0
   - skin: {fileID: 1069399274}
     id: 5

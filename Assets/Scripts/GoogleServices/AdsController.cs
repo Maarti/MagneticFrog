@@ -163,7 +163,6 @@ public class AdsController : MonoBehaviour {
 #endif
 
     void OnRewardBasedVideoLoaded(object sender, EventArgs args) {
-        Debug.Log("OnRewardBasedVideoLoaded");
         isRequestingRewardAd = false;
         RefreshRewardAdButtons();
     }
@@ -176,22 +175,18 @@ public class AdsController : MonoBehaviour {
     }
 
     public void OnRewardBasedVideoOpened(object sender, EventArgs args) {
-        Debug.Log("OnRewardBasedVideoOpened");
         RefreshRewardAdButtons();
     }
 
     public void OnRewardBasedVideoStarted(object sender, EventArgs args) {
-        Debug.Log("OnRewardBasedVideoStarted");
     }
 
     public void OnRewardBasedVideoClosed(object sender, EventArgs args) {
-        Debug.Log("OnRewardBasedVideoClosed");
         RefreshRewardAdButtons();
         RequestRewardAd();
     }
 
     public void OnRewardBasedVideoRewarded(object sender, Reward args) {
-        Debug.Log("OnRewardBasedVideoRewarded");
         if (currentRewardAdType == RewardAdType.Coins)
             CoinsReward((int)args.Amount);
         else if (currentRewardAdType == RewardAdType.Bonuses)
@@ -204,7 +199,6 @@ public class AdsController : MonoBehaviour {
     }
 
     void CoinsReward(int amount) {
-        Debug.Log(amount.ToString() + " coins rewarded");
         ApplicationController.ac.UpdateCoins(amount);
         earnedCoinsText.text = "+ " + amount.ToString() + " <sprite name=\"coin\">";
         earnedCoinsAnim.SetTrigger("tick");
@@ -218,7 +212,6 @@ public class AdsController : MonoBehaviour {
     }
 
     void RefreshRewardAdButtons() {
-        Debug.Log("RefreshRewardAdButtons");
         if (rewardAdButtons != null) {
             bool enable = (rewardBasedVideo != null && rewardBasedVideo.IsLoaded());
             foreach (Button button in rewardAdButtons) {
@@ -231,7 +224,6 @@ public class AdsController : MonoBehaviour {
     }
 
     void RefreshCoinDisplayers() {
-        Debug.Log("RefreshCoinDisplayers");
         if (coinDisplayers != null) {
             foreach (CoinDisplayer coinDisplayer in coinDisplayers) {
                 coinDisplayer.RefreshUI();

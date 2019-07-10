@@ -196,4 +196,13 @@ public class ApplicationController : MonoBehaviour {
         }
     }
 
+    public void UnlockPremium() {
+        PlayerData.isPremium = true;
+    }
+
+    public void UnlockFrogbot() {
+        CharacterSettings frogbot = Array.Find(characters, (c)=>c.id==CharacterId.FROGBOT);
+        frogbot.isUnlocked = true;        
+        SaveCharacters();
+    }
 }

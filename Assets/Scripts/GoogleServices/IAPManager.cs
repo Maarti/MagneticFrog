@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Purchasing;
 
+// Can be replaced by the Unity codeless IAP
 public class IAPManager : MonoBehaviour, IStoreListener {
 
     [SerializeField] Button[] purchaseButtons;
@@ -39,6 +40,7 @@ public class IAPManager : MonoBehaviour, IStoreListener {
         return controller != null && extensions != null;
     }
 
+    // not used, using the Unity IAP widget instead
     private void BuyProductID(string productId) {
         if (IsInitialized()) {
             // ... look up the Product reference with the general product identifier and the Purchasing system's products collection.
@@ -65,22 +67,27 @@ public class IAPManager : MonoBehaviour, IStoreListener {
 
     public void OnPurchasedCoinsSmall() {
         ApplicationController.ac.UpdateCoins(200);
+        ApplicationController.ac.Save();
     }
 
     public void OnPurchasedCoinsMedium() {
         ApplicationController.ac.UpdateCoins(500);
+        ApplicationController.ac.Save();
     }
 
     public void OnPurchasedCoinsHigh() {
         ApplicationController.ac.UpdateCoins(1500);
+        ApplicationController.ac.Save();
     }
 
     public void OnPurchasedPremium() {
-        // ApplicationController.ac.UnlockPremium();
+        ApplicationController.ac.UnlockPremium();
+        ApplicationController.ac.Save();
     }
 
     public void OnPurchasedFrogbot() {
-        // ApplicationController.ac.UnlockFrogbot();
+        ApplicationController.ac.UnlockFrogbot();
+        ApplicationController.ac.Save();
     }
 
 
