@@ -48,9 +48,9 @@ public class UnlockCharacterPanel : MonoBehaviour {
 
     public void PurchaseCharacter() {
         ApplicationController.ac.UnlockCharacter(CharacterSelector.currentlyDisplayedCharacter);
-        ApplicationController.ac.Save();
-        this.gameObject.SetActive(false);
-        characterSelector.RefreshUI();
+        // ApplicationController.ac.Save();   // already done in SelectCharacter()
+        gameObject.SetActive(false);
+        characterSelector.SelectCharacter();        
         coinDisplayer.RefreshUI();
     }
 
