@@ -34,6 +34,7 @@ public class PowerStart : MonoBehaviour {
     public void BeginPowerStart() {
         if (!IsPowerStartAvailable()) return;
         ApplicationController.ac.UpdatePowerStart(-1);
+        ApplicationController.ac.Save();
         gameObject.SetActive(false);
         playerCtrlr.jumpCtrlr.isInvincible = true;
         screenTransition.ScreenFadeThen(EndPowerStart);
