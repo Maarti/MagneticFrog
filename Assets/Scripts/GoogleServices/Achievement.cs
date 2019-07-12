@@ -80,4 +80,14 @@ public class Achievement : MonoBehaviour {
         }
     }
 
+    public static void CheckForGameFinisherAchievement() {
+        try {
+            if (Social.localUser.authenticated && ApplicationController.ac.PlayerData.characters.Count >= ApplicationController.ac.characters.Length)
+                Unlock(GPGSIds.achievement_game_finisher);
+        }
+        catch (Exception e) {
+            Debug.LogError(e);
+        }
+    }
+
 }
