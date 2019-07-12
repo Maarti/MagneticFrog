@@ -139,6 +139,7 @@ public class ApplicationController : MonoBehaviour {
             character.isUnlocked = true;
             UpdateCoins(character.cost * -1);
             SaveCharacters();
+            Achievement.CheckForGameFinisherAchievement();
         }
         else {
             Debug.LogWarning(String.Format("Can't unlock character {0}. isUnlocked={1} cost={2} coins={3}", characterId, character.isUnlocked, character.cost, PlayerData.coins));
@@ -167,6 +168,8 @@ public class ApplicationController : MonoBehaviour {
             character.agility++;
             UpdateCoins(cost * -1);
             SaveCharacters();
+            if (IsCharacterFullyUpgraded(character))
+                Achievement.Unlock(GPGSIds.achievement_fully_upgraded);
         }
     }
 
@@ -180,6 +183,8 @@ public class ApplicationController : MonoBehaviour {
             character.stamina++;
             UpdateCoins(cost * -1);
             SaveCharacters();
+            if (IsCharacterFullyUpgraded(character))
+                Achievement.Unlock(GPGSIds.achievement_fully_upgraded);
         }
     }
 
@@ -193,6 +198,8 @@ public class ApplicationController : MonoBehaviour {
             character.breath++;
             UpdateCoins(cost * -1);
             SaveCharacters();
+            if (IsCharacterFullyUpgraded(character))
+                Achievement.Unlock(GPGSIds.achievement_fully_upgraded);
         }
     }
 
@@ -201,8 +208,13 @@ public class ApplicationController : MonoBehaviour {
     }
 
     public void UnlockFrogbot() {
-        CharacterSettings frogbot = Array.Find(characters, (c)=>c.id==CharacterId.FROGBOT);
-        frogbot.isUnlocked = true;        
+        CharacterSettings frogbot = Array.Find(characters, (c) => c.id == CharacterId.FROGBOT);
+        frogbot.isUnlocked = true;
         SaveCharacters();
+        Achievement.CheckForGameFinisherAchievement();
+    }
+
+    private bool IsCharacterFullyUpgraded(CharacterSettings character) {
+        return character.agility >= CharacterSettings.MAX_STAT && character.breath >= CharacterSettings.MAX_STAT && character.cost >= CharacterSettings.MAX_STAT;
     }
 }
