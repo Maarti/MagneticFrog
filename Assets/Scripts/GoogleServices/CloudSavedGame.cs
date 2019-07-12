@@ -104,6 +104,7 @@ public class CloudSavedGame : MonoBehaviour {
                 playerData = FromByteArray<PlayerData>(data);
             Debug.LogFormat("Parsed save {0}", playerData);
             ApplicationController.ac.LoadCloudSave(playerData);
+            Achievement.CheckForAllAchievements();
         }
         else {
             Debug.LogFormat("OnSavedGameDataRead failed {0}", status);
