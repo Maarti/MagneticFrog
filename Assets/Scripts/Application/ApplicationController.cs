@@ -49,14 +49,14 @@ public class ApplicationController : MonoBehaviour {
         }
         MergeSaveIntoInitialData();
         CharacterSelector.RefreshCurrentCharacterDisplay();
-        if (OnLoad != null) OnLoad();
+        OnLoad?.Invoke();
     }
 
     public void LoadCloudSave(PlayerData playerData) {
         PlayerData = playerData;
         MergeSaveIntoInitialData();
         CharacterSelector.RefreshCurrentCharacterDisplay();
-        if (OnLoad != null) OnLoad();
+        OnLoad?.Invoke();
     }
 
     void MergeSaveIntoInitialData() {
@@ -214,7 +214,7 @@ public class ApplicationController : MonoBehaviour {
         Achievement.CheckForGameFinisherAchievement();
     }
 
-    private bool IsCharacterFullyUpgraded(CharacterSettings character) {
+    public bool IsCharacterFullyUpgraded(CharacterSettings character) {
         return character.agility >= CharacterSettings.MAX_STAT && character.breath >= CharacterSettings.MAX_STAT && character.cost >= CharacterSettings.MAX_STAT;
     }
 }

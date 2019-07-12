@@ -90,4 +90,29 @@ public class Achievement : MonoBehaviour {
         }
     }
 
+    // Check for each achievements if it should be unlocked or not
+    public static void CheckForAllAchievements() {
+        try {
+            if (Social.localUser.authenticated) {
+                // Scores
+                UnlockScore(ApplicationController.ac.PlayerData.bestScore);
+                // Game finisher
+                CheckForGameFinisherAchievement();
+                // Tutorial
+                if (ApplicationController.ac.PlayerData.isTutorialDone)
+                    Unlock(GPGSIds.achievement_fast_learner);
+                // Fully upgraded
+                foreach (CharacterSettings character in ApplicationController.ac.characters) {
+                    if (ApplicationController.ac.IsCharacterFullyUpgraded(character)) {
+                        Unlock(GPGSIds.achievement_fully_upgraded);
+                        break;
+                    }
+                }
+            }
+        }
+        catch (Exception e) {
+            Debug.LogError(e);
+        }
+    }
+
 }
