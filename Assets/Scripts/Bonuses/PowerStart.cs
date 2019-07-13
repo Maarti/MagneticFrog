@@ -45,12 +45,14 @@ public class PowerStart : MonoBehaviour {
         playerCtrlr.jumpCtrlr.isInvincible = true;
         Vector3 pos = playerCtrlr.transform.position;
         float targetDistance = ApplicationController.ac.PlayerData.bestScore * Random.Range(.33f, .45f);
+        targetDistance = Mathf.Max(targetDistance, 75f);
         LevelSettingsController.SkipBurstsUntil(targetDistance);
         pos.y = Mathf.Max(pos.y, targetDistance);
         playerCtrlr.transform.position = pos;
     }
 
     bool IsPowerStartAvailable() {
+        if (!ApplicationController.ac.PlayerData.isTutorialDone) return false;
         if (ApplicationController.ac.PlayerData.isPremium) return true;
         // System.TimeSpan timeSinceLastActivation = System.DateTime.Now.Subtract(ApplicationController.ac.PlayerData.bonusesActivationTime);
         return (ApplicationController.ac.PlayerData.bestScore >= 100f) && (ApplicationController.ac.PlayerData.nbPowerStart > 0);
