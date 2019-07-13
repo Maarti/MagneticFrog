@@ -1,6 +1,8 @@
 # Magnetic Frog
 
-![Magnetic Frog](docs/img/frog_3d_model.gif)
+![Magnetic Frog](docs/img/MagneticFrog_Banner_1024_500.png)
+
+![Magnetic Frog 3D model](docs/img/frog_3d_model.gif)
 
 ## Graphics
 ### Draw icon
