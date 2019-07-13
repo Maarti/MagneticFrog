@@ -2,8 +2,6 @@
 
 ![Magnetic Frog](docs/img/MagneticFrog_Banner_1024_500.png)
 
-![Magnetic Frog 3D model](docs/img/frog_3d_model.gif)
-
 ## Graphics
 ### Draw icon
 1. Draw the outline (Free Select Tool with antialisaing and Feather edges radius to 20) and save it as path
@@ -22,3 +20,6 @@ Filters > Blur > Median Blur > Radius: 6
 * "Underwater ambience" by akemov of Freesound.org
 * "Perspectives" by Kevin MacLeod of incompetech.com
 * Main theme and all sounds FX were kindly made by [Nullrate](http://nullrate.com/)
+
+
+![Magnetic Frog 3D model](docs/img/frog_3d_model.gif)
