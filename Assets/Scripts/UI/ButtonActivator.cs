@@ -25,6 +25,12 @@ public class ButtonActivator : MonoBehaviour {
             case ButtonType.ResetTuto:
                 enable = ApplicationController.ac.PlayerData.isTutorialDone;
                 break;
+            case ButtonType.IAP_Premium:
+                enable = !ApplicationController.ac.PlayerData.isPremium;
+                break;
+            case ButtonType.IAP_Frogbot:
+                enable = !ApplicationController.ac.PlayerData.characters.ContainsKey(CharacterId.FROGBOT);
+                break;
         }
         button.interactable = enable;
     }
