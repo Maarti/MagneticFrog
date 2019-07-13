@@ -72,8 +72,7 @@ public class GameController : MonoBehaviour {
         else {
             StartTutorial();
         }
-        if (OnGameStart != null)
-            OnGameStart();
+        OnGameStart?.Invoke();
     }
 
     void StartTutorial() {
@@ -112,8 +111,7 @@ public class GameController : MonoBehaviour {
         ApplicationController.ac.Save();
         StopGame();
         DisplayGameOverScreen(score);
-        if (OnGameOver != null)
-            OnGameOver(score);
+        OnGameOver?.Invoke(score);
     }
 
     void DisplayGameOverScreen(int score) {
