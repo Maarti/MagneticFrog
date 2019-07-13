@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(MagnetController))]
+/*[RequireComponent(typeof(MagnetController))]
 [RequireComponent(typeof(JumpController))]
 [RequireComponent(typeof(OxygenController))]
-[RequireComponent(typeof(MeterCounter))]
+[RequireComponent(typeof(MeterCounter))]*/
 public class PlayerController : MonoBehaviour {
 
     public MagnetController magnetCtrlr;
