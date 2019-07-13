@@ -81,6 +81,7 @@ public class Achievement : MonoBehaviour {
     }
 
     public static void CheckForGameFinisherAchievement() {
+        Debug.LogFormat("CheckForGameFinisherAchievement authtent={0} playerChars={1} chars={2}", Social.localUser.authenticated, ApplicationController.ac.PlayerData.characters.Count, ApplicationController.ac.characters.Length);
         try {
             if (Social.localUser.authenticated && ApplicationController.ac.PlayerData.characters.Count >= ApplicationController.ac.characters.Length)
                 Unlock(GPGSIds.achievement_game_finisher);
@@ -92,8 +93,10 @@ public class Achievement : MonoBehaviour {
 
     // Check for each achievements if it should be unlocked or not
     public static void CheckForAllAchievements() {
+        Debug.LogFormat("CheckForAllAchievements authent={0}", Social.localUser.authenticated);
         try {
             if (Social.localUser.authenticated) {
+                Debug.Log("CheckForAllAchievements - authenticated");
                 // Scores
                 UnlockScore(ApplicationController.ac.PlayerData.bestScore);
                 // Game finisher
@@ -109,8 +112,12 @@ public class Achievement : MonoBehaviour {
                     }
                 }
             }
+            else {
+                Debug.Log("CheckForAllAchievements - NOT AUHTENT");
+            }
         }
         catch (Exception e) {
+            Debug.Log("CheckForAllAchievements - ERROR");
             Debug.LogError(e);
         }
     }
