@@ -12,7 +12,7 @@ public class MagnetController : MonoBehaviour {
     [SerializeField] GameObject magnetModel;
     [SerializeField] GameObject magnetTitlePlaceholder;
     [SerializeField] GameObject magnetModelContainer;
-    // [SerializeField] GameObject necklaceRendering;
+    [SerializeField] GameObject necklaceRendering;
     [SerializeField] GameObject lineRendering;
     [SerializeField] Rigidbody2D magnetRb;
     [SerializeField] DistanceJoint2D magnetJoint;
@@ -77,14 +77,17 @@ public class MagnetController : MonoBehaviour {
     }
 
     public void SetMagnetToMenuState() {
-         if(coroutineMovingMagnet!=null)
-            StopCoroutine(coroutineMovingMagnet); 
+        if (coroutineMovingMagnet != null)
+            StopCoroutine(coroutineMovingMagnet);
         magnetModel.transform.parent = null;
         magnetModel.transform.position = magnetTitlePlaceholder.transform.position;
         magnetRb.bodyType = RigidbodyType2D.Kinematic;
         magnetJoint.enabled = false;
         magnetRb.velocity = Vector2.zero;
-      //  necklaceRendering.SetActive(false);
+        GameObject charSkin = ApplicationController.ac?.characters[CharacterSelector.currentCharacter]?.skin;        
+        Transform necklaceRendering = charSkin?.transform.Find("Armature/Hip/NecklaceRendering");
+        necklaceRendering?.gameObject.SetActive(false);
+        //  necklaceRendering.SetActive(false);
         lineRendering.SetActive(false);
         magnetModel.SetActive(false);
     }
@@ -96,13 +99,18 @@ public class MagnetController : MonoBehaviour {
         magnetModel.transform.localPosition = initialModelLocalPosition;
         magnetRb.bodyType = RigidbodyType2D.Dynamic;
         magnetJoint.enabled = true;
-     //   necklaceRendering.SetActive(true);
+        GameObject charSkin = ApplicationController.ac.characters[CharacterSelector.currentCharacter].skin;
+        Debug.Log(charSkin);
+        Transform necklaceRendering = charSkin?.transform.Find("Armature/Hip/NecklaceRendering");
+        Debug.Log(necklaceRendering);
+        necklaceRendering?.gameObject.SetActive(true);
+        //   necklaceRendering.SetActive(true);
         lineRendering.SetActive(true);
         magnetModel.SetActive(true);
     }
 
     public void StartMovingMagnetToFrog() {
-        coroutineMovingMagnet = StartCoroutine(MoveMagnetToFrog());               
+        coroutineMovingMagnet = StartCoroutine(MoveMagnetToFrog());
     }
 
     IEnumerator MoveMagnetToFrog() {
