@@ -17728,6 +17728,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1000, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &432920737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 11e394a98eb52264db568761e5287a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1679574957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &432920738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1679574957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &435445203
 GameObject:
   m_ObjectHideFlags: 0
@@ -73499,6 +73511,7 @@ Transform:
   - {fileID: 1069399275}
   - {fileID: 357716259}
   - {fileID: 394228442}
+  - {fileID: 432920738}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73535,7 +73548,6 @@ MonoBehaviour:
   magnetModel: {fileID: 2120105532}
   magnetTitlePlaceholder: {fileID: 1910557995}
   magnetModelContainer: {fileID: 1728360427}
-  necklaceRendering: {fileID: 0}
   lineRendering: {fileID: 1694481238}
   magnetRb: {fileID: 2120105535}
   magnetJoint: {fileID: 2120105534}
@@ -76016,7 +76028,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 1327m
+  m_text: ????m
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc6bd5d918796640bd355ef0a94e740, type: 2}
   m_sharedMaterial: {fileID: 21611551484261162, guid: 6dc6bd5d918796640bd355ef0a94e740,
@@ -76045,7 +76057,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 45
+  m_fontSize: 48.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -88044,6 +88056,85 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &1679574957
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1289790560}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_Name
+      value: frogbot
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aadd10510ada0834a89b688624a14852, type: 2}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.308
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11e394a98eb52264db568761e5287a40, type: 3}
 --- !u!1 &1682216938
 GameObject:
   m_ObjectHideFlags: 0
@@ -89884,6 +89975,14 @@ MonoBehaviour:
   - skin: {fileID: 394228441}
     id: 4
     name: Poison Aqua
+    agility: 1
+    stamina: 1
+    breath: 2
+    cost: 80
+    isUnlocked: 0
+  - skin: {fileID: 432920737}
+    id: 10
+    name: Frogbot
     agility: 1
     stamina: 1
     breath: 2
