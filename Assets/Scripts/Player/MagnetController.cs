@@ -6,13 +6,14 @@ public class MagnetController : MonoBehaviour {
 
     [SerializeField] Camera mainCamera;
     [SerializeField] RectTransform magnetCtrlrLayout;
-    [SerializeField] GameObject redMagnet, blueMagnet;
+    [SerializeField] GameObject redMagnet;
+    [SerializeField] GameObject blueMagnet;
     [SerializeField] GameObject redMagnetParticle;
     [SerializeField] GameObject blueMagnetParticle;
     [SerializeField] GameObject magnetModel;
     [SerializeField] GameObject magnetTitlePlaceholder;
     [SerializeField] GameObject magnetModelContainer;
-    [SerializeField] GameObject necklaceRendering;
+    // [SerializeField] GameObject necklaceRendering;
     [SerializeField] GameObject lineRendering;
     [SerializeField] Rigidbody2D magnetRb;
     [SerializeField] DistanceJoint2D magnetJoint;
@@ -84,7 +85,7 @@ public class MagnetController : MonoBehaviour {
         magnetRb.bodyType = RigidbodyType2D.Kinematic;
         magnetJoint.enabled = false;
         magnetRb.velocity = Vector2.zero;
-        GameObject charSkin = ApplicationController.ac?.characters[CharacterSelector.currentCharacter]?.skin;        
+        GameObject charSkin = ApplicationController.ac?.characters[CharacterSelector.currentCharacter]?.skin;
         Transform necklaceRendering = charSkin?.transform.Find("Armature/Hip/NecklaceRendering");
         necklaceRendering?.gameObject.SetActive(false);
         //  necklaceRendering.SetActive(false);
@@ -100,9 +101,7 @@ public class MagnetController : MonoBehaviour {
         magnetRb.bodyType = RigidbodyType2D.Dynamic;
         magnetJoint.enabled = true;
         GameObject charSkin = ApplicationController.ac.characters[CharacterSelector.currentCharacter].skin;
-        Debug.Log(charSkin);
         Transform necklaceRendering = charSkin?.transform.Find("Armature/Hip/NecklaceRendering");
-        Debug.Log(necklaceRendering);
         necklaceRendering?.gameObject.SetActive(true);
         //   necklaceRendering.SetActive(true);
         lineRendering.SetActive(true);
