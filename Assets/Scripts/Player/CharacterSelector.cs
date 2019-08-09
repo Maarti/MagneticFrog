@@ -18,6 +18,7 @@ public class CharacterSelector : MonoBehaviour {
     [SerializeField] TextMeshProUGUI characterName;
     [SerializeField] GameObject selectButtonObj;
     [SerializeField] GameObject purchaseButtonObj;
+    [SerializeField] GameObject purchaseFrogbotButtonObj;
     [SerializeField] GameObject cloudImg;
     [SerializeField] TextMeshProUGUI priceTxt;
     [SerializeField] Animator anim;
@@ -141,11 +142,20 @@ public class CharacterSelector : MonoBehaviour {
         if (displayedChar.isUnlocked) {
             selectButtonObj.SetActive(true);
             purchaseButtonObj.SetActive(false);
+            purchaseFrogbotButtonObj.SetActive(false);
             anim.SetBool("priceCloudIsDisplayed", false);            
+        }
+        else if(displayedChar.id == CharacterId.FROGBOT) {
+            selectButtonObj.SetActive(false);
+            purchaseButtonObj.SetActive(false);
+            purchaseFrogbotButtonObj.SetActive(true);
+            priceTxt.text = "Exclusive";
+            anim.SetBool("priceCloudIsDisplayed", true);
         }
         else {
             selectButtonObj.SetActive(false);
             purchaseButtonObj.SetActive(true);            
+            purchaseFrogbotButtonObj.SetActive(false);
             priceTxt.text = displayedChar.cost + " <sprite name=\"coin\">";
             anim.SetBool("priceCloudIsDisplayed", true);
         }
