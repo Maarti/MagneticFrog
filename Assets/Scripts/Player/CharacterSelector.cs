@@ -112,8 +112,11 @@ public class CharacterSelector : MonoBehaviour {
         ApplicationController.ac.SaveCurrentCharacter();
         ApplicationController.ac.Save();
         RefreshUI();
-        Animator anim = ApplicationController.ac.characters[currentCharacter].skin.GetComponent<Animator>();
+        CharacterSettings currentCharacterSettings = ApplicationController.ac.characters[currentCharacter];
+        Animator anim = currentCharacterSettings.skin.GetComponent<Animator>();
         if (anim != null) anim.SetTrigger("flip");
+        AudioSource audio = currentCharacterSettings.skin.GetComponent<AudioSource>();
+        if (audio != null) audio.Play();        
     }
 
     public void RefreshUI() {
