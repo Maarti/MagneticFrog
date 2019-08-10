@@ -83,6 +83,8 @@ public class MainMenuController : MonoBehaviour {
         mainMenuCanvasGroup.DOFade(0f, .25f).OnComplete(() => mainMenuCanvasGroup.transform.parent.gameObject.SetActive(currentMenu == CurrentMenu.Main));
         //   gameTitleCanvasGroup.DOFade(0f, .25f);
         scoreShellAnim.SetBool("isDisplayed", false);
+        AudioSource audio = ApplicationController.ac.characters[CharacterSelector.currentCharacter].skin.GetComponent<AudioSource>();
+        if (audio != null) audio.Play();
     }
 
     public void HideCharacterMenu() {
