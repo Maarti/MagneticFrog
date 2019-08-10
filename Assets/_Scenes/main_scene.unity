@@ -21533,7 +21533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &565754929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21573,7 +21573,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b7d36b8820342c347a1e89d2b63cbdd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -74974,7 +74974,6 @@ MonoBehaviour:
   cloudImg: {fileID: 1931030233}
   priceTxt: {fileID: 738320198}
   anim: {fileID: 1336045539}
-  iapManager: {fileID: 1759637278}
 --- !u!95 &1336045539
 Animator:
   serializedVersion: 3
@@ -88280,11 +88279,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 11e394a98eb52264db568761e5287a40,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: aadd10510ada0834a89b688624a14852, type: 2}
     - target: {fileID: -4216859302048453862, guid: 11e394a98eb52264db568761e5287a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88340,6 +88334,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 11e394a98eb52264db568761e5287a40,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aadd10510ada0834a89b688624a14852, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11e394a98eb52264db568761e5287a40, type: 3}
 --- !u!1 &1682216938
