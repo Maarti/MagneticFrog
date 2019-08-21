@@ -45,6 +45,7 @@ public class ApplicationController : MonoBehaviour {
         else {
             PlayerData = new PlayerData();
             PlayerData.lang = Application.systemLanguage;
+            SaveCharacters();
             Save();
         }
         MergeSaveIntoInitialData();
