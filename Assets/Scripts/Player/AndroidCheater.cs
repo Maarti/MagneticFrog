@@ -6,13 +6,13 @@ public class AndroidCheater : MonoBehaviour
     int nbClick = 0;
 
     public void Start() {
-        Debug.LogFormat("DONT FORGET to remove Cheater script on {0}", gameObject.name);
+        Debug.LogWarningFormat("DONT FORGET to remove Cheater script on {0}", gameObject.name);
     }
 
     public void Money() {
         nbClick++;
-        if (nbClick >= 10) {
-            ApplicationController.ac.UpdateCoins(99999);
+        if (nbClick >= 5) {
+            ApplicationController.ac.UpdateCoins(5);
             nbClick = 0;
         }
 

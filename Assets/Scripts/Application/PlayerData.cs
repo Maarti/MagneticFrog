@@ -11,7 +11,7 @@ public class PlayerData {
     public float? magnetControllerHeight = null;
     public float? magnetControllerAlpha = .8f;
     public SystemLanguage lang = SystemLanguage.English;
-    public bool isTutorialDone = false;
+    public bool isTutorialDone = true; // TODO Switch to FALSE in production
     public Dictionary<CharacterId, CharacterSavedData> characters = new Dictionary<CharacterId, CharacterSavedData>();
     public CharacterId currentCharacater = CharacterSelector.DEFAULT_CHARACTER;
     public bool isPremium = false;  // no Ads

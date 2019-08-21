@@ -15625,6 +15625,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333110483}
   m_CullTransparentMesh: 0
+--- !u!1 &337203045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337203046}
+  - component: {fileID: 337203047}
+  m_Layer: 0
+  m_Name: TrashSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &337203046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337203045}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1207702657}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337203047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337203045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13384009395f40e429662e0787deae40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockPrefab1: {fileID: 6007433678317680669, guid: 94160b2cfa59a59469f4e89fe32460f9,
+    type: 3}
+  rockPrefab2: {fileID: 6007433678317680669, guid: 030bf6658e23ff148b7902a95f188580,
+    type: 3}
+  minPosX: -2
+  maxPosX: 2
 --- !u!1 &339465479
 GameObject:
   m_ObjectHideFlags: 0
@@ -19330,8 +19379,6 @@ MonoBehaviour:
   rockPrefab1: {fileID: 1677340556915494, guid: dbc42627e848ef7428123903f0712b9d,
     type: 3}
   rockPrefab2: {fileID: 8083007788082473953, guid: 5ea5755fd021bea4aba774178674997c,
-    type: 3}
-  rockPrefab3: {fileID: 8083007788082473953, guid: 5ea5755fd021bea4aba774178674997c,
     type: 3}
 --- !u!1 &446253577
 GameObject:
@@ -23720,7 +23767,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 16896
   m_ForceMagnitude: -10
   m_ForceVariation: 0
   m_DistanceScale: 1
@@ -33026,7 +33073,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   m_ForceMagnitude: 12
   m_ForceVariation: 0
   m_DistanceScale: 1
@@ -47414,7 +47461,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 16896
   m_ForceMagnitude: 12
   m_ForceVariation: 0
   m_DistanceScale: 1
@@ -68241,6 +68288,7 @@ Transform:
   - {fileID: 445116099}
   - {fileID: 2067521459}
   - {fileID: 1980719395}
+  - {fileID: 337203046}
   m_Father: {fileID: 1188704995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130160,7 +130208,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   m_ForceMagnitude: -10
   m_ForceVariation: 0
   m_DistanceScale: 1

@@ -5,7 +5,6 @@ public class RockSpawner : AbstractSpawner {
 
     [SerializeField] GameObject rockPrefab1;
     [SerializeField] GameObject rockPrefab2;
-    [SerializeField] GameObject rockPrefab3;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
         isSpwaningDuringThisLevel = (levelSettings.rockMinWait >= 0 && levelSettings.rockMaxWait > 0);
