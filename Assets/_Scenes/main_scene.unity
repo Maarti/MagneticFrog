@@ -15670,7 +15670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rockPrefab1: {fileID: 6007433678317680669, guid: 94160b2cfa59a59469f4e89fe32460f9,
     type: 3}
-  rockPrefab2: {fileID: 6007433678317680669, guid: 030bf6658e23ff148b7902a95f188580,
+  rockPrefab2: {fileID: 3103215654987490190, guid: e381e49f53d4ad44d9791a399768e9aa,
     type: 3}
   minPosX: -2
   maxPosX: 2
@@ -45488,10 +45488,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8eea2f540713a6b40898abb6dad53667, type: 2}
     - target: {fileID: 400032, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -45536,6 +45532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8eea2f540713a6b40898abb6dad53667, type: 2}
     - target: {fileID: 400000, guid: b65449fd9bf825244a8a908abcd22100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
@@ -67961,7 +67961,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a96031457da30b54aa7d4a0f61e64d50,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.308
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a96031457da30b54aa7d4a0f61e64d50,
         type: 3}

@@ -46,6 +46,9 @@ public class TrashSpawner : MonoBehaviour {
         Rigidbody2D rb = rock.GetComponent<Rigidbody2D>();
         rb.gravityScale *= Random.Range(minSpeed, maxSpeed);
 
+        // Rotation
+        rb.AddTorque(Random.Range(-1f,1f));
+
         return rock;
     }
     
