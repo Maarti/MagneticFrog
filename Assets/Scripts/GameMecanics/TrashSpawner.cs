@@ -1,57 +1,67 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TrashSpawner : MonoBehaviour {
+public class TrashSpawner : AbstractSpawner {
 
-    [SerializeField] GameObject rockPrefab1;
-    [SerializeField] GameObject rockPrefab2;
-    [SerializeField] float minPosX = -2;
-    [SerializeField] float maxPosX = 2;
+    [SerializeField] GameObject blueCanPrefab;
+    [SerializeField] GameObject redCanPrefab;
+    [SerializeField] GameObject plasticBottlePrefab;
 
-    protected  IEnumerator SpawningRoutine() {
+    protected override void UpdateIsSpwaningDuringThisLevel() {
+        isSpwaningDuringThisLevel = (levelSettings.trashMinWait >= 0 && levelSettings.trashMinWait > 0);
+    }
+
+    protected override IEnumerator SpawningRoutine() {
         WaitForSeconds waitOneSec = new WaitForSeconds(1f);
         while (true) {
-            yield return new WaitForSeconds(1f);
-            SpawnOne(1f, 1f, 1f, 1f);
+            if (isSpwaningDuringThisLevel) {
+                yield return new WaitForSeconds(Random.Range(levelSettings.trashMinWait, levelSettings.trashMaxWait));
+                SpawnOne(null);
+            }
+            else {
+                yield return waitOneSec;
+            }
         }
     }
 
-    void Start() {
-        StartCoroutine(SpawningRoutine());
-    }
-
-    GameObject SpawnOne(float minScale, float maxScale, float minSpeed, float maxSpeed) {
+    GameObject SpawnOne(GameObject prefab) {
         // Position
         Vector3 pos = transform.position;
         pos.x = Random.Range(minPosX, maxPosX);
 
         // Type
-        GameObject rock;
-        float rand = Random.value;
-        if (rand > .5f) {
-            rock = Instantiate(rockPrefab1, pos, Quaternion.identity);
-            rock.transform.rotation = Random.rotation;
+        GameObject trash;
+        if (prefab == null) {
+            trash = (Random.value > .5f) ?
+            Instantiate((Random.value > .5f) ? blueCanPrefab : redCanPrefab, pos, Quaternion.identity) :
+            Instantiate(plasticBottlePrefab, pos, Quaternion.identity);
         }
         else {
-            rock = Instantiate(rockPrefab2, pos, Quaternion.identity);
-            rock.transform.rotation = Random.rotation;
+            trash = Instantiate(prefab, pos, Quaternion.identity);
         }
-
-        // Size
-        Vector3 scale = rock.transform.localScale;
-        scale *= Random.Range(minScale, maxScale);
-        rock.transform.localScale = scale;
-
-        // Speed
-        Rigidbody2D rb = rock.GetComponent<Rigidbody2D>();
-        rb.gravityScale *= Random.Range(minSpeed, maxSpeed);
+        trash.transform.rotation = Random.rotation;
 
         // Rotation
-        rb.AddTorque(Random.Range(-1f,1f));
+        Rigidbody2D rb = trash.GetComponent<Rigidbody2D>();
+        rb.AddTorque(Random.Range(-1f, 1f));
 
-        return rock;
+        return trash;
     }
-    
+
+
+    protected override IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType) {
+        if (quantity <= 0) yield break;
+        float rate = timeInSeconds / quantity;
+        WaitForSeconds waitingTime = new WaitForSeconds(rate);
+        int nbSpawned = 0;
+        GameObject prefab = burstType == BurstType.Bottle ? plasticBottlePrefab : null;
+        while (nbSpawned < quantity) {
+            SpawnOne(prefab);
+            nbSpawned++;
+            yield return waitingTime;
+        }
+    }
+
 
 
 }

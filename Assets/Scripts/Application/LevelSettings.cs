@@ -7,7 +7,7 @@ public class LevelSettings {
     public readonly static float LEVEL_20_SCORE = 20f;
     public readonly static float LEVEL_30_SCORE = 100f;
     public readonly static float LEVEL_40_SCORE = 200f;
-    public readonly static float LEVEL_50_SCORE = 300f;
+    // public readonly static float LEVEL_50_SCORE = 300f;
     public readonly static float LEVEL_60_SCORE = 320f;
     public readonly static float LEVEL_70_SCORE = 400f;
     public readonly static float LEVEL_80_SCORE = 450f;
@@ -19,23 +19,24 @@ public class LevelSettings {
     public readonly static float[] DESCENDING_LEVEL_SCORES = { LEVEL_120_SCORE, LEVEL_110_SCORE, LEVEL_100_SCORE, LEVEL_90_SCORE, LEVEL_80_SCORE, LEVEL_70_SCORE, LEVEL_60_SCORE, LEVEL_40_SCORE, LEVEL_30_SCORE, LEVEL_20_SCORE, LEVEL_10_SCORE };
     public readonly static Dictionary<float, LevelSettings> levelSettings = new Dictionary<float, LevelSettings> {
 //                                                                              coin        bubble      mineWait    mineSize    mineSpeed   rockWait    rockSize    rockSpeed
-            { LEVEL_10_SCORE, new LevelSettings(LEVEL_10_SCORE, LEVEL_20_SCORE, 15f,16f,    .5f,2f,     -1f,-1f,    -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
-            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1f,2.5f,    2f,4f,      .5f,.8f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
-            { LEVEL_30_SCORE, new LevelSettings(LEVEL_30_SCORE, LEVEL_40_SCORE, 6f, 10f,    1.5f, 3f,   2f,3f,      .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f  ) },
-            { LEVEL_40_SCORE, new LevelSettings(LEVEL_40_SCORE, LEVEL_60_SCORE, 6f, 9f,     2f, 3f,     2f,3f,      1.2f,2f,    1f,1.5f,    -1f,-1f,    -1f,-1f,    1f,1f  ) }, // slow big mines
-         // { LEVEL_50_SCORE, new LevelSettings(LEVEL_50_SCORE, LEVEL_60_SCORE, 15f, 16f,   0.25f,.5f, -1f,-1f,     -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f  ) }, // bubbles burst
-            { LEVEL_60_SCORE, new LevelSettings(LEVEL_60_SCORE, LEVEL_70_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f ) },  // rocks
-            { LEVEL_70_SCORE, new LevelSettings(LEVEL_70_SCORE, LEVEL_80_SCORE, 5f, 8f,     1f, 2f,     1f,1.5f,    .25f,.5f,   1f,1f,      4f,6f,      .8f,1f,     1f,1f ) },  // lot of small mines
-            { LEVEL_80_SCORE, new LevelSettings(LEVEL_80_SCORE, LEVEL_90_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f ) },  // rocks
-            { LEVEL_90_SCORE, new LevelSettings(LEVEL_90_SCORE, LEVEL_100_SCORE,4f, 7f,     2f, 3f,     2.5f,4f,    .75f,1f,    1f,2f,      .5f,1.5f,   .5f,2f,     1f,2f ) },  // lot of rocks
-            { LEVEL_100_SCORE,new LevelSettings(LEVEL_100_SCORE,LEVEL_110_SCORE,3f, 5f,     1f, 3f,     0.5f,1.5f,  .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f ) },  // lot of mines
-            { LEVEL_110_SCORE,new LevelSettings(LEVEL_110_SCORE,LEVEL_120_SCORE,3f, 5f,     4f, 4f,     -1f,-1f,    .75f,1.25f, 1f,2f,      .5f,.75f,   .8f,1.25f,  1f,2f ) },  // low bubble + rocks
-            { LEVEL_120_SCORE,new LevelSettings(LEVEL_120_SCORE,LEVEL_130_SCORE,3f, 5f,     4f, 4f,     .5f,1.5f,   .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,2f ) },  // low bubble + mines
+            { LEVEL_10_SCORE, new LevelSettings(LEVEL_10_SCORE, LEVEL_20_SCORE, 15f,16f,    .5f,2f,     -1f,-1f,    -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
+            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1f,2.5f,    2f,4f,      .5f,.8f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
+            { LEVEL_30_SCORE, new LevelSettings(LEVEL_30_SCORE, LEVEL_40_SCORE, 6f, 10f,    1.5f, 3f,   2f,3f,      .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
+            { LEVEL_40_SCORE, new LevelSettings(LEVEL_40_SCORE, LEVEL_60_SCORE, 6f, 9f,     2f, 3f,     2f,3f,      1.2f,2f,    1f,1.5f,    -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) }, // slow big mines         
+            { LEVEL_60_SCORE, new LevelSettings(LEVEL_60_SCORE, LEVEL_70_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f,      3f, 5f ) },  // rocks
+            { LEVEL_70_SCORE, new LevelSettings(LEVEL_70_SCORE, LEVEL_80_SCORE, 5f, 8f,     1f, 2f,     1f,1.5f,    .25f,.5f,   1f,1f,      4f,6f,      .8f,1f,     1f,1f,      0f, 0f ) },  // lot of small mines
+            { LEVEL_80_SCORE, new LevelSettings(LEVEL_80_SCORE, LEVEL_90_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f,      0f, 2f ) },  // rocks
+            { LEVEL_90_SCORE, new LevelSettings(LEVEL_90_SCORE, LEVEL_100_SCORE,4f, 7f,     2f, 3f,     2.5f,4f,    .75f,1f,    1f,2f,      .5f,1.5f,   .5f,2f,     1f,2f,      0f, 0f ) },  // lot of rocks
+            { LEVEL_100_SCORE,new LevelSettings(LEVEL_100_SCORE,LEVEL_110_SCORE,3f, 5f,     1f, 3f,     0.5f,1.5f,  .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f,      1f, 3f ) },  // lot of mines
+            { LEVEL_110_SCORE,new LevelSettings(LEVEL_110_SCORE,LEVEL_120_SCORE,3f, 5f,     4f, 4f,     -1f,-1f,    .75f,1.25f, 1f,2f,      .5f,.75f,   .8f,1.25f,  1f,2f,      1f, 3f ) },  // low bubble + rocks
+            { LEVEL_120_SCORE,new LevelSettings(LEVEL_120_SCORE,LEVEL_130_SCORE,3f, 5f,     4f, 4f,     .5f,1.5f,   .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,2f,      1f, 3f ) },  // low bubble + mines
         };
     public readonly static SpawningBurst[] spawningBursts = {
         new SpawningBurst(20f ,BurstType.BlueBubble, 12, 2f),
+        new SpawningBurst(85f ,BurstType.Bottle, 3, 1f),
         new SpawningBurst(100f ,BurstType.Coin, 5, 5f),
         new SpawningBurst(150f ,BurstType.RedMine, 6, 2f),
+        new SpawningBurst(200f ,BurstType.Trashes, 10, 1f),
         new SpawningBurst(300f ,BurstType.BlueBubble, 20, 0f),
         new SpawningBurst(690f ,BurstType.RedBubble, 20, 1f),
      /* new SpawningBurst(30f ,BurstType.RedBubble, 10, 0f),
@@ -63,10 +64,12 @@ public class LevelSettings {
     public float rockMaxSize;
     public float rockMinSpeed;
     public float rockMaxSpeed;
+    public float trashMinWait;
+    public float trashMaxWait;
 
     public LevelSettings(float scoreMin, float scoreMax, float coinMinWait, float coinMaxWait, float bubbleMinWait, float bubbleMaxWait,
         float mineMinWait, float mineMaxWait, float mineMinSize, float mineMaxSize, float mineMinSpeed, float mineMaxSpeed, float rockMinWait,
-        float rockMaxWait, float rockMinSize, float rockMaxSize, float rockMinSpeed, float rockMaxSpeed) {
+        float rockMaxWait, float rockMinSize, float rockMaxSize, float rockMinSpeed, float rockMaxSpeed, float trashMinWait, float trashMaxWait ) {
         this.scoreMin = scoreMin;
         this.scoreMax = scoreMax;
         this.coinMinWait = coinMinWait;
@@ -85,6 +88,8 @@ public class LevelSettings {
         this.rockMaxSize = rockMaxSize;
         this.rockMinSpeed = rockMinSpeed;
         this.rockMaxSpeed = rockMaxSpeed;
+        this.trashMinWait = trashMinWait;
+        this.trashMaxWait = trashMaxWait;
     }
 
     public static LevelSettings GetLevelSettingsScore(float score) {
@@ -112,4 +117,4 @@ public class SpawningBurst {
     }
 }
 
-public enum BurstType { Mine, RedMine, BlueMine, Bubble, BlueBubble, RedBubble, Coin, Rock }
+public enum BurstType { Mine, RedMine, BlueMine, Bubble, BlueBubble, RedBubble, Coin, Rock, Trashes, Bottle  }

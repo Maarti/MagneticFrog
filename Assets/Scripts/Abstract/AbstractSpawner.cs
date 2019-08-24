@@ -30,6 +30,8 @@ public abstract class AbstractSpawner : MonoBehaviour {
 
     protected abstract IEnumerator Burst(int quantity, float timeInSeconds, BurstType burstType);
 
-    public abstract void StartBurst(int quantity, float timeInSeconds, BurstType burstType);
+    public virtual void StartBurst(int quantity, float timeInSeconds, BurstType burstType) {
+        StartCoroutine(Burst(quantity, timeInSeconds, burstType));
+    }
 
 }

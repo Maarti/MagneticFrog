@@ -11,6 +11,7 @@ public class LevelSettingsController : MonoBehaviour {
     [SerializeField] BubbleSpawner bubbleSpawner;
     [SerializeField] MineSpawner mineSpawner;
     [SerializeField] RockSpawner rockSpawner;
+    [SerializeField] TrashSpawner trashSpawner;
 
     void OnEnable() {
         currentLevelSettings = LevelSettings.GetLevelSettingsScore(LevelSettings.LEVEL_10_SCORE);
@@ -27,13 +28,13 @@ public class LevelSettingsController : MonoBehaviour {
     }
 
     void Manageburst() {
-        if (nextBurstIndex >= LevelSettings.spawningBursts.Length) return;        
-        if(meterCounter.Value >= LevelSettings.spawningBursts[nextBurstIndex].score) {
-        
+        if (nextBurstIndex >= LevelSettings.spawningBursts.Length) return;
+        if (meterCounter.Value >= LevelSettings.spawningBursts[nextBurstIndex].score) {
+
             SpawningBurst burst = LevelSettings.spawningBursts[nextBurstIndex++];
             switch (burst.type) {
                 case BurstType.Coin:
-                    coinSpawner.StartBurst(burst.quantity, burst.time, burst.type);                    
+                    coinSpawner.StartBurst(burst.quantity, burst.time, burst.type);
                     break;
                 case BurstType.Bubble:
                 case BurstType.RedBubble:
@@ -48,12 +49,16 @@ public class LevelSettingsController : MonoBehaviour {
                 case BurstType.Rock:
                     rockSpawner.StartBurst(burst.quantity, burst.time, burst.type);
                     break;
+                case BurstType.Trashes:
+                case BurstType.Bottle:
+                    trashSpawner.StartBurst(burst.quantity, burst.time, burst.type);
+                    break;
             }
         }
     }
 
     public static void SkipBurstsUntil(float score) {
-        foreach(SpawningBurst burst in LevelSettings.spawningBursts) {
+        foreach (SpawningBurst burst in LevelSettings.spawningBursts) {
             if (burst.score <= score) {
                 nextBurstIndex++;
             }
