@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] TutorialManager tutorialManager;
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
+    [SerializeField] Animator goAnimator;
     [SerializeField] Text goScoreText;
     [SerializeField] Text goBestScoreText;
     [Header("UI collected bubble effect")]
@@ -107,17 +108,20 @@ public class GameController : MonoBehaviour {
     public void TriggerGameOver(int score) {
         if (!isGameStarted) return;
         gameOverAudio.Play();
+        bool isNewBestScore = score > ApplicationController.ac.PlayerData.bestScore;
+        Debug.Log(isNewBestScore);
         ApplicationController.ac.RecordNewScore(score);
         ApplicationController.ac.Save();
         StopGame();
-        DisplayGameOverScreen(score);
+        DisplayGameOverScreen(score, isNewBestScore);
         OnGameOver?.Invoke(score);
     }
 
-    void DisplayGameOverScreen(int score) {
+    void DisplayGameOverScreen(int score, bool isNewBestScore) {
         goScoreText.text = score.ToString();
         goBestScoreText.text = Mathf.Max(0, ApplicationController.ac.PlayerData.bestScore).ToString();
-        goCanvas.gameObject.SetActive(true);
+        goCanvas.gameObject.SetActive(true);        
+        goAnimator.SetBool("isNewBestScore", isNewBestScore);
     }
 
     public void PlayAgain() {
