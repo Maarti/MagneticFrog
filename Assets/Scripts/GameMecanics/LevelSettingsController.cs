@@ -20,6 +20,7 @@ public class LevelSettingsController : MonoBehaviour {
     }
 
     void Update() {
+            Debug.Log(meterCounter.Value + " " + currentLevelSettings.scoreMax);
         if (meterCounter.Value >= currentLevelSettings.scoreMax) {
             currentLevelSettings = LevelSettings.GetLevelSettingsScore(meterCounter.Value);
             OnLevelSettingsChange?.Invoke(currentLevelSettings);

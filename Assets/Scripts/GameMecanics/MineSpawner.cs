@@ -21,6 +21,12 @@ public class MineSpawner : AbstractSpawner {
                 yield return new WaitForSeconds(Random.Range(levelSettings.mineMinWait, levelSettings.mineMaxWait));
                 MineType type = (Random.value > .5f) ? MineType.Blue : MineType.Red;
                 SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
+                if (transform.position.y >= 800)
+                    SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
+                if (transform.position.y >= 1600)
+                    SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
+                if (transform.position.y >= 2500)
+                    SpawnMine(type, levelSettings.mineMinSize, levelSettings.mineMaxSize, levelSettings.mineMinSpeed, levelSettings.mineMaxSpeed);
             }
             else {
                 yield return waitOneSec;

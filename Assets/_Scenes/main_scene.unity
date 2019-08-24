@@ -15995,7 +15995,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207702657}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337203047
 MonoBehaviour:
@@ -68525,9 +68525,9 @@ Transform:
   - {fileID: 743653165}
   - {fileID: 1130394640}
   - {fileID: 445116099}
+  - {fileID: 337203046}
   - {fileID: 2067521459}
   - {fileID: 1980719395}
-  - {fileID: 337203046}
   m_Father: {fileID: 1188704995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93074,6 +93074,7 @@ MonoBehaviour:
   coinSpawner: {fileID: 743653166}
   mineSpawner: {fileID: 1130394639}
   rockSpawner: {fileID: 445116100}
+  trashSpawner: {fileID: 337203047}
   tutorialManager: {fileID: 1980719396}
   goCanvas: {fileID: 60834981}
   goAnimator: {fileID: 60834983}
@@ -114916,7 +114917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207702657}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1980719396
 MonoBehaviour:
@@ -127391,7 +127392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207702657}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2068115904
 GameObject:

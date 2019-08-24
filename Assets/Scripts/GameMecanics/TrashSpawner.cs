@@ -8,7 +8,7 @@ public class TrashSpawner : AbstractSpawner {
     [SerializeField] GameObject plasticBottlePrefab;
 
     protected override void UpdateIsSpwaningDuringThisLevel() {
-        isSpwaningDuringThisLevel = (levelSettings.trashMinWait >= 0 && levelSettings.trashMinWait > 0);
+        isSpwaningDuringThisLevel = (levelSettings.trashMinWait >= 0 && levelSettings.trashMaxWait > 0);
     }
 
     protected override IEnumerator SpawningRoutine() {

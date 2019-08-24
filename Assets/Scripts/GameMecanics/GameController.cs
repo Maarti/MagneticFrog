@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] CoinSpawner coinSpawner;
     [SerializeField] MineSpawner mineSpawner;
     [SerializeField] RockSpawner rockSpawner;
+    [SerializeField] TrashSpawner trashSpawner;
     [SerializeField] TutorialManager tutorialManager;
     [Header("Game Over Screen")]
     [SerializeField] Canvas goCanvas;
@@ -68,6 +69,7 @@ public class GameController : MonoBehaviour {
             coinSpawner.enabled = true;
             mineSpawner.enabled = true;
             rockSpawner.enabled = true;
+            trashSpawner.enabled = true;
             tutorialManager.gameObject.SetActive(false);
         }
         else {
@@ -101,6 +103,7 @@ public class GameController : MonoBehaviour {
         coinSpawner.enabled = false;
         rockSpawner.enabled = false;
         mineSpawner.enabled = false;
+        trashSpawner.enabled = false;
         tutorialManager.gameObject.SetActive(false);
         playerCtrlr.magnetCtrlr.SetMagnetToMenuState();
     }
