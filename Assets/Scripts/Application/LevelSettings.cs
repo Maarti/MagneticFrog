@@ -26,7 +26,7 @@ public class LevelSettings {
     public readonly static Dictionary<float, LevelSettings> levelSettings = new Dictionary<float, LevelSettings> {
 //                                                                              coin        bubble      mineWait    mineSize    mineSpeed   rockWait    rockSize    rockSpeed   trashes
             { LEVEL_10_SCORE, new LevelSettings(LEVEL_10_SCORE, LEVEL_20_SCORE, 15f,16f,    .5f,2f,     -1f,-1f,    -1f,-1f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
-            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1f,2.5f,    2f,4f,      .5f,.8f,    9f,9f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
+            { LEVEL_20_SCORE, new LevelSettings(LEVEL_20_SCORE, LEVEL_30_SCORE, 8f,12f,     1f,2.5f,    2f,4f,      .5f,.8f,    1f,1f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
             { LEVEL_30_SCORE, new LevelSettings(LEVEL_30_SCORE, LEVEL_40_SCORE, 6f, 10f,    1.5f, 3f,   2f,3f,      .75f,1.25f, 1f,2f,      -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) },
             { LEVEL_40_SCORE, new LevelSettings(LEVEL_40_SCORE, LEVEL_60_SCORE, 6f, 9f,     2f, 3f,     2f,3f,      1.2f,2f,    1f,1.5f,    -1f,-1f,    -1f,-1f,    1f,1f,      0f, 0f  ) }, // slow big mines         
             { LEVEL_60_SCORE, new LevelSettings(LEVEL_60_SCORE, LEVEL_70_SCORE, 5f, 8f,     1f, 3f,     1f,3f,      1f,1.5f,    1f,2f,      2f,4f,      .5f,1f,     1f,1f,      3f, 5f ) },  // rocks + trashes
