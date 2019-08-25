@@ -73,9 +73,9 @@ public class AdsController : MonoBehaviour {
 #endif
             interstitial = new InterstitialAd(adUnitId);
             AdRequest request = new AdRequest.Builder()
-                .AddTestDevice(Config.MY_DEVICE_ID_1)
+              /*  .AddTestDevice(Config.MY_DEVICE_ID_1)
                 .AddTestDevice(Config.MY_DEVICE_ID_2)
-                .AddTestDevice(Config.MY_DEVICE_ID_3)
+                .AddTestDevice(Config.MY_DEVICE_ID_3)*/
                 .Build();
             interstitial.LoadAd(request);
             interstitial.OnAdClosed += OnInterstitialFinished;
@@ -124,9 +124,9 @@ public class AdsController : MonoBehaviour {
             string adUnitId = "unexpected_platform";
 #endif
             AdRequest request = new AdRequest.Builder()
-                .AddTestDevice(Config.MY_DEVICE_ID_1)
+             /*   .AddTestDevice(Config.MY_DEVICE_ID_1)
                 .AddTestDevice(Config.MY_DEVICE_ID_2)
-                .AddTestDevice(Config.MY_DEVICE_ID_3)
+                .AddTestDevice(Config.MY_DEVICE_ID_3)*/
                 .Build();
             rewardBasedVideo.LoadAd(request, adUnitId);
             isRequestingRewardAd = true;
