@@ -61,7 +61,7 @@ public class AdsController : MonoBehaviour {
     // INTERSTITIAL
     //--------------
     public void LoadInterstitial() {
-        Debug.Log("LoadInterstitial())");
+        // Debug.Log("LoadInterstitial())");
         if (!ApplicationController.ac.PlayerData.isPremium && Application.internetReachability != NetworkReachability.NotReachable) {
 #if UNITY_ANDROID
             // string adUnitId = Config.ADMOB_TEST_INTERSTITIAL_ID;
@@ -73,9 +73,9 @@ public class AdsController : MonoBehaviour {
 #endif
             interstitial = new InterstitialAd(adUnitId);
             AdRequest request = new AdRequest.Builder()
-              /*  .AddTestDevice(Config.MY_DEVICE_ID_1)
-                .AddTestDevice(Config.MY_DEVICE_ID_2)
-                .AddTestDevice(Config.MY_DEVICE_ID_3)*/
+                /*  .AddTestDevice(Config.MY_DEVICE_ID_1)
+                  .AddTestDevice(Config.MY_DEVICE_ID_2)
+                  .AddTestDevice(Config.MY_DEVICE_ID_3)*/
                 .Build();
             interstitial.LoadAd(request);
             interstitial.OnAdClosed += OnInterstitialFinished;
@@ -99,7 +99,7 @@ public class AdsController : MonoBehaviour {
     }
 
     void OnInterstitialFinished(object sender, EventArgs args) {
-        Debug.Log("HandleOnAdFinished())");
+        // Debug.Log("HandleOnAdFinished())");
         lastInterstitialTime = Time.realtimeSinceStartup;
         interstitial.Destroy();
         interstitial = null;
@@ -109,9 +109,9 @@ public class AdsController : MonoBehaviour {
     // REWARDED AD
     //--------------
     public void RequestRewardAd() {
-        Debug.Log("RequestRewardAd");
+        // Debug.Log("RequestRewardAd");
         if (isRequestingRewardAd || (rewardBasedVideo != null && rewardBasedVideo.IsLoaded())) {
-            Debug.Log("Aborted because ad already loaded or already requesting ad.");
+            // Debug.Log("Aborted because ad already loaded or already requesting ad.");
             return;
         }
         if (Application.internetReachability != NetworkReachability.NotReachable) {
@@ -124,15 +124,15 @@ public class AdsController : MonoBehaviour {
             string adUnitId = "unexpected_platform";
 #endif
             AdRequest request = new AdRequest.Builder()
-             /*   .AddTestDevice(Config.MY_DEVICE_ID_1)
-                .AddTestDevice(Config.MY_DEVICE_ID_2)
-                .AddTestDevice(Config.MY_DEVICE_ID_3)*/
+                /*   .AddTestDevice(Config.MY_DEVICE_ID_1)
+                   .AddTestDevice(Config.MY_DEVICE_ID_2)
+                   .AddTestDevice(Config.MY_DEVICE_ID_3)*/
                 .Build();
             rewardBasedVideo.LoadAd(request, adUnitId);
             isRequestingRewardAd = true;
         }
         else {
-            Debug.Log("Couldn't Request Reward Ad beacause internet not reachable (retry in 10sec)");
+            // Debug.Log("Couldn't Request Reward Ad because internet not reachable (retry in 10sec)");
             Invoke("RequestRewardAd", 10);
         }
     }
@@ -168,7 +168,7 @@ public class AdsController : MonoBehaviour {
     }
 
     public void OnRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args) {
-        Debug.Log("OnRewardBasedVideoFailedToLoad " + args.Message + " (retry in 10sec)");
+        // Debug.Log("OnRewardBasedVideoFailedToLoad " + args.Message + " (retry in 10sec)");
         isRequestingRewardAd = false;
         RefreshRewardAdButtons();
         Invoke("RequestRewardAd", 10);
@@ -195,7 +195,7 @@ public class AdsController : MonoBehaviour {
     }
 
     public void OnRewardBasedVideoLeftApplication(object sender, EventArgs args) {
-        Debug.Log("OnRewardBasedVideoLeftApplication");
+        // Debug.Log("OnRewardBasedVideoLeftApplication");
     }
 
     void CoinsReward(int amount) {
@@ -206,7 +206,7 @@ public class AdsController : MonoBehaviour {
     }
 
     void BonusesReward() {
-        Debug.Log("Bonuses rewarded");
+        // Debug.Log("Bonuses rewarded");
         ApplicationController.ac.ActivateBonuses();
         powerStartMainMenu.RefreshUI();
     }

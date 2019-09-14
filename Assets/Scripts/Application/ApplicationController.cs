@@ -30,13 +30,13 @@ public class ApplicationController : MonoBehaviour {
         FileStream file = File.Create(Application.persistentDataPath + "/toad.dat");
         bf.Serialize(file, PlayerData);
         file.Close();
-        Debug.Log(string.Format("Game saved with score {0}", PlayerData.bestScore));
+        // Debug.Log(string.Format("Game saved with score {0}", PlayerData.bestScore));
         CloudSavedGame.OpenSavedGameThenSave();
     }
 
     public void Load() {
         if (File.Exists(Application.persistentDataPath + "/toad.dat")) {
-            Debug.Log("Save loaded:" + Application.persistentDataPath);
+            // Debug.Log("Save loaded:" + Application.persistentDataPath);
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/toad.dat", FileMode.Open);
             PlayerData = (PlayerData)bf.Deserialize(file);
